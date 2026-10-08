@@ -4,4 +4,4 @@
 
 ## Pages
 
-- [Home](https://example.com/): What this site is and who it is for.
+- [Home](https://droxey.com/start-tailwind/): What this site is and who it is for.

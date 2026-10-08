@@ -5,7 +5,7 @@
     - list:
       - listitem:
         - link "Home":
-          - /url: /
+          - /url: ./
       - listitem:
         - button "Dark mode"
 - main:

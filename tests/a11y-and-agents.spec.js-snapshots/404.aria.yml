@@ -2,7 +2,7 @@
   - heading "Page not found" [level=1]
   - paragraph:
     - link "Go to the home page":
-      - /url: /
+      - /url: ./
 - contentinfo:
   - paragraph:
     - text: written with love by
