@@ -1,6 +1,7 @@
 {
   "name": "static-site",
   "private": true,
+  "license": "MIT",
   "type": "module",
   "engines": {
     "node": ">=22.22"
@@ -15,11 +16,13 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint:skills": "sh scripts/check-skills.sh",
-    "lint": "npm run lint:skills && npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:md && npm run format:check",
-    "serve": "serve -l 8080 public",
+    "lint": "npm run lint:skills && npm run lint:version && npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:md && npm run format:check",
+    "serve": "python3 -m http.server 8080 --bind 127.0.0.1 --directory public",
     "test:e2e": "playwright test",
     "test:a11y": "pa11y-ci",
-    "test:lhci": "lhci autorun"
+    "test:lhci": "lhci autorun",
+    "setup:tailwind": "sh scripts/get-tailwind.sh",
+    "lint:version": "sh scripts/check-tailwind-version.sh"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
@@ -28,8 +31,8 @@
     "@html-eslint/parser": "^0.66.1",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.64.0",
-    "@tailwindcss/forms": "^0.5.11",
-    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/forms": "0.5.11",
+    "@tailwindcss/typography": "0.5.20",
     "eslint": "^10.12.0",
     "eslint-plugin-better-tailwindcss": "^4.9.0",
     "globals": "^17.13.0",
@@ -38,9 +41,16 @@
     "pa11y-ci": "^5.0.0",
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "serve": "^14.2.6",
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "4.3.3"
+  },
+  "overrides": {
+    "postcss-selector-parser": "^7.1.6",
+    "compression": "^1.8.2",
+    "tmp": "^0.2.7",
+    "uuid": "^14.0.0",
+    "katex": "^0.18.2",
+    "smol-toml": "^1.9.0"
   }
 }
