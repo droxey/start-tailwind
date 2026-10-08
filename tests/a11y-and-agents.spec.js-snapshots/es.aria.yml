@@ -1,0 +1,39 @@
+- link "Saltar al contenido":
+  - /url: "#main"
+- banner:
+  - navigation "Principal":
+    - list:
+      - listitem:
+        - link "Inicio":
+          - /url: /es/
+      - listitem:
+        - link "Acerca de":
+          - /url: /es/acerca
+      - listitem:
+        - button "Modo oscuro"
+  - navigation "Idioma":
+    - list:
+      - listitem:
+        - link "English":
+          - /url: /
+      - listitem:
+        - link "Español":
+          - /url: /es/
+      - listitem:
+        - link "Português (Brasil)":
+          - /url: /pt-br/
+- main:
+  - heading "Hola" [level=1]
+  - paragraph: Estático, accesible y rápido.
+  - list:
+    - listitem:
+      - heading "Fluido" [level=2]
+      - paragraph: /Cualquier ancho, desde \d+ px hasta pantallas ultraanchas\./
+    - listitem:
+      - heading "Accesible" [level=2]
+      - paragraph: WCAG 2.2 AA como mínimo.
+    - listitem:
+      - heading "Legible para agentes" [level=2]
+      - paragraph: HTML semántico y un árbol de accesibilidad limpio.
+- contentinfo:
+  - paragraph: /© \d+ Example/

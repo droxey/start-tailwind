@@ -1,0 +1,17 @@
+{
+  "$schema": "https://html-validate.org/schemas/config.json",
+  "extends": [
+    "html-validate:recommended",
+    "html-validate:a11y",
+    "html-validate:document",
+    "html-validate:prettier"
+  ],
+  "rules": {
+    "no-inline-style": "error",
+    "require-sri": ["error", { "target": "crossorigin" }],
+    "no-redundant-role": "error",
+    "prefer-native-element": "error",
+    "heading-level": ["error", { "allowMultipleH1": false }],
+    "long-title": ["error", { "maxlength": 60 }]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "printWidth": 100,
+  "trailingComma": "all",
+  "htmlWhitespaceSensitivity": "css",
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindStylesheet": "./src/input.css",
+  "overrides": [{ "files": "*.md", "options": { "proseWrap": "preserve" } }]
+}

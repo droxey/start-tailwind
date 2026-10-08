@@ -1,0 +1,31 @@
+# Lint, validate, and test on every push and pull request. Node is used only for checks.
+name: Quality
+on: [push, pull_request]
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Fails fast if a vendored agent skill is missing, unpinned, unvetted, or modified.
+      - name: Verify vendored agent skills
+        run: sh scripts/check-skills.sh
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: sh scripts/get-tailwind.sh v4.3.3 && npm run build:css
+      - run: npm run lint # includes lint:skills
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test
+        env:
+          PW_CHANNEL: chromium
+      - run: npm run test:lhci
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: reports
+          path: |
+            playwright-report/
+            .lighthouseci/

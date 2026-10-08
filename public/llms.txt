@@ -1,0 +1,8 @@
+# Example site
+
+> A static site built with HTML, Tailwind CSS, and vanilla JavaScript.
+
+## Pages
+
+- [Home](https://example.com/): What this site is and who it is for.
+- [About](https://example.com/about): Background and contact details.

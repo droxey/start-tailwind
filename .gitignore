@@ -1,0 +1,6 @@
+node_modules/
+bin/
+public/assets/site.css
+.lighthouseci/
+test-results/
+playwright-report/

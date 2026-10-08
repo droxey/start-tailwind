@@ -1,0 +1,39 @@
+- link "Skip to content":
+  - /url: "#main"
+- banner:
+  - navigation "Primary":
+    - list:
+      - listitem:
+        - link "Home":
+          - /url: /
+      - listitem:
+        - link "About":
+          - /url: /about
+      - listitem:
+        - button "Dark mode"
+  - navigation "Language":
+    - list:
+      - listitem:
+        - link "English":
+          - /url: /
+      - listitem:
+        - link "Español":
+          - /url: /es/
+      - listitem:
+        - link "Português (Brasil)":
+          - /url: /pt-br/
+- main:
+  - heading "Hello" [level=1]
+  - paragraph: Static, accessible, fast.
+  - list:
+    - listitem:
+      - heading "Fluid" [level=2]
+      - paragraph: Every width from 320px to ultra-wide.
+    - listitem:
+      - heading "Accessible" [level=2]
+      - paragraph: WCAG 2.2 AA as the floor.
+    - listitem:
+      - heading "Readable by agents" [level=2]
+      - paragraph: Semantic HTML and a clean accessibility tree.
+- contentinfo:
+  - paragraph: /© \d+ Example/

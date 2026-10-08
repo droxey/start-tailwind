@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+    />
+    <title>Example site</title>
+    <meta
+      name="description"
+      content="A static site built with HTML, Tailwind CSS, and vanilla JavaScript."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://example.com/" />
+    <link rel="alternate" hreflang="en" href="https://example.com/" />
+    <link rel="alternate" hreflang="es" href="https://example.com/es/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://example.com/pt-br/" />
+    <link rel="alternate" hreflang="x-default" href="https://example.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Example site" />
+    <meta
+      property="og:description"
+      content="A static site built with HTML, Tailwind CSS, and vanilla JavaScript."
+    />
+    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:image" content="https://example.com/og.png" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/site.css" />
+    <script type="module" src="/js/main.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Example site",
+        "url": "https://example.com/"
+      }
+    </script>
+  </head>
+  <body class="bg-surface font-sans text-step-0 text-ink antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:inset-s-fluid-s focus:inset-bs-fluid-s focus:z-50 focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+      >Skip to content</a
+    >
+    <header class="border-be border-ink/10">
+      <nav aria-label="Primary" class="mx-auto px-fluid-s-l py-fluid-xs max-inline-7xl">
+        <ul class="flex flex-wrap items-center gap-fluid-s">
+          <li>
+            <a href="/" aria-current="page" class="underline-offset-4 hover:underline">Home</a>
+          </li>
+          <li><a href="/about" class="underline-offset-4 hover:underline">About</a></li>
+          <li class="ms-auto">
+            <button
+              type="button"
+              data-theme-toggle
+              class="rounded-md border border-ink/20 px-fluid-s min-block-11 min-inline-11 motion-safe:transition-colors forced-colors:border-[ButtonBorder]"
+              aria-pressed="false"
+            >
+              Dark mode
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <nav aria-label="Language" class="mx-auto px-fluid-s-l pbe-fluid-xs max-inline-7xl">
+        <ul class="flex flex-wrap gap-fluid-s text-step-n1">
+          <li>
+            <a
+              href="/"
+              hreflang="en"
+              lang="en"
+              aria-current="true"
+              class="underline-offset-4 hover:underline"
+              >English</a
+            >
+          </li>
+          <li>
+            <a href="/es/" hreflang="es" lang="es" class="underline-offset-4 hover:underline"
+              >Español</a
+            >
+          </li>
+          <li>
+            <a
+              href="/pt-br/"
+              hreflang="pt-BR"
+              lang="pt-BR"
+              class="underline-offset-4 hover:underline"
+              >Português (Brasil)</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="mx-auto px-fluid-s-l py-fluid-m-xl max-inline-7xl">
+      <h1 class="text-step-4 font-bold text-balance">Hello</h1>
+      <p class="mbs-fluid-s max-w-prose text-ink-muted">Static, accessible, fast.</p>
+      <div class="@container mbs-fluid-l">
+        <ul class="grid gap-fluid-s @md:grid-cols-2 @3xl:grid-cols-3">
+          <li class="rounded-lg bg-surface-raised p-fluid-s">
+            <h2 class="text-step-1 font-semibold">Fluid</h2>
+            <p>Every width from 320px to ultra-wide.</p>
+          </li>
+          <li class="rounded-lg bg-surface-raised p-fluid-s">
+            <h2 class="text-step-1 font-semibold">Accessible</h2>
+            <p>WCAG 2.2 AA as the floor.</p>
+          </li>
+          <li class="rounded-lg bg-surface-raised p-fluid-s">
+            <h2 class="text-step-1 font-semibold">Readable by agents</h2>
+            <p>Semantic HTML and a clean accessibility tree.</p>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer class="mx-auto px-fluid-s-l py-fluid-m max-inline-7xl">
+      <p><small>&copy; 2026 Example</small></p>
+    </footer>
+  </body>
+</html>

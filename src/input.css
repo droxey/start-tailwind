@@ -1,0 +1,122 @@
+/* Tailwind CSS v4 entry point. Build: ./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify */
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@plugin "@tailwindcss/forms" {
+  strategy: "class";
+}
+
+/* Only scan real source; never node_modules, build output, or the vendored agent skills. */
+@source not "../public/assets";
+@source not "../.agents";
+@source not "../.claude";
+@source not "../.cursor";
+@source not "../skills-lock.json";
+@source not "../AGENTS.md";
+@source not "../CLAUDE.md";
+
+/* Dark mode: follow the OS by default, allow an explicit [data-theme] override. */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]), :root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+}
+
+@theme {
+  /* Fluid type: 360px -> 1280px viewport; 16px @ 1.2 ratio -> 18px @ 1.25 ratio. */
+  --text-step-n1: clamp(0.8333rem, 0.8072rem + 0.1159vw, 0.9rem);
+  --text-step-0: clamp(1rem, 0.9511rem + 0.2174vw, 1.125rem);
+  --text-step-0--line-height: 1.6;
+  --text-step-1: clamp(1.2rem, 1.1193rem + 0.3587vw, 1.4062rem);
+  --text-step-1--line-height: 1.4;
+  --text-step-2: clamp(1.44rem, 1.3156rem + 0.5527vw, 1.7578rem);
+  --text-step-2--line-height: 1.25;
+  --text-step-3: clamp(1.728rem, 1.5444rem + 0.8161vw, 2.1973rem);
+  --text-step-3--line-height: 1.15;
+  --text-step-4: clamp(2.0736rem, 1.8103rem + 1.1704vw, 2.7466rem);
+  --text-step-4--line-height: 1.1;
+  --text-step-5: clamp(2.4883rem, 2.1186rem + 1.6433vw, 3.4332rem);
+  --text-step-5--line-height: 1.05;
+
+  /* Fluid space (use as p-fluid-s, gap-fluid-m, mt-fluid-l, ...). */
+  --spacing-fluid-2xs: clamp(0.5rem, 0.4755rem + 0.1087vw, 0.5625rem);
+  --spacing-fluid-xs: clamp(0.75rem, 0.7133rem + 0.163vw, 0.8438rem);
+  --spacing-fluid-s: clamp(1rem, 0.9511rem + 0.2174vw, 1.125rem);
+  --spacing-fluid-m: clamp(1.5rem, 1.4266rem + 0.3261vw, 1.6875rem);
+  --spacing-fluid-l: clamp(2rem, 1.9022rem + 0.4348vw, 2.25rem);
+  --spacing-fluid-xl: clamp(3rem, 2.8533rem + 0.6522vw, 3.375rem);
+  --spacing-fluid-2xl: clamp(4rem, 3.8043rem + 0.8696vw, 4.5rem);
+  --spacing-fluid-s-l: clamp(1rem, 0.5109rem + 2.1739vw, 2.25rem);
+  --spacing-fluid-m-xl: clamp(1.5rem, 0.7663rem + 3.2609vw, 3.375rem);
+
+  /* Extra breakpoint for ultra-wide screens (defaults: sm 40rem ... 2xl 96rem). */
+  --breakpoint-3xl: 120rem;
+
+  /* Semantic color roles in OKLCH. Light values here, dark values in @layer base. */
+  --color-surface: oklch(99% 0.005 250);
+  --color-surface-raised: oklch(96% 0.01 250);
+  --color-ink: oklch(22% 0.02 250);
+  --color-ink-muted: oklch(40% 0.02 250);
+  --color-accent: oklch(48% 0.16 255);
+  --color-accent-ink: oklch(99% 0.005 250);
+  --color-focus: oklch(48% 0.16 255);
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  :root {
+    color-scheme: light dark;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --color-surface: oklch(18% 0.02 250);
+      --color-surface-raised: oklch(24% 0.02 250);
+      --color-ink: oklch(94% 0.01 250);
+      --color-ink-muted: oklch(80% 0.02 250);
+      --color-accent: oklch(78% 0.12 255);
+      --color-accent-ink: oklch(18% 0.02 250);
+      --color-focus: oklch(80% 0.12 255);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-surface: oklch(18% 0.02 250);
+    --color-surface-raised: oklch(24% 0.02 250);
+    --color-ink: oklch(94% 0.01 250);
+    --color-ink-muted: oklch(80% 0.02 250);
+    --color-accent: oklch(78% 0.12 255);
+    --color-accent-ink: oklch(18% 0.02 250);
+    --color-focus: oklch(80% 0.12 255);
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  /* Hard rule: a visible, high-contrast focus ring everywhere (WCAG 2.4.7 / 2.4.13). */
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
