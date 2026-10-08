@@ -20,11 +20,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # Version comes from .tailwind-version.
       - name: Build CSS with Tailwind standalone CLI
         run: |
-          sh scripts/get-tailwind.sh v4.3.3
+          sh scripts/get-tailwind.sh
           ./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify
-      - uses: actions/configure-pages@v6
+      - id: pages
+        uses: actions/configure-pages@v6
+      # Hosts serve 404.html at any depth (/start-tailwind/a/b/c), so make its links root-absolute
+      # under the deploy base path: /start-tailwind/ here, / on a custom domain. Source stays relative.
+      - name: Point 404.html at the deploy base path
+        run: sh scripts/rewrite-404.sh "${{ steps.pages.outputs.base_path }}/"
       - uses: actions/upload-pages-artifact@v5
         with:
           path: public
@@ -34,6 +40,25 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+  # Post-deploy live check: the page and its CSS, JS, and icon return 200 under the real subpath.
+  smoke:
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+      - name: Live smoke test
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: |
+          HTTPS_URL=$(printf '%s' "$PAGE_URL" | sed 's#^http://#https://#')
+          sh scripts/smoke.sh "$PAGE_URL"
+          sh scripts/smoke.sh "$HTTPS_URL"
+          # A missing URL three levels deep gets the styled 404 page (status 404, assets 200).
+          EXPECT_STATUS=404 sh scripts/smoke.sh "${HTTPS_URL%/}/a/b/c"
