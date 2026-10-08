@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "sh scripts/get-tailwind.sh && ./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify",
+  "buildCommand": "sh scripts/get-tailwind.sh && ./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify && sh scripts/rewrite-404.sh /",
   "outputDirectory": "public",
   "framework": null,
   "cleanUrls": true,

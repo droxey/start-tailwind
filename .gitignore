@@ -4,3 +4,11 @@ public/assets/site.css
 .lighthouseci/
 test-results/
 playwright-report/
+
+# Skills installed on demand only, never committed (README-only licenses; see skills-lock.json).
+.agents/skills/web-design-guidelines/
+.agents/skills/accessibility-audit/
+.agents/skills/accessibility-diff/
+.agents/skills/accessibility-fix/
+.agents/skills/accessibility-inspect/
+.agents/skills/accessibility-scan/

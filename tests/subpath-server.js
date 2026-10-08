@@ -1,5 +1,7 @@
 // Serves public/ under /start-tailwind/, like the GitHub Pages project site, so tests catch
-// root-absolute URLs that only work at /. Missing pages get 404.html with a 404 status.
+// root-absolute URLs that only work at /. Missing pages at any depth get 404.html with a 404
+// status, after the same deploy-time rewrite pages.yml applies (scripts/rewrite-404.sh).
+import { execFileSync } from "node:child_process";
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, sep } from "node:path";
@@ -7,6 +9,12 @@ import { extname, join, normalize, sep } from "node:path";
 const PREFIX = "/start-tailwind/";
 const ROOT = join(import.meta.dirname, "..", "public");
 const PORT = Number(process.env.SUBPATH_PORT ?? 8081);
+const NOT_FOUND = execFileSync("sh", [
+  join(import.meta.dirname, "..", "scripts", "rewrite-404.sh"),
+  PREFIX,
+  join(ROOT, "404.html"),
+  "-",
+]);
 const TYPES = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
@@ -48,7 +56,7 @@ createServer(async (req, res) => {
   }
   if (pathname.startsWith(PREFIX)) {
     res.writeHead(404, { "Content-Type": TYPES[".html"] });
-    res.end(await readFile(join(ROOT, "404.html")));
+    res.end(NOT_FOUND);
     return;
   }
   res.writeHead(404, { "Content-Type": TYPES[".txt"] }).end("Not found");

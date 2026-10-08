@@ -9,9 +9,10 @@
 #   - every lockfile entry is pinned to a full 40-character commit SHA and names a license
 #   - every vendored entry exists under .agents/skills/<name>/ with a SKILL.md, its license file
 #     exists, and its contents match the recorded treeHash
-#   - entries that are not vendored carry an installCommand instead
+#   - entries that are not vendored carry an installCommand instead, and are never committed
 #   - no folder under .agents/skills/ is missing from the lockfile (no unvetted skills)
-#   - .claude/skills and .cursor/skills resolve to .agents/skills (one copy, no duplicates)
+#   - .claude/skills, .cursor/skills, and .grok/skills resolve to .agents/skills (one copy, no
+#     duplicates)
 #
 # treeHash: in the skill folder, list every regular file as "<sha256>  ./<path>", sort the lines
 # by path (C locale), and take the sha256 of that listing. POSIX sh plus sha256sum or shasum.
@@ -102,6 +103,12 @@ while IFS="$tab" read -r name ref ven vp th lf li ic; do
     [ "$actual" = "$th" ] || err "$name: contents changed (treeHash $actual, lockfile $th)"
   else
     [ "$ic" != "-" ] || err "$name: not vendored and no installCommand recorded"
+    # Not redistributed (e.g. no upstream LICENSE file): a local on-demand install is fine,
+    # but it must stay out of git.
+    if [ -d "$SKILLS/$name" ] && command -v git >/dev/null 2>&1 &&
+      [ -n "$(git ls-files -- "$SKILLS/$name" 2>/dev/null | head -n 1)" ]; then
+      err "$name: marked not vendored but committed under $SKILLS/$name"
+    fi
   fi
 done <<LIST
 $entries
@@ -116,7 +123,7 @@ for d in "$SKILLS"/*/; do
 done
 
 canon=$(cd "$SKILLS" && pwd -P)
-for link in .claude/skills .cursor/skills; do
+for link in .claude/skills .cursor/skills .grok/skills; do
   if [ ! -d "$link" ]; then
     err "$link is missing (should be a symlink to ../$SKILLS)"
   elif [ "$(cd "$link" && pwd -P)" != "$canon" ]; then

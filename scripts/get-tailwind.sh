@@ -1,8 +1,11 @@
 #!/usr/bin/env sh
 # Download the Tailwind CSS standalone CLI (no Node.js needed) and verify its checksum.
-# Usage: scripts/get-tailwind.sh [version]   e.g. scripts/get-tailwind.sh v4.3.3
+# Usage: scripts/get-tailwind.sh [version]
+# The pinned version lives in .tailwind-version (the single source of truth); pass a version only
+# to try another release locally. The npm "tailwindcss" pin used by the linters must match it.
 set -eu
-VERSION="${1:-v4.3.3}"
+cd "$(dirname "$0")/.."
+VERSION="${1:-$(tr -d ' \n' < .tailwind-version)}"
 case "$(uname -s)-$(uname -m)" in
   Linux-x86_64) ASSET=tailwindcss-linux-x64 ;;
   Linux-aarch64 | Linux-arm64) ASSET=tailwindcss-linux-arm64 ;;

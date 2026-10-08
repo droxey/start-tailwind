@@ -4,7 +4,8 @@ import { pages } from "./pages.js";
 // GitHub Pages serves this site at https://droxey.com/start-tailwind/, so every asset and
 // internal link must resolve under that subpath, not at the domain root.
 const BASE = "http://localhost:8081/start-tailwind/";
-const targets = [...pages.map((p) => p.replace(/^\//, "")), "missing-page"];
+// Missing URLs get 404.html (rewritten at deploy time), one level and several levels deep.
+const targets = [...pages.map((p) => p.replace(/^\//, "")), "missing-page", "a/b/c"];
 
 for (const target of targets) {
   test(`assets and links resolve under /start-tailwind/: /${target}`, async ({ page }) => {

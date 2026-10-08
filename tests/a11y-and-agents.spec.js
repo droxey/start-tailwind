@@ -63,6 +63,25 @@ test("home page metadata for crawlers and agents", async ({ page }) => {
   for (const block of ld) expect(() => JSON.parse(block)).not.toThrow();
 });
 
+test("home page JSON-LD describes the site, the page, and its author", async ({ page }) => {
+  await page.goto("/");
+  const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+  const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+  const nodes = blocks.map((b) => JSON.parse(b)).flatMap((d) => d["@graph"] ?? [d]);
+  const byType = (type) => nodes.find((n) => n["@type"] === type);
+  for (const type of ["WebSite", "WebPage", "Person"]) expect(byType(type), type).toBeTruthy();
+  expect(byType("WebSite").url).toBe(canonical);
+  expect(byType("WebPage").url).toBe(canonical);
+  expect(byType("WebPage").inLanguage).toBe("en");
+  // Every @id reference points at a node in the graph.
+  const ids = new Set(nodes.map((n) => n["@id"]));
+  const refs = JSON.stringify(nodes).match(/"@id":"[^"]+"/g) ?? [];
+  for (const ref of refs) expect(ids.has(JSON.parse(`{${ref}}`)["@id"]), ref).toBe(true);
+  // Text in the markup matches what the page shows.
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(byType("WebPage").description).toBe(description);
+});
+
 test("keyboard: skip link is first tab stop and moves focus to main", async ({ page }) => {
   await page.goto("/");
   await page.keyboard.press("Tab");

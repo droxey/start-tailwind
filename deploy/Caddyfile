@@ -27,6 +27,8 @@ example.com {
 	}
 	header /assets/* Cache-Control "public, max-age=31536000, immutable"
 
+	# Before upload, run `sh scripts/rewrite-404.sh /` (or the mount path) on the deploy copy so
+	# 404.html loads its CSS at any depth.
 	handle_errors {
 		@404 expression {err.status_code} == 404
 		rewrite @404 /404.html

@@ -10,4 +10,5 @@ tests/**/*-snapshots/
 .agents/
 .claude/
 .cursor/
+.grok/
 skills-lock.json

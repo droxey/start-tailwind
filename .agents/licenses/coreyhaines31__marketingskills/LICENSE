@@ -1,11 +1,6 @@
-License note for AccessLint/skills at commit 2e9d7336678302d0bc08848e92542560295b34d3
+MIT License
 
-The upstream repository has no LICENSE file at this commit. Its license is
-declared as MIT in: README.md "## License" section: "MIT"; .claude-plugin/marketplace.json and plugins/accesslint/.claude-plugin/plugin.json: "license": "MIT".
-Source: https://github.com/AccessLint/skills/tree/2e9d7336678302d0bc08848e92542560295b34d3
-
-The skills from this repository are vendored under that declared MIT license.
-MIT permission notice (https://opensource.org/license/mit):
+Copyright (c) 2025 Corey Haines
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

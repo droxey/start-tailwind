@@ -12,9 +12,13 @@
 @source not "../.agents";
 @source not "../.claude";
 @source not "../.cursor";
+@source not "../.grok";
+@source not "../docs";
 @source not "../skills-lock.json";
 @source not "../AGENTS.md";
 @source not "../CLAUDE.md";
+@source not "../CONFIG_CODING_PREFS.md";
+@source not "../SECURITY-NOTES.md";
 
 /* Dark mode: follow the OS by default, allow an explicit [data-theme] override. */
 @custom-variant dark {
@@ -67,7 +71,9 @@
   --color-accent: oklch(48% 0.16 255);
   --color-accent-ink: oklch(99% 0.005 250);
   --color-focus: oklch(48% 0.16 255);
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* No --font-sans override: v4.3.3's default lists explicit platform fonts instead of system-ui,
+     so CJK text follows the page's lang on Windows (tailwindlabs/tailwindcss#20318). */
 }
 
 @layer base {

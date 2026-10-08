@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   checks:
     runs-on: ubuntu-latest
@@ -17,13 +20,25 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      # pa11y-ci uses the runner's Google Chrome, so skip Puppeteer's browser download.
       - run: npm ci
-      - run: sh scripts/get-tailwind.sh v4.3.3 && npm run build:css
-      - run: npm run lint # includes lint:skills
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+      # Version comes from .tailwind-version.
+      - run: sh scripts/get-tailwind.sh && npm run build:css
+      - run: npm run lint # includes lint:skills and lint:version
       - run: npx playwright install --with-deps chromium
+      # Screenshot baselines are rendered on this runner only; see the "Update visual baselines" workflow.
       - run: npx playwright test
         env:
           PW_CHANNEL: chromium
+      - name: pa11y-ci (axe + HTML_CodeSniffer)
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 --directory public &
+          for i in 1 2 3 4 5 6 7 8 9 10; do curl -fsS -o /dev/null http://127.0.0.1:8080/ && break; sleep 1; done
+          npm run test:a11y
       - run: npm run test:lhci
       - uses: actions/upload-artifact@v7
         if: failure()
@@ -31,4 +46,5 @@ jobs:
           name: reports
           path: |
             playwright-report/
+            test-results/
             .lighthouseci/
