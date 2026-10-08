@@ -5,4 +5,3 @@
 ## Pages
 
 - [Home](https://example.com/): What this site is and who it is for.
-- [About](https://example.com/about): Background and contact details.

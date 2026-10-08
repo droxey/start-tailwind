@@ -14,10 +14,6 @@
     />
     <meta name="color-scheme" content="light dark" />
     <link rel="canonical" href="https://example.com/" />
-    <link rel="alternate" hreflang="en" href="https://example.com/" />
-    <link rel="alternate" hreflang="es" href="https://example.com/es/" />
-    <link rel="alternate" hreflang="pt-BR" href="https://example.com/pt-br/" />
-    <link rel="alternate" hreflang="x-default" href="https://example.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Example site" />
     <meta
@@ -25,7 +21,6 @@
       content="A static site built with HTML, Tailwind CSS, and vanilla JavaScript."
     />
     <meta property="og:url" content="https://example.com/" />
-    <meta property="og:image" content="https://example.com/og.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/assets/site.css" />
     <script type="module" src="/js/main.js"></script>
@@ -50,7 +45,6 @@
           <li>
             <a href="/" aria-current="page" class="underline-offset-4 hover:underline">Home</a>
           </li>
-          <li><a href="/about" class="underline-offset-4 hover:underline">About</a></li>
           <li class="ms-auto">
             <button
               type="button"
@@ -60,34 +54,6 @@
             >
               Dark mode
             </button>
-          </li>
-        </ul>
-      </nav>
-      <nav aria-label="Language" class="mx-auto px-fluid-s-l pbe-fluid-xs max-inline-7xl">
-        <ul class="flex flex-wrap gap-fluid-s text-step-n1">
-          <li>
-            <a
-              href="/"
-              hreflang="en"
-              lang="en"
-              aria-current="true"
-              class="underline-offset-4 hover:underline"
-              >English</a
-            >
-          </li>
-          <li>
-            <a href="/es/" hreflang="es" lang="es" class="underline-offset-4 hover:underline"
-              >Español</a
-            >
-          </li>
-          <li>
-            <a
-              href="/pt-br/"
-              hreflang="pt-BR"
-              lang="pt-BR"
-              class="underline-offset-4 hover:underline"
-              >Português (Brasil)</a
-            >
           </li>
         </ul>
       </nav>
@@ -113,7 +79,17 @@
       </div>
     </main>
     <footer class="mx-auto px-fluid-s-l py-fluid-m max-inline-7xl">
-      <p><small>&copy; 2026 Example</small></p>
+      <p>
+        <small
+          >written with <span aria-hidden="true">&hearts;</span><span class="sr-only">love</span> by
+          <a
+            href="https://github.com/droxey"
+            title="@droxey on github"
+            class="font-bold text-accent underline underline-offset-4 hover:decoration-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            >@droxey</a
+          ></small
+        >
+      </p>
     </footer>
   </body>
 </html>

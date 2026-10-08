@@ -3,3 +3,8 @@
   - paragraph:
     - link "Go to the home page":
       - /url: /
+- contentinfo:
+  - paragraph:
+    - text: written with love by
+    - link "@droxey":
+      - /url: https://github.com/droxey

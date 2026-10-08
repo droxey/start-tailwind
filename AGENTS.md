@@ -9,7 +9,7 @@ Agents working in this repository MUST load and follow the vendored skills in `.
 3. Flawless responsive layout at every width from 320 to 3840 px. Use logical properties and classes (`ms-`, `me-`, `ps-`, `pe-`), so RTL holds.
 4. Agent-readable semantic HTML: landmarks, real heading order, labelled controls, stable accessible names, JSON-LD, `llms.txt`, and a deliberate AI-crawler policy in `robots.txt`.
 5. Linters stay clean: html-validate, Stylelint, ESLint with better-tailwindcss, Prettier, markdownlint. Run `npm run lint` and `npm run test:e2e` before you finish.
-6. Ship only `public/`. Locales are `en` (also `x-default`), `es`, and `pt-BR`; hreflang is reciprocal and self-canonical. Never auto-redirect by guessed language.
+6. Ship only `public/`. The site is English only (`en`); every page is self-canonical. Don't add hreflang alternates or language pages unless asked.
 
 ## Which skill to use
 

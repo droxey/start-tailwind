@@ -17,7 +17,7 @@ Deploy the `public/` directory.
 ```sh
 npm ci
 npm run lint        # html-validate, Stylelint, ESLint (better-tailwindcss), markdownlint, Prettier
-npm run test:e2e    # Playwright: width matrix, axe, aria snapshots, hreflang, RTL
+npm run test:e2e    # Playwright: width matrix, axe, aria snapshots, RTL
 npm run test:a11y   # pa11y-ci (axe + HTML_CodeSniffer); serve public/ on :8080 first
 npm run test:lhci   # Lighthouse CI budgets
 ```
@@ -33,10 +33,10 @@ npm run test:lhci   # Lighthouse CI budgets
 | `vercel.json`        | Vercel headers, clean URLs, and redirects                                        |
 | `.github/workflows/` | GitHub Pages deploy (standalone CLI) and the quality gate                        |
 
-## Locales
+## Language
 
-`/` is `en` and `x-default`, `/es/` is `es`, and `/pt-br/` is `pt-BR`. Add `fr-ca/` before selling
-in Canada. Every localized page lists all variants, including itself and `x-default`.
+The site is English only (`lang="en"`). Every page is self-canonical, and layouts still use
+logical properties so RTL holds.
 
 ## Agent skills
 
