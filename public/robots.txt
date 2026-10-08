@@ -25,4 +25,4 @@ Allow: /
 User-agent: CCBot
 Disallow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://droxey.com/start-tailwind/sitemap.xml

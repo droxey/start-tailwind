@@ -5,23 +5,9 @@
     - list:
       - listitem:
         - link "Home":
-          - /url: /
-      - listitem:
-        - link "About":
-          - /url: /about
+          - /url: ./
       - listitem:
         - button "Dark mode"
-  - navigation "Language":
-    - list:
-      - listitem:
-        - link "English":
-          - /url: /
-      - listitem:
-        - link "Español":
-          - /url: /es/
-      - listitem:
-        - link "Português (Brasil)":
-          - /url: /pt-br/
 - main:
   - heading "Hello" [level=1]
   - paragraph: Static, accessible, fast.
@@ -36,4 +22,7 @@
       - heading "Readable by agents" [level=2]
       - paragraph: Semantic HTML and a clean accessibility tree.
 - contentinfo:
-  - paragraph: /© \d+ Example/
+  - paragraph:
+    - text: written with love by
+    - link "@droxey":
+      - /url: https://github.com/droxey

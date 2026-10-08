@@ -2,12 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "public",
-      "url": [
-        "http://localhost/index.html",
-        "http://localhost/es/index.html",
-        "http://localhost/pt-br/index.html",
-        "http://localhost/404.html"
-      ],
+      "url": ["http://localhost/index.html", "http://localhost/404.html"],
       "numberOfRuns": 3,
       "settings": {
         "chromeFlags": "--no-sandbox --headless=new"
