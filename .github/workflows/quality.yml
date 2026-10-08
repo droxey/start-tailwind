@@ -1,6 +1,9 @@
 # Lint, validate, and test on every push and pull request. Node is used only for checks.
 name: Quality
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   checks:
