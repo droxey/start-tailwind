@@ -27,9 +27,34 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Example site",
-        "url": "https://droxey.com/start-tailwind/"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://droxey.com/start-tailwind/#website",
+            "name": "Example site",
+            "url": "https://droxey.com/start-tailwind/",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://droxey.com/start-tailwind/#author" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://droxey.com/start-tailwind/#webpage",
+            "url": "https://droxey.com/start-tailwind/",
+            "name": "Example site",
+            "description": "A static site built with HTML, Tailwind CSS, and vanilla JavaScript.",
+            "inLanguage": "en",
+            "isPartOf": { "@id": "https://droxey.com/start-tailwind/#website" },
+            "author": { "@id": "https://droxey.com/start-tailwind/#author" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://droxey.com/start-tailwind/#author",
+            "name": "Dani Roxberry",
+            "alternateName": "@droxey",
+            "url": "https://github.com/droxey",
+            "sameAs": ["https://github.com/droxey"]
+          }
+        ]
       }
     </script>
   </head>
