@@ -104,6 +104,24 @@ These are pinned in `skills-lock.json` but not vendored, because their upstream 
 
 To restore missing skills from the lockfile, run `npx skills experimental_install` (Node 22.22 or newer).
 
+## Harness load test
+
+A one-time check (2026-10-08, 09:07 ET) on fresh clones of `main` at `a5a4dce`. Each harness ran
+non-interactively and read-only, and was asked to list the instruction files and skills it loaded
+and the Tailwind build command. No task was run, and no files changed.
+
+| Harness                                 | Version            | Model             | Instruction files loaded at startup                                                                         | Project skills                                                                                                                               | Build command reported                                                                                    |
+| --------------------------------------- | ------------------ | ----------------- | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Claude Code (`claude -p`)               | 2.1.293            | `claude-opus-5-5` | `CLAUDE.md`, plus `AGENTS.md` through the `@AGENTS.md` import                                               | 499 via `.claude/skills`; `tailwind-design-system` and `schema` listed                                                                       | `./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify`                                   |
+| Codex (`codex exec`, read-only sandbox) | codex-cli 0.161.0  | `gpt-6.1-sol`     | `AGENTS.md`, injected automatically                                                                         | 499 on disk in `.agents/skills`, but the startup catalog it was given listed only some of them, without `tailwind-design-system` or `schema` | Same                                                                                                      |
+| Grok Build (`grok -p`, plan mode)       | 1.0.46             | `grok-4.7-build`  | None from the repo. `grok inspect` reported "Project trusted: no" and only the global `~/.claude/CLAUDE.md` | None from the repo (global skills only)                                                                                                      | Found `build:css` in `package.json`, but the run stopped (`cancelled`) after 3 turns with no final answer |
+| Cursor (`cursor-agent -p`)              | 2026.10.01-e373342 | none              | Didn't run: "Authentication required. Please run 'agent login' first"                                       | n/a                                                                                                                                          | n/a                                                                                                       |
+
+Follow-ups: Grok Build loaded nothing from this untrusted fresh clone. Trust the project on its
+first interactive launch, then run `grok inspect` to confirm that `AGENTS.md` and `.grok/skills`
+are found. Log in to `cursor-agent` and re-run its row. Codex shows only part of a 499-skill catalog
+at startup, so name the skill in the prompt when a task needs one.
+
 ## Security
 
 The site ships only static files from `public/`. Dev-tool advisories, the npm `overrides` that fix
