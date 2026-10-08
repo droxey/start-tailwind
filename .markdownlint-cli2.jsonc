@@ -6,5 +6,5 @@
     "MD041": true,
   },
   "globs": ["**/*.md"],
-  "ignores": ["node_modules/**", ".agents/**", ".claude/**", ".cursor/**"],
+  "ignores": ["node_modules/**", ".agents/**", ".claude/**", ".cursor/**", ".grok/**"],
 }

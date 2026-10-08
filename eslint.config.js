@@ -21,6 +21,7 @@ export default defineConfig([
     ".agents/",
     ".claude/",
     ".cursor/",
+    ".grok/",
   ]),
 
   // Vanilla JS: modules, browser globals, no XSS sinks.

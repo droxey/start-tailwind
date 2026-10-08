@@ -65,10 +65,8 @@
       "computedHash": "87e88d724a6f06d475e869055e1a231769e7c252c96a830fd0dbdabc6a006207",
       "path": "plugins/accesslint/skills/accessibility-audit",
       "license": "MIT (declared in README and plugin.json; no LICENSE file upstream)",
-      "licenseFile": ".agents/licenses/AccessLint__skills/LICENSE-NOTE.txt",
-      "vendored": true,
-      "vendorPath": ".agents/skills/accessibility-audit",
-      "treeHash": "b34c39d4aa5198993c4aa0d92ba4f1d82ff32fdbb56145395673e1a5dee1f5b3",
+      "vendored": false,
+      "notVendoredReason": "Upstream declares MIT only in its README (no LICENSE file), so it is not redistributed here (gate Q4 D). Install on demand with installCommand.",
       "installCommand": "npx skills add AccessLint/skills/plugins/accesslint/skills/accessibility-audit#2e9d7336678302d0bc08848e92542560295b34d3 -s accessibility-audit -a cursor -y"
     },
     "accessibility-diff": {
@@ -79,10 +77,8 @@
       "computedHash": "0fe35de7ad63c36fc8b5a28cff090e34a174e7e1200656e84feb9067f5db17c5",
       "path": "plugins/accesslint/skills/accessibility-diff",
       "license": "MIT (declared in README and plugin.json; no LICENSE file upstream)",
-      "licenseFile": ".agents/licenses/AccessLint__skills/LICENSE-NOTE.txt",
-      "vendored": true,
-      "vendorPath": ".agents/skills/accessibility-diff",
-      "treeHash": "4eaeff0dfbac31fa0b3008ea0122d9c7e9b88f2b3f93b0f9aa1dd608bafbe84e",
+      "vendored": false,
+      "notVendoredReason": "Upstream declares MIT only in its README (no LICENSE file), so it is not redistributed here (gate Q4 D). Install on demand with installCommand.",
       "installCommand": "npx skills add AccessLint/skills/plugins/accesslint/skills/accessibility-diff#2e9d7336678302d0bc08848e92542560295b34d3 -s accessibility-diff -a cursor -y"
     },
     "accessibility-fix": {
@@ -93,10 +89,8 @@
       "computedHash": "cad06115e62d45bd3c41f7c7c2dd7f8ed0549832fece57a031b48cdc1edf70cb",
       "path": "plugins/accesslint/skills/accessibility-fix",
       "license": "MIT (declared in README and plugin.json; no LICENSE file upstream)",
-      "licenseFile": ".agents/licenses/AccessLint__skills/LICENSE-NOTE.txt",
-      "vendored": true,
-      "vendorPath": ".agents/skills/accessibility-fix",
-      "treeHash": "b418d66f567111bdb8855866b831f0482bb73529bd3975a18b845ed22445cf88",
+      "vendored": false,
+      "notVendoredReason": "Upstream declares MIT only in its README (no LICENSE file), so it is not redistributed here (gate Q4 D). Install on demand with installCommand.",
       "installCommand": "npx skills add AccessLint/skills/plugins/accesslint/skills/accessibility-fix#2e9d7336678302d0bc08848e92542560295b34d3 -s accessibility-fix -a cursor -y"
     },
     "accessibility-inspect": {
@@ -107,10 +101,8 @@
       "computedHash": "46b4327beb0d25829815e6da7476a91bb79720b0b8703f0fc47988e45d1036b9",
       "path": "plugins/accesslint/skills/accessibility-inspect",
       "license": "MIT (declared in README and plugin.json; no LICENSE file upstream)",
-      "licenseFile": ".agents/licenses/AccessLint__skills/LICENSE-NOTE.txt",
-      "vendored": true,
-      "vendorPath": ".agents/skills/accessibility-inspect",
-      "treeHash": "d8e2166ae2279d76a4ad465b3dfc5f16df53ce96df3bcd28d72189e05675f438",
+      "vendored": false,
+      "notVendoredReason": "Upstream declares MIT only in its README (no LICENSE file), so it is not redistributed here (gate Q4 D). Install on demand with installCommand.",
       "installCommand": "npx skills add AccessLint/skills/plugins/accesslint/skills/accessibility-inspect#2e9d7336678302d0bc08848e92542560295b34d3 -s accessibility-inspect -a cursor -y"
     },
     "accessibility-review": {
@@ -135,10 +127,8 @@
       "computedHash": "6054f1cdbaa768e901f64fc3c45415335254c36cf8f44c0fd55adc3f7eaf268a",
       "path": "plugins/accesslint/skills/accessibility-scan",
       "license": "MIT (declared in README and plugin.json; no LICENSE file upstream)",
-      "licenseFile": ".agents/licenses/AccessLint__skills/LICENSE-NOTE.txt",
-      "vendored": true,
-      "vendorPath": ".agents/skills/accessibility-scan",
-      "treeHash": "0bb1f63530566a74af9710cb0690c240064695ecb5fb6ab2d60ad2daf48b00aa",
+      "vendored": false,
+      "notVendoredReason": "Upstream declares MIT only in its README (no LICENSE file), so it is not redistributed here (gate Q4 D). Install on demand with installCommand.",
       "installCommand": "npx skills add AccessLint/skills/plugins/accesslint/skills/accessibility-scan#2e9d7336678302d0bc08848e92542560295b34d3 -s accessibility-scan -a cursor -y"
     },
     "accessibility-testing": {
@@ -5685,6 +5675,20 @@
       "treeHash": "a7ebf0cf243a69b6dcab8f8e90dd5d3e20ac936f84ea6db5ff70875710460897",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/scheduler-yield#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s scheduler-yield -a cursor -y"
     },
+    "schema": {
+      "source": "coreyhaines31/marketingskills",
+      "ref": "607f50c2b12cc0f5822a85021481b3eb5f1ede31",
+      "sourceType": "github",
+      "skillPath": "skills/schema/SKILL.md",
+      "computedHash": "2f4807070c77b5c52af3a7e56d2ca5ee12ae2fd8b749d76ab68d3de40f323e78",
+      "path": "skills/schema",
+      "license": "MIT",
+      "licenseFile": ".agents/licenses/coreyhaines31__marketingskills/LICENSE",
+      "vendored": true,
+      "vendorPath": ".agents/skills/schema",
+      "treeHash": "3756eaba447360161683957bb7f834f44ec2baa2f7c64dd7be41cc17b4c5324d",
+      "installCommand": "npx skills add coreyhaines31/marketingskills/skills/schema#607f50c2b12cc0f5822a85021481b3eb5f1ede31 -s schema -a cursor -y"
+    },
     "schema-noindex-conflict": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -6273,6 +6277,20 @@
       "treeHash": "14f1b8e9fe6e70bbff27f7ddfff7500d1df47648cd4c62db3d3561fea61f08f8",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/tabs-accessibility#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s tabs-accessibility -a cursor -y"
     },
+    "tailwind-design-system": {
+      "source": "wshobson/agents",
+      "ref": "51b6e0b507aa7942e36c6d33a94fc63aefc53d07",
+      "sourceType": "github",
+      "skillPath": "plugins/frontend-mobile-development/skills/tailwind-design-system/SKILL.md",
+      "computedHash": "4e5bfe5af9b5da504752432dc45ed605af350cf1489a58419afad4123a514f89",
+      "path": "plugins/frontend-mobile-development/skills/tailwind-design-system",
+      "license": "MIT",
+      "licenseFile": ".agents/licenses/wshobson__agents/LICENSE",
+      "vendored": true,
+      "vendorPath": ".agents/skills/tailwind-design-system",
+      "treeHash": "ea844984182dabcab6a4b02a7337bc792d8b5ae387bc1c086b87b69462e9a82f",
+      "installCommand": "npx skills add wshobson/agents/plugins/frontend-mobile-development/skills/tailwind-design-system#51b6e0b507aa7942e36c6d33a94fc63aefc53d07 -s tailwind-design-system -a cursor -y"
+    },
     "td-headers-attr": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -6841,10 +6859,8 @@
       "computedHash": "a6a44d5498f7e8f68289902f3dedfc6f38ae0cee1e96527c80724cf27f727c2a",
       "path": "skills/web-design-guidelines",
       "license": "MIT (declared in README; no LICENSE file upstream)",
-      "licenseFile": ".agents/licenses/vercel-labs__agent-skills/LICENSE-NOTE.txt",
-      "vendored": true,
-      "vendorPath": ".agents/skills/web-design-guidelines",
-      "treeHash": "e9596b4d8c877954a9350596c1f885b2e4112485a202f3e9848416d8fa30b19f",
+      "vendored": false,
+      "notVendoredReason": "Upstream declares MIT only in its README (no LICENSE file), so it is not redistributed here (gate Q4 D). Install on demand with installCommand.",
       "installCommand": "npx skills add vercel-labs/agent-skills/skills/web-design-guidelines#063bee94c3f4df8453406c830b0a7df0f2860278 -s web-design-guidelines -a cursor -y"
     },
     "web-perf": {
