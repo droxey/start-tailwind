@@ -245,17 +245,17 @@
     },
     "agent-ready": {
       "source": "mblode/agent-skills",
-      "ref": "cef4cfa837ca41b50d19f54551a3939ed7460434",
+      "ref": "0148e6250dcea419e6a1559e683fd788a118b747",
       "sourceType": "github",
       "skillPath": "skills/agent-ready/SKILL.md",
-      "computedHash": "7ac843810d870a58ca0d65080088ad4e2bfe9d34db6de503e63719f18d5dc013",
+      "computedHash": "9dc151e0bb2afaef9404a9b808a32eae3d3227c9c3722e9994cf0587032911d6",
       "path": "skills/agent-ready",
       "license": "MIT",
       "licenseFile": ".agents/licenses/mblode__agent-skills/LICENSE.md",
       "vendored": true,
       "vendorPath": ".agents/skills/agent-ready",
-      "treeHash": "11bbd3520c844c07cf7ec5bb8b7428d859816799d9006bbb8d0c863a05e809ff",
-      "installCommand": "npx skills add mblode/agent-skills/skills/agent-ready#cef4cfa837ca41b50d19f54551a3939ed7460434 -s agent-ready -a cursor -y"
+      "treeHash": "6a52be9570662a696d7de8f43fa80eaec72137e2a132e650001e5cb15519a11e",
+      "installCommand": "npx skills add mblode/agent-skills/skills/agent-ready#0148e6250dcea419e6a1559e683fd788a118b747 -s agent-ready -a cursor -y"
     },
     "ai-content": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -3073,17 +3073,17 @@
     },
     "impeccable": {
       "source": "pbakaus/impeccable",
-      "ref": "778c8a7b71ccd5bfe3ca6ac68c15d9d872d0f87d",
+      "ref": "414603bf14c7a344edb466bb1f85690c77ce8b7d",
       "sourceType": "github",
       "skillPath": ".agents/skills/impeccable/SKILL.md",
-      "computedHash": "bb4d6fad4900cfef09ddf05c41711b74ef9a1b2c3d4ef8b20743ec66aeadfb63",
+      "computedHash": "2135c8c88357bf2a33a2f6718cd74bb1c8bf1faa10f94c3933a7f7c82f959519",
       "path": ".agents/skills/impeccable",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/pbakaus__impeccable/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/impeccable",
-      "treeHash": "02464fe15a0793755c5060935118c2459dc9228456839318838391439ec67ab1",
-      "installCommand": "npx skills add pbakaus/impeccable/.agents/skills/impeccable#778c8a7b71ccd5bfe3ca6ac68c15d9d872d0f87d -s impeccable -a cursor -y"
+      "treeHash": "5ae16974c69dc7d81bcbc3286b48ddb580036e1a8983a0f27502d3af6cd3fcbe",
+      "installCommand": "npx skills add pbakaus/impeccable/.agents/skills/impeccable#414603bf14c7a344edb466bb1f85690c77ce8b7d -s impeccable -a cursor -y"
     },
     "import-on-interaction": {
       "source": "thedaviddias/Front-End-Checklist",
