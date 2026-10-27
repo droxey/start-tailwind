@@ -17,17 +17,17 @@
     },
     "a11y-debugging": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/a11y-debugging/SKILL.md",
-      "computedHash": "53a79829783f4fee58520d04a2f42f137a5ce478dd0c9a4423fe50ecb4384987",
+      "computedHash": "beb7d2a574aa41bd087cf5df23a95953c81b9a99f1ec4678c0c10c455d6d63a9",
       "path": "skills/a11y-debugging",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/a11y-debugging",
-      "treeHash": "ee09387f77a6223cb24163f766714e44803b0e0967eed3e0fe0dbf2ff5df9060",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s a11y-debugging -a cursor -y"
+      "treeHash": "234dcfe0a36da890a2ba1297a8df89a5a6c6a14280ad3a817d6b6b54d848a306",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging#af2834411a564d366f9cab63efb046d9084f4dba -s a11y-debugging -a cursor -y"
     },
     "about-page": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -1155,7 +1155,7 @@
     },
     "chrome-devtools": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/chrome-devtools/SKILL.md",
       "computedHash": "3dbca8528db5940abc28faaebfd73a0fd08c34a5f3f46ff6b7810ea39b183de5",
@@ -1165,21 +1165,21 @@
       "vendored": true,
       "vendorPath": ".agents/skills/chrome-devtools",
       "treeHash": "b92e8081635dab05aee6be60ac76a529f1cd27c8acb0c6b30c13be1b653f6a52",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s chrome-devtools -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools#af2834411a564d366f9cab63efb046d9084f4dba -s chrome-devtools -a cursor -y"
     },
     "chrome-devtools-cli": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/chrome-devtools-cli/SKILL.md",
-      "computedHash": "2c797862626b5b48b6e6af9ca377342711066117fb354c1b4ed240f0bef18edc",
+      "computedHash": "8573309d941dc65c310361e19583dfb1f8dddb14e81e2c6e07a9a2f3fb662294",
       "path": "skills/chrome-devtools-cli",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/chrome-devtools-cli",
-      "treeHash": "50181d2cfee818811415e6921505bb560393acead4e9f5a1a1878ded9c663fc9",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s chrome-devtools-cli -a cursor -y"
+      "treeHash": "04565733f6e279d0f1846adaeeccd2eac9a17acb58b648e8e77ef70b8a0a3273",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli#af2834411a564d366f9cab63efb046d9084f4dba -s chrome-devtools-cli -a cursor -y"
     },
     "citations": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -1421,17 +1421,17 @@
     },
     "cookie-debugging": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/cookie-debugging/SKILL.md",
-      "computedHash": "7d675df9c5f301c9df408a341e8cdef3dc8a9bf514f34e6ff5aa02f17a6d2665",
+      "computedHash": "edb4878f712e41e6fb7bccf901839fbb884857bf5c8f38b7ca7931f97e1a90d5",
       "path": "skills/cookie-debugging",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/cookie-debugging",
-      "treeHash": "9a2666c24f589df3a187998c65d5a1a4bb3c2337bdc5278f8ecd4db74426ae22",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s cookie-debugging -a cursor -y"
+      "treeHash": "1885a03673372e012035e3a908e8edbcd80aa0c7c7950236bd261881fb4a9566",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging#af2834411a564d366f9cab63efb046d9084f4dba -s cookie-debugging -a cursor -y"
     },
     "core-web-vitals": {
       "source": "addyosmani/web-quality-skills",
@@ -1757,17 +1757,17 @@
     },
     "debug-optimize-lcp": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/debug-optimize-lcp/SKILL.md",
-      "computedHash": "6d8a0d83f5375437d5b8375d85a4869141799ab5cb0286d2542441e5b0fbd2cc",
+      "computedHash": "92582986e94a362630fe8d87bd20e141500393ec5def777fd5e4196ea57a3ac3",
       "path": "skills/debug-optimize-lcp",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/debug-optimize-lcp",
-      "treeHash": "6efca7e4ca275902f41acd83796cffd837dd61d18398cbf1ab5aadf704973028",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/debug-optimize-lcp#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s debug-optimize-lcp -a cursor -y"
+      "treeHash": "bb572875090feffe018132b9625587919f9aea189d3b0e80d9d55a8bf20b7489",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/debug-optimize-lcp#af2834411a564d366f9cab63efb046d9084f4dba -s debug-optimize-lcp -a cursor -y"
     },
     "decorative-elements": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -4515,7 +4515,7 @@
     },
     "memory-leak-debugging": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/memory-leak-debugging/SKILL.md",
       "computedHash": "a43e2037aecc34dcd87c97e26ac306e66b9249676802197bff1316ba84c1a8c7",
@@ -4525,7 +4525,7 @@
       "vendored": true,
       "vendorPath": ".agents/skills/memory-leak-debugging",
       "treeHash": "985cf5cd9c8a8313d3403eb18d1b01b424dca4bc33e46306f5a70ffa503b305d",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/memory-leak-debugging#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s memory-leak-debugging -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/memory-leak-debugging#af2834411a564d366f9cab63efb046d9084f4dba -s memory-leak-debugging -a cursor -y"
     },
     "memory-leaks": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -6503,17 +6503,17 @@
     },
     "troubleshooting": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3",
+      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
       "sourceType": "github",
       "skillPath": "skills/troubleshooting/SKILL.md",
-      "computedHash": "35c52234dac379cb9535b1f21bf453f0d091b26c4beabf3d9c643aa77a06d01e",
+      "computedHash": "60ddc666681fcc8b95ba1e3b04ab39eba9455b60fc66d0931331ecb996180cf4",
       "path": "skills/troubleshooting",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/troubleshooting",
-      "treeHash": "47e95a0a683a2267296b29c5b86ca8dac3f08d3910a6a87cdc88ecefff30ef18",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/troubleshooting#6f2b48ae5bfb04592be5151b7eb6c2054d29b0f3 -s troubleshooting -a cursor -y"
+      "treeHash": "371cb826b9f5de171d332b1d623821d9a3d055126a7000430e12536bb8dad9b1",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/troubleshooting#af2834411a564d366f9cab63efb046d9084f4dba -s troubleshooting -a cursor -y"
     },
     "trust-signals": {
       "source": "thedaviddias/Front-End-Checklist",

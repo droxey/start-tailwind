@@ -90,7 +90,7 @@ Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CO
 | mblode/agent-skills                  | `skills/typography-audit`, `skills/agent-ready`                                 |      2 | `cef4cfa837ca` | MIT        |
 | emilkowalski/skills                  | `skills/*`                                                                      |     14 | `e8a175de22ae` | MIT        |
 | cloudflare/skills                    | `skills/web-perf`                                                               |      1 | `41e0d1985894` | Apache-2.0 |
-| ChromeDevTools/chrome-devtools-mcp   | `skills/*`                                                                      |      7 | `6f2b48ae5bfb` | Apache-2.0 |
+| ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.12.0)                                                    |      7 | `af2834411a56` | Apache-2.0 |
 | i18n-agent/i18nstack                 | `skills/*`                                                                      |     55 | `e1e722bfd3ca` | MIT        |
 | wshobson/agents                      | `plugins/frontend-mobile-development/skills/tailwind-design-system`             |      1 | `51b6e0b507aa` | MIT        |
 | coreyhaines31/marketingskills        | `skills/schema` (release v2.11.20)                                              |      1 | `607f50c2b12c` | MIT        |
