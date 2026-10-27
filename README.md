@@ -75,25 +75,25 @@ logical properties so RTL holds.
 
 ## Agent skills
 
-Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CODING_PREFS.md). [CLAUDE.md](CLAUDE.md) imports AGENTS.md with an `@AGENTS.md` line. The 499 skills below are vendored in `.agents/skills/`; `.claude/skills`, `.cursor/skills`, and `.grok/skills` are symlinks to that folder, and Codex reads `.agents/skills` directly. `skills-lock.json` records each skill's source, path, full commit SHA, license, and content hash, and `npm run lint:skills` (also part of `npm run lint` and CI) verifies them. License texts are in `.agents/licenses/`.
+Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CODING_PREFS.md). [CLAUDE.md](CLAUDE.md) imports AGENTS.md with an `@AGENTS.md` line. The 487 skills below are vendored in `.agents/skills/`; `.claude/skills`, `.cursor/skills`, and `.grok/skills` are symlinks to that folder, and Codex reads `.agents/skills` directly. `skills-lock.json` records each skill's source, path, full commit SHA, license, and content hash, and `npm run lint:skills` (also part of `npm run lint` and CI) verifies them. License texts are in `.agents/licenses/`.
 
 | Repository                           | Path                                                                            | Skills | Commit         | License    |
 | ------------------------------------ | ------------------------------------------------------------------------------- | -----: | -------------- | ---------- |
 | addyosmani/web-quality-skills        | `skills/*`                                                                      |      6 | `afa8da942115` | MIT        |
 | thedaviddias/Front-End-Checklist     | `skills/*`                                                                      |    391 | `e8d14d049010` | MIT        |
 | anthropics/skills                    | `skills/frontend-design`                                                        |      1 | `683bc88e56f3` | Apache-2.0 |
-| Leonxlnx/taste-skill                 | `skills/*`                                                                      |     13 | `b482f7a970ab` | MIT        |
-| nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `1a2c459b35f2` | MIT        |
+| Leonxlnx/taste-skill                 | `skills/taste-skill`                                                            |      1 | `b482f7a970ab` | MIT        |
+| nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `28b3b8dee8c9` | MIT        |
 | anthropics/knowledge-work-plugins    | `design/skills/` ux-copy, design-critique, design-handoff, accessibility-review |      4 | `ae1513ea94dc` | Apache-2.0 |
 | pbakaus/impeccable                   | `.agents/skills/impeccable`                                                     |      1 | `778c8a7b71cc` | Apache-2.0 |
 | wondelai/skills                      | `web-typography`                                                                |      1 | `c172996495be` | MIT        |
 | mblode/agent-skills                  | `skills/typography-audit`, `skills/agent-ready`                                 |      2 | `cef4cfa837ca` | MIT        |
 | emilkowalski/skills                  | `skills/*`                                                                      |     14 | `e8a175de22ae` | MIT        |
 | cloudflare/skills                    | `skills/web-perf`                                                               |      1 | `41e0d1985894` | Apache-2.0 |
-| ChromeDevTools/chrome-devtools-mcp   | `skills/*`                                                                      |      7 | `6f2b48ae5bfb` | Apache-2.0 |
+| ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.12.0)                                                    |      7 | `af2834411a56` | Apache-2.0 |
 | i18n-agent/i18nstack                 | `skills/*`                                                                      |     55 | `e1e722bfd3ca` | MIT        |
 | wshobson/agents                      | `plugins/frontend-mobile-development/skills/tailwind-design-system`             |      1 | `51b6e0b507aa` | MIT        |
-| coreyhaines31/marketingskills        | `skills/schema` (release v2.11.20)                                              |      1 | `607f50c2b12c` | MIT        |
+| coreyhaines31/marketingskills        | `skills/schema` (release v2.13.8)                                               |      1 | `c90f24b3e820` | MIT        |
 
 These are pinned in `skills-lock.json` but not vendored, because their upstream repositories declare MIT only in a README and ship no LICENSE file. Install them on demand with the `installCommand` in the lockfile; the folders are git-ignored, and `check-skills.sh` fails if one is committed.
 
