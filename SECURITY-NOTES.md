@@ -15,7 +15,6 @@ to vulnerable ranges. Each override is kept only while the full Quality workflow
 | tmp                     | `^0.2.7`  | `@lhci/cli`, directly and via `inquirer` → `external-editor`      | GHSA-52f5-9888-hmc6, GHSA-ph9p-34f9-6g65 |
 | uuid                    | `^14.0.0` | `@lhci/cli` (pins ^8.3.1)                                         | GHSA-w5hq-g745-h8pq                      |
 | katex                   | `^0.18.2` | `markdownlint-cli2` → `markdownlint` → `micromark-extension-math` | GHSA-238p-pmpm-9mq7                      |
-| smol-toml               | `^1.9.0`  | `markdownlint-cli2` (0.23.3 pinned 1.8.0; 0.24.0 pins 1.9.1)      | GHSA-r4xh-jqrq-34v2                      |
 
 The `serve` dev dependency was removed. Playwright and pa11y-ci serve `public/` with
 `python3 -m http.server`, which ships with the CI runner.
@@ -24,6 +23,8 @@ The `serve` dev dependency was removed. Playwright and pa11y-ci serve `public/` 
 
 - markdown-it 15.0.1 (GHSA-r7fv-28h4-cvq7, GHSA-gfr2-rv44-r23c, GHSA-vfgh-jcmw-g37q): `markdownlint-cli2`
   0.24.0 pins markdown-it 15.0.3, so bumping it to `^0.24.0` fixes all three without an override.
+- smol-toml (GHSA-r4xh-jqrq-34v2, fixed in 1.9.0): `markdownlint-cli2` 0.24.0 pins smol-toml 1.9.1, so
+  the `^1.9.0` override was dropped.
 
 ## Dismissed alerts (no patched release exists)
 
