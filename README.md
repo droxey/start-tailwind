@@ -75,14 +75,14 @@ logical properties so RTL holds.
 
 ## Agent skills
 
-Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CODING_PREFS.md). [CLAUDE.md](CLAUDE.md) imports AGENTS.md with an `@AGENTS.md` line. The 499 skills below are vendored in `.agents/skills/`; `.claude/skills`, `.cursor/skills`, and `.grok/skills` are symlinks to that folder, and Codex reads `.agents/skills` directly. `skills-lock.json` records each skill's source, path, full commit SHA, license, and content hash, and `npm run lint:skills` (also part of `npm run lint` and CI) verifies them. License texts are in `.agents/licenses/`.
+Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CODING_PREFS.md). [CLAUDE.md](CLAUDE.md) imports AGENTS.md with an `@AGENTS.md` line. The 487 skills below are vendored in `.agents/skills/`; `.claude/skills`, `.cursor/skills`, and `.grok/skills` are symlinks to that folder, and Codex reads `.agents/skills` directly. `skills-lock.json` records each skill's source, path, full commit SHA, license, and content hash, and `npm run lint:skills` (also part of `npm run lint` and CI) verifies them. License texts are in `.agents/licenses/`.
 
 | Repository                           | Path                                                                            | Skills | Commit         | License    |
 | ------------------------------------ | ------------------------------------------------------------------------------- | -----: | -------------- | ---------- |
 | addyosmani/web-quality-skills        | `skills/*`                                                                      |      6 | `afa8da942115` | MIT        |
 | thedaviddias/Front-End-Checklist     | `skills/*`                                                                      |    391 | `e8d14d049010` | MIT        |
 | anthropics/skills                    | `skills/frontend-design`                                                        |      1 | `683bc88e56f3` | Apache-2.0 |
-| Leonxlnx/taste-skill                 | `skills/*`                                                                      |     13 | `b482f7a970ab` | MIT        |
+| Leonxlnx/taste-skill                 | `skills/taste-skill`                                                            |      1 | `b482f7a970ab` | MIT        |
 | nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `28b3b8dee8c9` | MIT        |
 | anthropics/knowledge-work-plugins    | `design/skills/` ux-copy, design-critique, design-handoff, accessibility-review |      4 | `ae1513ea94dc` | Apache-2.0 |
 | pbakaus/impeccable                   | `.agents/skills/impeccable`                                                     |      1 | `778c8a7b71cc` | Apache-2.0 |

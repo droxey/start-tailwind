@@ -901,20 +901,6 @@
       "treeHash": "d1208830ec188d0af151795c5d88e78c56aa602af1ed5159c4291f9e7e1ff30d",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/blocked-links#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s blocked-links -a cursor -y"
     },
-    "brandkit": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/brandkit/SKILL.md",
-      "computedHash": "b63012f3c3d21197e0185d3e9cc7ec40c589fb10e0b5a32a561739de31aa3f20",
-      "path": "skills/brandkit",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/brandkit",
-      "treeHash": "f6fc7318ef0e930197264a1747e267acc387b4267bcec73b72de950a83a39eb7",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/brandkit#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s brandkit -a cursor -y"
-    },
     "breadcrumb": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -1867,20 +1853,6 @@
       "treeHash": "8cdcfe4e47d1c0d58a0d18fc738f77a1dba81dab33513ea94f4b8eae3b1b951d",
       "installCommand": "npx skills add Leonxlnx/taste-skill/skills/taste-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s design-taste-frontend -a cursor -y"
     },
-    "design-taste-frontend-v1": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/taste-skill-v1/SKILL.md",
-      "computedHash": "d704ab912c4d0ca954ffa858983da755ae4cd5cad9ba22554db5557382f5bd34",
-      "path": "skills/taste-skill-v1",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/design-taste-frontend-v1",
-      "treeHash": "1416c9ff5e7e1217040fc40b29a70e4fd99a33269a1af72145f8c8f8195e8465",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/taste-skill-v1#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s design-taste-frontend-v1 -a cursor -y"
-    },
     "dimensions": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -2609,20 +2581,6 @@
       "treeHash": "180ab393af52fde72c621db7a1236e48c3b6769682961ea8cada4d9fac454d1c",
       "installCommand": "npx skills add anthropics/skills/skills/frontend-design#683bc88e56f3e09ba94f7055977f3d3aa499f202 -s frontend-design -a cursor -y"
     },
-    "full-output-enforcement": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/output-skill/SKILL.md",
-      "computedHash": "26bd29ce4c5e02c7666b2d503609bf466bd32290822e91f0e984147048dbb924",
-      "path": "skills/output-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/full-output-enforcement",
-      "treeHash": "85134abbc5fddc62775cba0121c69864a6bc2445ec2610cf8b11c32a4fb49e18",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/output-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s full-output-enforcement -a cursor -y"
-    },
     "geo-meta": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -2636,20 +2594,6 @@
       "vendorPath": ".agents/skills/geo-meta",
       "treeHash": "379e126c07b5e4bcd16b7d6b99b34f2271247a46d051a24dda4c6773095089e9",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/geo-meta#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s geo-meta -a cursor -y"
-    },
-    "gpt-taste": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/gpt-tasteskill/SKILL.md",
-      "computedHash": "cc8f0c601d8240a124e1d11634351a2be7b8a72fd807c75e5b6bf7afcd5ddee0",
-      "path": "skills/gpt-tasteskill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/gpt-taste",
-      "treeHash": "f61aa97711873de203b5df8fa4c59e257f239cfd4195f6adae3a1b90bc9da54b",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/gpt-tasteskill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s gpt-taste -a cursor -y"
     },
     "gtm-present": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -2720,20 +2664,6 @@
       "vendorPath": ".agents/skills/heading-order",
       "treeHash": "b2f51a5352e8c6f1c40a5380781409257e89ade6fada0cbc2d74811c46e09947",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/heading-order#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s heading-order -a cursor -y"
-    },
-    "high-end-visual-design": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/soft-skill/SKILL.md",
-      "computedHash": "7db385e4c5370e5a7fca9704a1361b056e4504ea6a03924bb86f33a4f00b5c73",
-      "path": "skills/soft-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/high-end-visual-design",
-      "treeHash": "ccf92820b05e0c701f061c188859b56dc942b779226023fbb08fda2dcd8d3072",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/soft-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s high-end-visual-design -a cursor -y"
     },
     "horizontal-scroll": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -3127,48 +3057,6 @@
       "treeHash": "b93e56eb9478fdbbde2ad0fc24919602c84bf2f187766cb7dfa67f6688ef2e4a",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/image-redundant-alt#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s image-redundant-alt -a cursor -y"
     },
-    "image-to-code": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/image-to-code-skill/SKILL.md",
-      "computedHash": "58517b03b2a01f4c9ba65861559d03df931400871bbc200978c975b24bb92c73",
-      "path": "skills/image-to-code-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/image-to-code",
-      "treeHash": "e843c46dbbc1e8f35abee0081fc420f503de75e7a0b0c96db8ef67ed5b419ccd",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/image-to-code-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s image-to-code -a cursor -y"
-    },
-    "imagegen-frontend-mobile": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/imagegen-frontend-mobile/SKILL.md",
-      "computedHash": "9ab7f4f6ce66a3cff02bbf5894e5bd5af50bf5d6ef0adffdc88e8fab772fe44f",
-      "path": "skills/imagegen-frontend-mobile",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/imagegen-frontend-mobile",
-      "treeHash": "4a056b6db5d329a2c47ebef8cc4089d85954c3945b5b0243d08e59a030ba3735",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/imagegen-frontend-mobile#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s imagegen-frontend-mobile -a cursor -y"
-    },
-    "imagegen-frontend-web": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/imagegen-frontend-web/SKILL.md",
-      "computedHash": "65f5ae59fa317567809438310b1c54f78cd133426deb43e4d3d4ca4c8f541628",
-      "path": "skills/imagegen-frontend-web",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/imagegen-frontend-web",
-      "treeHash": "8e7db182965eb0c327355ffcc492e16cacf66cdb3b73710b0bb7aaa72bb35408",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/imagegen-frontend-web#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s imagegen-frontend-web -a cursor -y"
-    },
     "immutable-patterns": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -3294,20 +3182,6 @@
       "vendorPath": ".agents/skills/indexability-conflicts",
       "treeHash": "fec2b2c9644a4a2e4fe4c722b3fb64995a9a8ae153011bd0fe441ccca8363f48",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/indexability-conflicts#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s indexability-conflicts -a cursor -y"
-    },
-    "industrial-brutalist-ui": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/brutalist-skill/SKILL.md",
-      "computedHash": "8fc355c4aadb7d29c53ca28bc41be3cd6eea765d121e3737c4dc2d0f90a8effa",
-      "path": "skills/brutalist-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/industrial-brutalist-ui",
-      "treeHash": "2f734d24928da7c9e7c2e769e00f232247157b44828e3ac3e14da5b68e0adaf2",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/brutalist-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s industrial-brutalist-ui -a cursor -y"
     },
     "input-image-alt": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -4611,20 +4485,6 @@
       "treeHash": "af5bb727ec48380b2c8d6e22e75262bd7cd05f55834944b5e33211d8e8d181b6",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/mime-type#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s mime-type -a cursor -y"
     },
-    "minimalist-ui": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/minimalist-skill/SKILL.md",
-      "computedHash": "08873a3131d3be27bef9bf3304b310b16b44ca6e3561aebe532797be3443f6bd",
-      "path": "skills/minimalist-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/minimalist-ui",
-      "treeHash": "0875dbb844e7210c58729ca58f5dc5f10c858d820bb5320392f0f7ff08c347b4",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/minimalist-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s minimalist-ui -a cursor -y"
-    },
     "mixed-content": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -5381,20 +5241,6 @@
       "treeHash": "fedf02c3efc6d63fd2aaf9efd3fd7ea986e277a799a3d94f9955a10c955e2000",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/reading-level#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s reading-level -a cursor -y"
     },
-    "redesign-existing-projects": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/redesign-skill/SKILL.md",
-      "computedHash": "b405eee0e0e80fc243f731d9aa368bca307e356db7e6157d27101d369dac6726",
-      "path": "skills/redesign-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/redesign-existing-projects",
-      "treeHash": "167a6180d425a3a91d0eeb6464f04ce6dc177df9b7556a7d94959ee2adee644c",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/redesign-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s redesign-existing-projects -a cursor -y"
-    },
     "redirect-chain": {
       "source": "thedaviddias/Front-End-Checklist",
       "ref": "e8d14d049010e2ce25afcd5e8609dfcbbe63e47e",
@@ -6094,20 +5940,6 @@
       "vendorPath": ".agents/skills/stack-trace-exposure",
       "treeHash": "88df29a8671d863b6015899f2e4bf4a03bfbb4ed043514bfb1ed721816308eb5",
       "installCommand": "npx skills add thedaviddias/Front-End-Checklist/skills/stack-trace-exposure#e8d14d049010e2ce25afcd5e8609dfcbbe63e47e -s stack-trace-exposure -a cursor -y"
-    },
-    "stitch-design-taste": {
-      "source": "Leonxlnx/taste-skill",
-      "ref": "b482f7a970abb98c4108d4a9f761e458c64cefc8",
-      "sourceType": "github",
-      "skillPath": "skills/stitch-skill/SKILL.md",
-      "computedHash": "13322f38406cd3abf16ba45e35bdc9b18002d0153a79b4612b97aefc65d5a335",
-      "path": "skills/stitch-skill",
-      "license": "MIT",
-      "licenseFile": ".agents/licenses/Leonxlnx__taste-skill/LICENSE",
-      "vendored": true,
-      "vendorPath": ".agents/skills/stitch-design-taste",
-      "treeHash": "dbc8a60ad68cf780bc9d2ae9f7e227ccb7f9012fcd069f03f74740f4570c516b",
-      "installCommand": "npx skills add Leonxlnx/taste-skill/skills/stitch-skill#b482f7a970abb98c4108d4a9f761e458c64cefc8 -s stitch-design-taste -a cursor -y"
     },
     "stop-words": {
       "source": "thedaviddias/Front-End-Checklist",
