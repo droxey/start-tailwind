@@ -93,7 +93,7 @@ Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CO
 | ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.12.0)                                                    |      7 | `af2834411a56` | Apache-2.0 |
 | i18n-agent/i18nstack                 | `skills/*`                                                                      |     55 | `e1e722bfd3ca` | MIT        |
 | wshobson/agents                      | `plugins/frontend-mobile-development/skills/tailwind-design-system`             |      1 | `51b6e0b507aa` | MIT        |
-| coreyhaines31/marketingskills        | `skills/schema` (release v2.11.20)                                              |      1 | `607f50c2b12c` | MIT        |
+| coreyhaines31/marketingskills        | `skills/schema` (release v2.13.8)                                               |      1 | `c90f24b3e820` | MIT        |
 
 These are pinned in `skills-lock.json` but not vendored, because their upstream repositories declare MIT only in a README and ship no LICENSE file. Install them on demand with the `installCommand` in the lockfile; the folders are git-ignored, and `check-skills.sh` fails if one is committed.
 

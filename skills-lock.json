@@ -5677,17 +5677,17 @@
     },
     "schema": {
       "source": "coreyhaines31/marketingskills",
-      "ref": "607f50c2b12cc0f5822a85021481b3eb5f1ede31",
+      "ref": "c90f24b3e8204ed89e8d1c2932eda81ad659d05b",
       "sourceType": "github",
       "skillPath": "skills/schema/SKILL.md",
-      "computedHash": "2f4807070c77b5c52af3a7e56d2ca5ee12ae2fd8b749d76ab68d3de40f323e78",
+      "computedHash": "6809d198493d08931ea1c35ab40d2fca27c6ae63a07a4bc183b75df51243a374",
       "path": "skills/schema",
       "license": "MIT",
       "licenseFile": ".agents/licenses/coreyhaines31__marketingskills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/schema",
-      "treeHash": "3756eaba447360161683957bb7f834f44ec2baa2f7c64dd7be41cc17b4c5324d",
-      "installCommand": "npx skills add coreyhaines31/marketingskills/skills/schema#607f50c2b12cc0f5822a85021481b3eb5f1ede31 -s schema -a cursor -y"
+      "treeHash": "52f476418b36cb9a1eeee4e76b484d523fc28b598318eb377a921c0062e9e33d",
+      "installCommand": "npx skills add coreyhaines31/marketingskills/skills/schema#c90f24b3e8204ed89e8d1c2932eda81ad659d05b -s schema -a cursor -y"
     },
     "schema-noindex-conflict": {
       "source": "thedaviddias/Front-End-Checklist",
