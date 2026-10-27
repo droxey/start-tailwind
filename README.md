@@ -87,7 +87,8 @@ Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CO
 | anthropics/knowledge-work-plugins    | `design/skills/` ux-copy, design-critique, design-handoff, accessibility-review |      4 | `ae1513ea94dc` | Apache-2.0 |
 | pbakaus/impeccable                   | `.agents/skills/impeccable` (skill-v4.8.0)                                      |      1 | `414603bf14c7` | Apache-2.0 |
 | wondelai/skills                      | `web-typography`                                                                |      1 | `c172996495be` | MIT        |
-| mblode/agent-skills                  | `skills/typography-audit`, `skills/agent-ready`                                 |      2 | `cef4cfa837ca` | MIT        |
+| mblode/agent-skills                  | `skills/typography-audit`                                                       |      1 | `cef4cfa837ca` | MIT        |
+| mblode/agent-skills                  | `skills/agent-ready`                                                            |      1 | `0148e6250dce` | MIT        |
 | emilkowalski/skills                  | `skills/*`                                                                      |     14 | `e8a175de22ae` | MIT        |
 | cloudflare/skills                    | `skills/web-perf`                                                               |      1 | `41e0d1985894` | Apache-2.0 |
 | ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.12.0)                                                    |      7 | `af2834411a56` | Apache-2.0 |
