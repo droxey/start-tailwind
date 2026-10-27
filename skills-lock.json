@@ -3073,17 +3073,17 @@
     },
     "impeccable": {
       "source": "pbakaus/impeccable",
-      "ref": "778c8a7b71ccd5bfe3ca6ac68c15d9d872d0f87d",
+      "ref": "414603bf14c7a344edb466bb1f85690c77ce8b7d",
       "sourceType": "github",
       "skillPath": ".agents/skills/impeccable/SKILL.md",
-      "computedHash": "bb4d6fad4900cfef09ddf05c41711b74ef9a1b2c3d4ef8b20743ec66aeadfb63",
+      "computedHash": "2135c8c88357bf2a33a2f6718cd74bb1c8bf1faa10f94c3933a7f7c82f959519",
       "path": ".agents/skills/impeccable",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/pbakaus__impeccable/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/impeccable",
-      "treeHash": "02464fe15a0793755c5060935118c2459dc9228456839318838391439ec67ab1",
-      "installCommand": "npx skills add pbakaus/impeccable/.agents/skills/impeccable#778c8a7b71ccd5bfe3ca6ac68c15d9d872d0f87d -s impeccable -a cursor -y"
+      "treeHash": "5ae16974c69dc7d81bcbc3286b48ddb580036e1a8983a0f27502d3af6cd3fcbe",
+      "installCommand": "npx skills add pbakaus/impeccable/.agents/skills/impeccable#414603bf14c7a344edb466bb1f85690c77ce8b7d -s impeccable -a cursor -y"
     },
     "import-on-interaction": {
       "source": "thedaviddias/Front-End-Checklist",

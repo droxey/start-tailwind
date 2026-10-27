@@ -85,7 +85,7 @@ Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CO
 | Leonxlnx/taste-skill                 | `skills/taste-skill`                                                            |      1 | `b482f7a970ab` | MIT        |
 | nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `28b3b8dee8c9` | MIT        |
 | anthropics/knowledge-work-plugins    | `design/skills/` ux-copy, design-critique, design-handoff, accessibility-review |      4 | `ae1513ea94dc` | Apache-2.0 |
-| pbakaus/impeccable                   | `.agents/skills/impeccable`                                                     |      1 | `778c8a7b71cc` | Apache-2.0 |
+| pbakaus/impeccable                   | `.agents/skills/impeccable` (skill-v4.8.0)                                      |      1 | `414603bf14c7` | Apache-2.0 |
 | wondelai/skills                      | `web-typography`                                                                |      1 | `c172996495be` | MIT        |
 | mblode/agent-skills                  | `skills/typography-audit`, `skills/agent-ready`                                 |      2 | `cef4cfa837ca` | MIT        |
 | emilkowalski/skills                  | `skills/*`                                                                      |     14 | `e8a175de22ae` | MIT        |
