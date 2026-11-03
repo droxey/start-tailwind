@@ -6,7 +6,7 @@ a single binary with no Node.js required. Node is used only for linting and test
 ## Build
 
 ```sh
-sh scripts/get-tailwind.sh   # downloads the version in .tailwind-version (v4.3.3) and verifies its checksum
+sh scripts/get-tailwind.sh   # downloads the version in .tailwind-version (v4.3.4) and verifies its checksum
 ./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify
 ```
 
@@ -83,14 +83,15 @@ Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CO
 | thedaviddias/Front-End-Checklist     | `skills/*`                                                                      |    391 | `e8d14d049010` | MIT        |
 | anthropics/skills                    | `skills/frontend-design`                                                        |      1 | `683bc88e56f3` | Apache-2.0 |
 | Leonxlnx/taste-skill                 | `skills/taste-skill`                                                            |      1 | `b482f7a970ab` | MIT        |
-| nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `28b3b8dee8c9` | MIT        |
+| nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `713eef51b04e` | MIT        |
 | anthropics/knowledge-work-plugins    | `design/skills/` ux-copy, design-critique, design-handoff, accessibility-review |      4 | `ae1513ea94dc` | Apache-2.0 |
 | pbakaus/impeccable                   | `.agents/skills/impeccable` (skill-v4.8.0)                                      |      1 | `414603bf14c7` | Apache-2.0 |
 | wondelai/skills                      | `web-typography`                                                                |      1 | `c172996495be` | MIT        |
 | mblode/agent-skills                  | `skills/typography-audit`                                                       |      1 | `cef4cfa837ca` | MIT        |
 | mblode/agent-skills                  | `skills/agent-ready`                                                            |      1 | `0148e6250dce` | MIT        |
-| emilkowalski/skills                  | `skills/*`                                                                      |     14 | `e8a175de22ae` | MIT        |
-| cloudflare/skills                    | `skills/web-perf`                                                               |      1 | `41e0d1985894` | Apache-2.0 |
+| emilkowalski/skills                  | `animate`, `emil-design-eng`, `improve-animations`, `review-animations`         |      4 | `f1090bec2771` | MIT        |
+| emilkowalski/skills                  | `skills/*` except the four above                                                |     10 | `e8a175de22ae` | MIT        |
+| cloudflare/skills                    | `skills/web-perf`                                                               |      1 | `29de2b2f187f` | Apache-2.0 |
 | ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.12.0)                                                    |      7 | `af2834411a56` | Apache-2.0 |
 | i18n-agent/i18nstack                 | `skills/*`                                                                      |     55 | `e1e722bfd3ca` | MIT        |
 | wshobson/agents                      | `plugins/frontend-mobile-development/skills/tailwind-design-system`             |      1 | `51b6e0b507aa` | MIT        |
