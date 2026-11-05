@@ -5,7 +5,7 @@ together with [AGENTS.md](AGENTS.md).
 
 ## Tailwind CSS v4
 
-Gate answered 2026-10-08 08:01 ET. Pinned framework: Tailwind CSS v4.3.3, standalone CLI only.
+Gate answered 2026-10-08 08:01 ET. Standalone CLI only. Current pin: Tailwind CSS v4.3.4.
 
 ### Q1. Dependabot alerts with no upstream fix
 

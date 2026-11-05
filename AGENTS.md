@@ -11,7 +11,7 @@ Agents working in this repository MUST load and follow the vendored skills in `.
 5. Linters stay clean: html-validate, Stylelint, ESLint with better-tailwindcss, Prettier, markdownlint. Run `npm run lint` and `npm run test:e2e` before you finish.
 6. Ship only `public/`. The site is English only (`en`); every page is self-canonical. Don't add hreflang alternates or language pages unless asked.
 7. Internal URLs are relative (`assets/site.css`, `js/main.js`, `./`, `about/`), never root-absolute (`/assets/...`), so the site works at `/` or under any subpath such as `/start-tailwind/`. `tests/subpath.spec.js` checks this in CI, and `scripts/smoke.sh` checks the live site after each deploy. Absolute `https://` URLs belong only in canonical, `og:url`, JSON-LD, `sitemap.xml`, `robots.txt`, and `llms.txt`.
-8. The Tailwind version is pinned once, in `.tailwind-version` (standalone CLI v4.3.3). The npm `tailwindcss` devDependency used by the linters must be the same exact version (`npm run lint:version`). Change both together.
+8. The Tailwind version is pinned once, in `.tailwind-version` (standalone CLI v4.3.4). The npm `tailwindcss` devDependency used by the linters must be the same exact version (`npm run lint:version`). Change both together.
 9. Components: hand-build from the `@theme` tokens. HyperUI is the only approved snippet source, one snippet at a time at the pinned commit, per [docs/components.md](docs/components.md).
 
 ## Which skill to use

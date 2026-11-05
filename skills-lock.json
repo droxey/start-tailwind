@@ -329,17 +329,17 @@
     },
     "animate": {
       "source": "emilkowalski/skills",
-      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "ref": "f1090bec277140d02ed202440185ad9d02ac1490",
       "sourceType": "github",
       "skillPath": "skills/animate/SKILL.md",
-      "computedHash": "7598d33e7f60dd5c24531eaaa897621cc3bdb48e8050324211627973bc59c4ce",
+      "computedHash": "f76ddd3d4446c3c56a143ea98650c370b3e8f88e6203d1e22082d2082bf1eed7",
       "path": "skills/animate",
       "license": "MIT",
       "licenseFile": ".agents/licenses/emilkowalski__skills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/animate",
-      "treeHash": "65455a026821b46fdd263d815aa706a4cf3cf7bb4b2401888746718533381a8d",
-      "installCommand": "npx skills add emilkowalski/skills/skills/animate#e8a175de22ae1e49370fc144c1f3bb9aeedf988d -s animate -a cursor -y"
+      "treeHash": "8c7e9e5e83a479f11ba0c6beb2cd449912509502912a8b815eca8360c953e09c",
+      "installCommand": "npx skills add emilkowalski/skills/skills/animate#f1090bec277140d02ed202440185ad9d02ac1490 -s animate -a cursor -y"
     },
     "animate-expo": {
       "source": "emilkowalski/skills",
@@ -2079,17 +2079,17 @@
     },
     "emil-design-eng": {
       "source": "emilkowalski/skills",
-      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "ref": "f1090bec277140d02ed202440185ad9d02ac1490",
       "sourceType": "github",
       "skillPath": "skills/emil-design-eng/SKILL.md",
-      "computedHash": "51f2537e04d15911b41d78e2de24c36a0e26d41beae15e82a954fe5496a5eda9",
+      "computedHash": "2483020b5bbaab030d6b3463bfba49c8d9c2cd8dea4d9fba836dbd471f1fb706",
       "path": "skills/emil-design-eng",
       "license": "MIT",
       "licenseFile": ".agents/licenses/emilkowalski__skills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/emil-design-eng",
-      "treeHash": "0209fc0db380a91b4e75cda2f0edaeece81aa9ed05a8f5d51982a68658c3efce",
-      "installCommand": "npx skills add emilkowalski/skills/skills/emil-design-eng#e8a175de22ae1e49370fc144c1f3bb9aeedf988d -s emil-design-eng -a cursor -y"
+      "treeHash": "3f833db24cf91fb4c3836a34e7f8cf4da929d8afb80e0b15f44c74c50f8c48e6",
+      "installCommand": "npx skills add emilkowalski/skills/skills/emil-design-eng#f1090bec277140d02ed202440185ad9d02ac1490 -s emil-design-eng -a cursor -y"
     },
     "empty-heading": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -3115,17 +3115,17 @@
     },
     "improve-animations": {
       "source": "emilkowalski/skills",
-      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "ref": "f1090bec277140d02ed202440185ad9d02ac1490",
       "sourceType": "github",
       "skillPath": "skills/improve-animations/SKILL.md",
-      "computedHash": "524ea241e41d58bbdd8e288700fe24f5725e2a2f3ae7186ad7cebf9055058356",
+      "computedHash": "f6652a3bb94950baa33c684cc0966c838eb65cf22ebb5769a4f51ea205c254fe",
       "path": "skills/improve-animations",
       "license": "MIT",
       "licenseFile": ".agents/licenses/emilkowalski__skills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/improve-animations",
-      "treeHash": "40b707a86fb94aa19bed98aa4c38e87a467c2fac54dc5232a025d7e199b7d74f",
-      "installCommand": "npx skills add emilkowalski/skills/skills/improve-animations#e8a175de22ae1e49370fc144c1f3bb9aeedf988d -s improve-animations -a cursor -y"
+      "treeHash": "6e0a3d6ee1cb0ddb4cc2b3a3086519e070d0605b662888bf70178afebb2ef9f2",
+      "installCommand": "npx skills add emilkowalski/skills/skills/improve-animations#f1090bec277140d02ed202440185ad9d02ac1490 -s improve-animations -a cursor -y"
     },
     "improve-rule": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -5425,17 +5425,17 @@
     },
     "review-animations": {
       "source": "emilkowalski/skills",
-      "ref": "e8a175de22ae1e49370fc144c1f3bb9aeedf988d",
+      "ref": "f1090bec277140d02ed202440185ad9d02ac1490",
       "sourceType": "github",
       "skillPath": "skills/review-animations/SKILL.md",
-      "computedHash": "b4e5f0f4fe3e2743c85bf7354108f48a0b9d502cb20ef5c4a9c195da91f93736",
+      "computedHash": "b1aca2c16876b8f00e2a1eb161714e63ec41099269d5f95c2f307230749b9dcd",
       "path": "skills/review-animations",
       "license": "MIT",
       "licenseFile": ".agents/licenses/emilkowalski__skills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/review-animations",
-      "treeHash": "bdb94314ba4d9dcb251596363e8df017a297bbec7f16bb3bfc9bdd549489db3a",
-      "installCommand": "npx skills add emilkowalski/skills/skills/review-animations#e8a175de22ae1e49370fc144c1f3bb9aeedf988d -s review-animations -a cursor -y"
+      "treeHash": "74ecd983d7f5186cf0c04abc81507dec5f04084bfc945fdc0614cb9f8553a31a",
+      "installCommand": "npx skills add emilkowalski/skills/skills/review-animations#f1090bec277140d02ed202440185ad9d02ac1490 -s review-animations -a cursor -y"
     },
     "right-to-erasure": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -6447,17 +6447,17 @@
     },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",
-      "ref": "28b3b8dee8c976df4fa3e94aed4e092ad43fcb03",
+      "ref": "713eef51b04efc98d6fa565323b495f7c9c89fd4",
       "sourceType": "github",
       "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
-      "computedHash": "d63bd281a96b8dfa52a2656ec6e6af743bfcfde6f6bfb6c9edc203cbff377b16",
+      "computedHash": "79d3a35c3cf1fa4a932ae80e3cb10bef0bcdc73c9d44f699804e3255e0db13fd",
       "path": ".claude/skills/ui-ux-pro-max",
       "license": "MIT",
       "licenseFile": ".agents/licenses/nextlevelbuilder__ui-ux-pro-max-skill/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/ui-ux-pro-max",
-      "treeHash": "292d31b5b61921f0fc5c37ede310f797baf06063b3bec50e39a463de5ccf2375",
-      "installCommand": "npx skills add nextlevelbuilder/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max#28b3b8dee8c976df4fa3e94aed4e092ad43fcb03 -s ui-ux-pro-max -a cursor -y"
+      "treeHash": "ac5e90c15aeef7d8f380140507ad08f47c1b8f3982b5d8572981b4a714524943",
+      "installCommand": "npx skills add nextlevelbuilder/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max#713eef51b04efc98d6fa565323b495f7c9c89fd4 -s ui-ux-pro-max -a cursor -y"
     },
     "unique-id": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -6697,17 +6697,17 @@
     },
     "web-perf": {
       "source": "cloudflare/skills",
-      "ref": "41e0d19858946d18af9ee2c2feebbe2e11d829ff",
+      "ref": "29de2b2f187f5ddbcbac048d1a480298e76d619a",
       "sourceType": "github",
       "skillPath": "skills/web-perf/SKILL.md",
-      "computedHash": "72d0dd9706147e19bf3c1a36fdc02570f77685541d89d901a3a2f570824ba3cb",
+      "computedHash": "30ed359ee7b93c5c15c5a27289089e5d86a61071f42a0ab61731ec82557ea72b",
       "path": "skills/web-perf",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/cloudflare__skills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/web-perf",
-      "treeHash": "9ca0374b34458300134bcd8386382967d22b2cc9f115bfa56b5613450d776605",
-      "installCommand": "npx skills add cloudflare/skills/skills/web-perf#41e0d19858946d18af9ee2c2feebbe2e11d829ff -s web-perf -a cursor -y"
+      "treeHash": "0efc9305486bb23bf04429b91fba89eba590bac834c9cd068a50bde56af0ecc5",
+      "installCommand": "npx skills add cloudflare/skills/skills/web-perf#29de2b2f187f5ddbcbac048d1a480298e76d619a -s web-perf -a cursor -y"
     },
     "web-quality-audit": {
       "source": "addyosmani/web-quality-skills",
