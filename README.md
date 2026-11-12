@@ -83,19 +83,19 @@ Agents must follow [AGENTS.md](AGENTS.md) and [CONFIG_CODING_PREFS.md](CONFIG_CO
 | thedaviddias/Front-End-Checklist     | `skills/*`                                                                      |    391 | `e8d14d049010` | MIT        |
 | anthropics/skills                    | `skills/frontend-design`                                                        |      1 | `683bc88e56f3` | Apache-2.0 |
 | Leonxlnx/taste-skill                 | `skills/taste-skill`                                                            |      1 | `b482f7a970ab` | MIT        |
-| nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `713eef51b04e` | MIT        |
+| nextlevelbuilder/ui-ux-pro-max-skill | `.claude/skills/ui-ux-pro-max`                                                  |      1 | `4f2dbb67e649` | MIT        |
 | anthropics/knowledge-work-plugins    | `design/skills/` ux-copy, design-critique, design-handoff, accessibility-review |      4 | `ae1513ea94dc` | Apache-2.0 |
 | pbakaus/impeccable                   | `.agents/skills/impeccable` (skill-v4.8.0)                                      |      1 | `414603bf14c7` | Apache-2.0 |
 | wondelai/skills                      | `web-typography`                                                                |      1 | `c172996495be` | MIT        |
-| mblode/agent-skills                  | `skills/typography-audit`                                                       |      1 | `cef4cfa837ca` | MIT        |
+| mblode/agent-skills                  | `skills/typography-audit`                                                       |      1 | `3bd75bc16611` | MIT        |
 | mblode/agent-skills                  | `skills/agent-ready`                                                            |      1 | `0148e6250dce` | MIT        |
 | emilkowalski/skills                  | `animate`, `emil-design-eng`, `improve-animations`, `review-animations`         |      4 | `f1090bec2771` | MIT        |
 | emilkowalski/skills                  | `skills/*` except the four above                                                |     10 | `e8a175de22ae` | MIT        |
 | cloudflare/skills                    | `skills/web-perf`                                                               |      1 | `29de2b2f187f` | Apache-2.0 |
-| ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.12.0)                                                    |      7 | `af2834411a56` | Apache-2.0 |
+| ChromeDevTools/chrome-devtools-mcp   | `skills/*` (release v1.13.0)                                                    |      7 | `b1e35e3ab177` | Apache-2.0 |
 | i18n-agent/i18nstack                 | `skills/*`                                                                      |     55 | `e1e722bfd3ca` | MIT        |
 | wshobson/agents                      | `plugins/frontend-mobile-development/skills/tailwind-design-system`             |      1 | `51b6e0b507aa` | MIT        |
-| coreyhaines31/marketingskills        | `skills/schema` (release v2.13.8)                                               |      1 | `c90f24b3e820` | MIT        |
+| coreyhaines31/marketingskills        | `skills/schema` (release v2.14.12)                                              |      1 | `1f837447b20b` | MIT        |
 
 These are pinned in `skills-lock.json` but not vendored, because their upstream repositories declare MIT only in a README and ship no LICENSE file. Install them on demand with the `installCommand` in the lockfile; the folders are git-ignored, and `check-skills.sh` fails if one is committed.
 

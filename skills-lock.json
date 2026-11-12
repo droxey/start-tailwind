@@ -17,7 +17,7 @@
     },
     "a11y-debugging": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/a11y-debugging/SKILL.md",
       "computedHash": "beb7d2a574aa41bd087cf5df23a95953c81b9a99f1ec4678c0c10c455d6d63a9",
@@ -27,7 +27,7 @@
       "vendored": true,
       "vendorPath": ".agents/skills/a11y-debugging",
       "treeHash": "234dcfe0a36da890a2ba1297a8df89a5a6c6a14280ad3a817d6b6b54d848a306",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging#af2834411a564d366f9cab63efb046d9084f4dba -s a11y-debugging -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/a11y-debugging#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s a11y-debugging -a cursor -y"
     },
     "about-page": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -1141,31 +1141,31 @@
     },
     "chrome-devtools": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/chrome-devtools/SKILL.md",
-      "computedHash": "3dbca8528db5940abc28faaebfd73a0fd08c34a5f3f46ff6b7810ea39b183de5",
+      "computedHash": "f7369e51fa2a0346c6bcf5c5f04912610f56cb3d285fef109d62cc0477161c15",
       "path": "skills/chrome-devtools",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/chrome-devtools",
-      "treeHash": "b92e8081635dab05aee6be60ac76a529f1cd27c8acb0c6b30c13be1b653f6a52",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools#af2834411a564d366f9cab63efb046d9084f4dba -s chrome-devtools -a cursor -y"
+      "treeHash": "f7c0b96468c69122d8961ae45ff7cba11879d917fa7c11858f5452ea1e3af81f",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s chrome-devtools -a cursor -y"
     },
     "chrome-devtools-cli": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/chrome-devtools-cli/SKILL.md",
-      "computedHash": "8573309d941dc65c310361e19583dfb1f8dddb14e81e2c6e07a9a2f3fb662294",
+      "computedHash": "41d5f8e0eb7dcbad14d564ae34ef5e4849584680c6edbc4ce1ab824459398dcf",
       "path": "skills/chrome-devtools-cli",
       "license": "Apache-2.0",
       "licenseFile": ".agents/licenses/ChromeDevTools__chrome-devtools-mcp/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/chrome-devtools-cli",
-      "treeHash": "04565733f6e279d0f1846adaeeccd2eac9a17acb58b648e8e77ef70b8a0a3273",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli#af2834411a564d366f9cab63efb046d9084f4dba -s chrome-devtools-cli -a cursor -y"
+      "treeHash": "5ca2fbf41c015eba14e761a784b0e20c026036cdd9699740c95e589b62197240",
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/chrome-devtools-cli#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s chrome-devtools-cli -a cursor -y"
     },
     "citations": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -1407,7 +1407,7 @@
     },
     "cookie-debugging": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/cookie-debugging/SKILL.md",
       "computedHash": "edb4878f712e41e6fb7bccf901839fbb884857bf5c8f38b7ca7931f97e1a90d5",
@@ -1417,7 +1417,7 @@
       "vendored": true,
       "vendorPath": ".agents/skills/cookie-debugging",
       "treeHash": "1885a03673372e012035e3a908e8edbcd80aa0c7c7950236bd261881fb4a9566",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging#af2834411a564d366f9cab63efb046d9084f4dba -s cookie-debugging -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/cookie-debugging#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s cookie-debugging -a cursor -y"
     },
     "core-web-vitals": {
       "source": "addyosmani/web-quality-skills",
@@ -1743,7 +1743,7 @@
     },
     "debug-optimize-lcp": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/debug-optimize-lcp/SKILL.md",
       "computedHash": "92582986e94a362630fe8d87bd20e141500393ec5def777fd5e4196ea57a3ac3",
@@ -1753,7 +1753,7 @@
       "vendored": true,
       "vendorPath": ".agents/skills/debug-optimize-lcp",
       "treeHash": "bb572875090feffe018132b9625587919f9aea189d3b0e80d9d55a8bf20b7489",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/debug-optimize-lcp#af2834411a564d366f9cab63efb046d9084f4dba -s debug-optimize-lcp -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/debug-optimize-lcp#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s debug-optimize-lcp -a cursor -y"
     },
     "decorative-elements": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -4389,7 +4389,7 @@
     },
     "memory-leak-debugging": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/memory-leak-debugging/SKILL.md",
       "computedHash": "a43e2037aecc34dcd87c97e26ac306e66b9249676802197bff1316ba84c1a8c7",
@@ -4399,7 +4399,7 @@
       "vendored": true,
       "vendorPath": ".agents/skills/memory-leak-debugging",
       "treeHash": "985cf5cd9c8a8313d3403eb18d1b01b424dca4bc33e46306f5a70ffa503b305d",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/memory-leak-debugging#af2834411a564d366f9cab63efb046d9084f4dba -s memory-leak-debugging -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/memory-leak-debugging#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s memory-leak-debugging -a cursor -y"
     },
     "memory-leaks": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -5523,17 +5523,17 @@
     },
     "schema": {
       "source": "coreyhaines31/marketingskills",
-      "ref": "c90f24b3e8204ed89e8d1c2932eda81ad659d05b",
+      "ref": "1f837447b20bb6f0e72d87b80ece1c221c362c7d",
       "sourceType": "github",
       "skillPath": "skills/schema/SKILL.md",
-      "computedHash": "6809d198493d08931ea1c35ab40d2fca27c6ae63a07a4bc183b75df51243a374",
+      "computedHash": "bbc2f865dd2802842b541a3119a34961910c087a2bed4011f9922f618ff1d67b",
       "path": "skills/schema",
       "license": "MIT",
       "licenseFile": ".agents/licenses/coreyhaines31__marketingskills/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/schema",
-      "treeHash": "52f476418b36cb9a1eeee4e76b484d523fc28b598318eb377a921c0062e9e33d",
-      "installCommand": "npx skills add coreyhaines31/marketingskills/skills/schema#c90f24b3e8204ed89e8d1c2932eda81ad659d05b -s schema -a cursor -y"
+      "treeHash": "10e8cc93c5cf31092d4a0d741e93eb672d3075c875bb080185e4d48006d05925",
+      "installCommand": "npx skills add coreyhaines31/marketingskills/skills/schema#1f837447b20bb6f0e72d87b80ece1c221c362c7d -s schema -a cursor -y"
     },
     "schema-noindex-conflict": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -6335,7 +6335,7 @@
     },
     "troubleshooting": {
       "source": "ChromeDevTools/chrome-devtools-mcp",
-      "ref": "af2834411a564d366f9cab63efb046d9084f4dba",
+      "ref": "b1e35e3ab1774664dfc66a2cb813a392535fe160",
       "sourceType": "github",
       "skillPath": "skills/troubleshooting/SKILL.md",
       "computedHash": "60ddc666681fcc8b95ba1e3b04ab39eba9455b60fc66d0931331ecb996180cf4",
@@ -6345,7 +6345,7 @@
       "vendored": true,
       "vendorPath": ".agents/skills/troubleshooting",
       "treeHash": "371cb826b9f5de171d332b1d623821d9a3d055126a7000430e12536bb8dad9b1",
-      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/troubleshooting#af2834411a564d366f9cab63efb046d9084f4dba -s troubleshooting -a cursor -y"
+      "installCommand": "npx skills add ChromeDevTools/chrome-devtools-mcp/skills/troubleshooting#b1e35e3ab1774664dfc66a2cb813a392535fe160 -s troubleshooting -a cursor -y"
     },
     "trust-signals": {
       "source": "thedaviddias/Front-End-Checklist",
@@ -6433,31 +6433,31 @@
     },
     "typography-audit": {
       "source": "mblode/agent-skills",
-      "ref": "cef4cfa837ca41b50d19f54551a3939ed7460434",
+      "ref": "3bd75bc16611d7753fbc29cc6f4a6242dc83ec4c",
       "sourceType": "github",
       "skillPath": "skills/typography-audit/SKILL.md",
-      "computedHash": "3917df027b3055101703397f4fef62960fe0a7e46798465997dce8f6ca9b88bb",
+      "computedHash": "c93ec2e365e85035132200c41c3172ecd88688c17cc6e6e5f9ec9cd4e24c40ec",
       "path": "skills/typography-audit",
       "license": "MIT",
       "licenseFile": ".agents/licenses/mblode__agent-skills/LICENSE.md",
       "vendored": true,
       "vendorPath": ".agents/skills/typography-audit",
-      "treeHash": "6f9a4ad3a54f3a05359746ec882d2fc0f15aec79fa7caa46972f3503309c1207",
-      "installCommand": "npx skills add mblode/agent-skills/skills/typography-audit#cef4cfa837ca41b50d19f54551a3939ed7460434 -s typography-audit -a cursor -y"
+      "treeHash": "08b737a9e6c6609d085d22d333b6ea19e248406ed53cf73c3818b7b21e2495f9",
+      "installCommand": "npx skills add mblode/agent-skills/skills/typography-audit#3bd75bc16611d7753fbc29cc6f4a6242dc83ec4c -s typography-audit -a cursor -y"
     },
     "ui-ux-pro-max": {
       "source": "nextlevelbuilder/ui-ux-pro-max-skill",
-      "ref": "713eef51b04efc98d6fa565323b495f7c9c89fd4",
+      "ref": "4f2dbb67e64969a9a30ab00742f2d55d66ddec2b",
       "sourceType": "github",
       "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
-      "computedHash": "79d3a35c3cf1fa4a932ae80e3cb10bef0bcdc73c9d44f699804e3255e0db13fd",
+      "computedHash": "411316b5893571bda59f1517b1fd639682cbbc26f8c804c08a071f2b7b864992",
       "path": ".claude/skills/ui-ux-pro-max",
       "license": "MIT",
       "licenseFile": ".agents/licenses/nextlevelbuilder__ui-ux-pro-max-skill/LICENSE",
       "vendored": true,
       "vendorPath": ".agents/skills/ui-ux-pro-max",
-      "treeHash": "ac5e90c15aeef7d8f380140507ad08f47c1b8f3982b5d8572981b4a714524943",
-      "installCommand": "npx skills add nextlevelbuilder/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max#713eef51b04efc98d6fa565323b495f7c9c89fd4 -s ui-ux-pro-max -a cursor -y"
+      "treeHash": "df9ef6e2d548c4f2e83b142c4a30bc60e57b66324b14f11380794fe8463b757c",
+      "installCommand": "npx skills add nextlevelbuilder/ui-ux-pro-max-skill/.claude/skills/ui-ux-pro-max#4f2dbb67e64969a9a30ab00742f2d55d66ddec2b -s ui-ux-pro-max -a cursor -y"
     },
     "unique-id": {
       "source": "thedaviddias/Front-End-Checklist",
