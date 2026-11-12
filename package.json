@@ -37,7 +37,7 @@
     "eslint-plugin-better-tailwindcss": "^4.9.0",
     "globals": "^17.13.0",
     "html-validate": "^11.16.2",
-    "markdownlint-cli2": "^0.24.0",
+    "markdownlint-cli2": "^0.24.1",
     "pa11y-ci": "^5.0.0",
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
@@ -50,6 +50,7 @@
     "compression": "^1.8.2",
     "tmp": "^0.2.7",
     "uuid": "^14.0.0",
-    "katex": "^0.18.2"
+    "katex": "^0.18.2",
+    "minimatch@>=7 <11": "^11.0.1"
   }
 }

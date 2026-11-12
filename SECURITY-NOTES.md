@@ -15,6 +15,10 @@ to vulnerable ranges. Each override is kept only while the full Quality workflow
 | tmp                     | `^0.2.7`  | `@lhci/cli`, directly and via `inquirer` → `external-editor`      | GHSA-52f5-9888-hmc6, GHSA-ph9p-34f9-6g65 |
 | uuid                    | `^14.0.0` | `@lhci/cli` (pins ^8.3.1)                                         | GHSA-w5hq-g745-h8pq                      |
 | katex                   | `^0.18.2` | `markdownlint-cli2` → `markdownlint` → `micromark-extension-math` | GHSA-238p-pmpm-9mq7                      |
+| minimatch@>=7 <11       | `^11.0.1` | `eslint` 10 and `@eslint/config-array` (pin ^10)                  | GHSA-g3hv-75wg-m249                      |
+
+The minimatch override is scoped to `>=7 <11` so `glob`'s 3.1.5, which is outside
+GHSA-g3hv-75wg-m249 (`>=7.0.0 <11.0.1`), is left alone.
 
 The `serve` dev dependency was removed. Playwright and pa11y-ci serve `public/` with
 `python3 -m http.server`, which ships with the CI runner.
@@ -25,6 +29,9 @@ The `serve` dev dependency was removed. Playwright and pa11y-ci serve `public/` 
   0.24.0 pins markdown-it 15.0.3, so bumping it to `^0.24.0` fixes all three without an override.
 - smol-toml (GHSA-r4xh-jqrq-34v2, fixed in 1.9.0): `markdownlint-cli2` 0.24.0 pins smol-toml 1.9.1, so
   the `^1.9.0` override was dropped.
+- re2js 2.8.6 (GHSA-gg6h-894w-4m9c, high, fix 2.8.7): `markdownlint` 0.42.0 exact-pins re2js 2.8.6.
+  `markdownlint-cli2` 0.24.1 pins `markdownlint` 0.42.1, which depends on re2js 2.9.1, so bumping
+  `markdownlint-cli2` to `^0.24.1` fixes it without an override.
 
 ## Dismissed alerts (no patched release exists)
 
