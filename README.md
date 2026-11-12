@@ -6,7 +6,7 @@ a single binary with no Node.js required. Node is used only for linting and test
 ## Build
 
 ```sh
-sh scripts/get-tailwind.sh   # downloads the version in .tailwind-version (v4.3.4) and verifies its checksum
+sh scripts/get-tailwind.sh   # downloads the version in .tailwind-version (v4.3.5) and verifies its checksum
 ./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify
 ```
 
