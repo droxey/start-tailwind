@@ -1,4 +1,5 @@
-# Lint, validate, and test on every push and pull request. Node is used only for checks.
+# Lint, validate, and test on every push and pull request. Node runs the checks and the Fire Sale
+# app server (built-in modules only). The CSS build is still the Tailwind standalone CLI.
 name: Quality
 on:
   push:
@@ -27,6 +28,8 @@ jobs:
       # Version comes from .tailwind-version.
       - run: sh scripts/get-tailwind.sh && npm run build:css
       - run: npm run lint # includes lint:skills and lint:version
+      # Offer rules, confidence gate, price-cut cadence, chat safety, push crypto, privacy guard.
+      - run: npm run test:unit
       - run: npx playwright install --with-deps chromium
       # Screenshot baselines are rendered on this runner only; see the "Update visual baselines" workflow.
       - run: npx playwright test
@@ -36,7 +39,8 @@ jobs:
         env:
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: |
-          python3 -m http.server 8080 --bind 127.0.0.1 --directory public &
+          # Throwaway in-memory database, so the run never writes real data.
+          FIRE_SALE_DB=:memory: FIRE_SALE_DATA="$RUNNER_TEMP/fire-sale" node --disable-warning=ExperimentalWarning server/index.js &
           for i in 1 2 3 4 5 6 7 8 9 10; do curl -fsS -o /dev/null http://127.0.0.1:8080/ && break; sleep 1; done
           npm run test:a11y
       - run: npm run test:lhci
