@@ -1,28 +1,73 @@
 - link "Skip to content":
   - /url: "#main"
 - banner:
-  - navigation "Primary":
-    - list:
-      - listitem:
-        - link "Home":
-          - /url: ./
-      - listitem:
-        - button "Dark mode"
+  - heading "Fire Sale" [level=1]
+  - link /\$0 of \$\d+,\d+, \d+ days left/:
+    - /url: "#target"
+  - button "Confirm queue, 0 waiting": Confirm 0
 - main:
-  - heading "Hello" [level=1]
-  - paragraph: Static, accessible, fast.
-  - list:
-    - listitem:
-      - heading "Fluid" [level=2]
-      - paragraph: Every width from 320px to ultra-wide.
-    - listitem:
-      - heading "Accessible" [level=2]
-      - paragraph: WCAG 2.2 AA as the floor.
-    - listitem:
-      - heading "Readable by agents" [level=2]
-      - paragraph: Semantic HTML and a clean accessibility tree.
+  - region "List something":
+    - heading "List something" [level=2]
+    - text: Add photos Take or pick one or many. Each photo becomes its own draft.
+    - button "Add photos Take or pick one or many. Each photo becomes its own draft."
+    - checkbox "All selected photos are one item"
+    - text: All selected photos are one item What is it? (optional)
+    - textbox "What is it? (optional)"
+    - paragraph: Photos are cleaned of location and camera data before upload. Nothing is listed until you approve it.
+    - list "Drafts in progress"
+  - region "Target":
+    - heading "Target" [level=2]
+    - paragraph:
+      - strong: /\$\d+\.\d+/
+      - text: /landed of \$\d+,\d+\.\d+/
+    - progressbar "Target"
+    - term: To go
+    - definition: /\$\d+,\d+/
+    - term: Days left
+    - definition: /\d+/
+    - term: Per day
+    - definition: /\$\d+/
+    - text: Target ($)
+    - spinbutton "Target ($)": /\d+/
+    - text: Days
+    - spinbutton "Days": /\d+/
+    - button "Save"
+    - paragraph: "Progress counts landed net: sale price minus fees and postage. A deadline never skips a confirm step."
+  - region "Sales":
+    - heading "Sales" [level=2]
+    - term: Gross sales
+    - definition: $0
+    - term: Fees and postage
+    - definition: $0
+    - term: Landed net
+    - definition: $0
+    - term: Items sold
+    - definition: "0"
+    - figure "Landed net over time, against target pace":
+      - text: ""
+      - img /Landed net \$0 of a \$\d+,\d+ target\. Pace for today is \$0\. Behind pace\./: /\$\d+,\d+ \$0 [A-Z][a-z]{2} \d+ [A-Z][a-z]{2} \d+/
+      - paragraph: "Solid line: landed net. Dashed line: even pace to the target."
+    - figure "Net by marketplace":
+      - text: ""
+      - list:
+        - listitem: No sales yet.
+    - figure /Net per day, last \d+ days/:
+      - text: ""
+      - img /No sales in the last \d+ days\./: /\$\d+ [A-Z][a-z]{2} \d+ Today/
+  - region "Items":
+    - heading "Items" [level=2]
+    - button "Add item"
+    - text: Show
+    - combobox "Show":
+      - option "For sale and drafts" [selected]
+      - option "Everything"
+      - option "Sold"
+      - option "Keep, donate, trash"
+    - text: Search
+    - searchbox "Search"
+    - paragraph: No items here yet. Add photos at the top to start.
 - contentinfo:
-  - paragraph:
-    - text: written with love by
-    - link "@droxey":
-      - /url: https://github.com/droxey
+  - button "Offer and price rules"
+  - button "Turn on notifications"
+  - button "Dark mode"
+- status
