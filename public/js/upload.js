@@ -117,14 +117,14 @@ function interview(item, card, onDone) {
                 "label",
                 {
                   class:
-                    "flex min-block-11 items-center gap-2 rounded-md border border-ink/30 px-3 has-checked:border-accent has-checked:bg-accent/10",
+                    "flex min-block-11 items-center gap-2 rounded-md border border-ink/30 px-3 has-checked:border-fire has-checked:bg-fire/10",
                 },
                 h("input", {
                   type: "radio",
                   name: q.id,
                   value: o,
                   required: true,
-                  class: "form-radio block-5 inline-5 text-accent",
+                  class: "form-radio block-5 inline-5 text-fire",
                 }),
                 o,
               ),

@@ -57,7 +57,7 @@ function cumulative(el, { sales, target, progress }) {
       svg("path", {
         d: line.join(" "),
         fill: "none",
-        class: "stroke-accent",
+        class: "stroke-fire",
         "stroke-width": 3,
         "stroke-linejoin": "round",
       }),
@@ -108,7 +108,7 @@ function daily(el, { sales }) {
             width: bw - 4,
             height: Math.max(bh, d.v ? 2 : 0),
             rx: 2,
-            class: "fill-accent",
+            class: "fill-fire",
           },
           svg("title", null, `${shortDate(new Date(d.t).toISOString())}: ${money0(d.v)}`),
         );
@@ -138,7 +138,9 @@ function byMarketplace(el, { sales, marketplaces }) {
   }
   el.replaceChildren(
     ...rows.map(([id, v]) => {
-      const bar = h("span", { class: "block block-full rounded-full bg-accent" });
+      const bar = h("span", {
+        class: "block block-full rounded-full bg-fire forced-colors:bg-[CanvasText]",
+      });
       bar.style.inlineSize = `${Math.max(2, (v / max) * 100)}%`;
       return h(
         "li",

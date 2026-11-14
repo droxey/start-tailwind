@@ -46,7 +46,7 @@
   <body class="bg-surface font-sans text-step-0 text-ink antialiased">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:inset-s-fluid-s focus:inset-bs-fluid-s focus:z-50 focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+      class="sr-only focus:not-sr-only focus:fixed focus:inset-s-fluid-s focus:inset-bs-fluid-s focus:z-50 focus:rounded-sm focus:bg-fire focus:px-4 focus:py-2 focus:text-fire-ink"
       >Skip to content</a
     >
     <header
@@ -61,18 +61,21 @@
         >
           <span data-header-progress-text>Target progress</span>
           <span aria-hidden="true" class="block overflow-hidden rounded-full bg-ink/15 block-1.5"
-            ><span data-header-progress-bar class="block bg-accent block-full inline-0"></span
+            ><span
+              data-header-progress-bar
+              class="block bg-fire block-full inline-0 forced-colors:bg-[CanvasText]"
+            ></span
           ></span>
         </a>
         <button
           type="button"
           data-open-queue
-          class="relative flex items-center gap-2 rounded-md bg-accent px-3 font-semibold text-accent-ink min-block-11 min-inline-11"
+          class="relative flex items-center gap-2 rounded-md bg-fire px-3 font-semibold text-fire-ink min-block-11 min-inline-11 forced-colors:border forced-colors:border-[ButtonBorder] forced-colors:text-[ButtonText]"
         >
           <span>Confirm</span>
           <span
             data-queue-count
-            class="rounded-full bg-accent-ink px-1.5 text-center text-step-n1 text-accent min-inline-6"
+            class="rounded-full bg-fire-ink px-1.5 text-center text-step-n1 text-fire min-inline-6"
             >0</span
           >
         </button>
@@ -84,10 +87,10 @@
         <h2 id="upload-h" class="text-step-2 font-bold">List something</h2>
         <div data-upload-form class="grid gap-3">
           <label
-            class="grid cursor-pointer place-items-center gap-1 rounded-xl border-2 border-dashed border-accent bg-surface-raised p-fluid-s text-center min-block-32 has-focus-visible:outline-3 has-focus-visible:outline-offset-2 has-focus-visible:outline-focus"
+            class="grid cursor-pointer place-items-center gap-1 rounded-xl border-2 border-dashed border-fire bg-surface-raised p-fluid-s text-center min-block-32 has-focus-visible:outline-3 has-focus-visible:outline-offset-2 has-focus-visible:outline-focus"
             data-dropzone
           >
-            <span class="text-step-1 font-bold text-accent">Add photos</span>
+            <span class="text-step-1 font-bold text-fire">Add photos</span>
             <span class="text-ink-muted"
               >Take or pick one or many. Each photo becomes its own draft.</span
             >
@@ -105,7 +108,7 @@
               <input
                 type="checkbox"
                 name="group"
-                class="form-checkbox rounded-sm border-ink/40 text-accent block-6 inline-6"
+                class="form-checkbox rounded-sm border-ink/40 text-fire block-6 inline-6"
                 data-group-photos
               />
               <span>All selected photos are one item</span>
@@ -250,7 +253,7 @@
         </div>
         <section
           aria-label="Item table, scrolls sideways"
-          tabindex="-1"
+          tabindex="0"
           data-table-wrap
           class="overflow-x-auto overscroll-x-contain rounded-lg border border-ink/15"
         >

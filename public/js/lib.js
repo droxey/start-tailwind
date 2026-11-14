@@ -80,7 +80,7 @@ export const btn = (text, onclick, kind = "plain", extra = {}) =>
       onclick,
       class:
         kind === "primary"
-          ? "min-block-11 min-inline-11 rounded-md bg-accent px-4 font-semibold text-accent-ink disabled:opacity-50"
+          ? "min-block-11 min-inline-11 rounded-md bg-fire px-4 font-semibold text-fire-ink disabled:opacity-50 forced-colors:border forced-colors:border-[ButtonBorder] forced-colors:text-[ButtonText]"
           : kind === "danger"
             ? "min-block-11 min-inline-11 rounded-md border border-danger px-4 font-semibold text-danger"
             : "min-block-11 min-inline-11 rounded-md border border-ink/30 px-3 disabled:opacity-50",

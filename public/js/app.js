@@ -124,7 +124,7 @@ function select(it, fieldName, options, value, onchange) {
     "select",
     {
       class: cellSelect,
-      "aria-label": `${label(fieldName)}, ${it.title}`,
+      "aria-label": `${label(fieldName).replace(/^./, (c) => c.toUpperCase())}, ${it.title}`,
       "data-focus-key": `${it.id}-${fieldName}`,
       onchange,
     },
@@ -526,7 +526,7 @@ function editSheet(it) {
               name: "marketplaces",
               value: m.id,
               checked: it.marketplaces.includes(m.id),
-              class: "form-checkbox block-6 inline-6 rounded-sm text-accent",
+              class: "form-checkbox block-6 inline-6 rounded-sm text-fire",
             }),
             m.name,
             m.stub ? h("span", { class: "text-ink-muted" }, "(manual in v1)") : null,
@@ -568,7 +568,7 @@ async function logSheet(it) {
         ? entries.map((e) =>
             h(
               "li",
-              { class: "grid border-s-2 border-accent ps-3" },
+              { class: "grid border-s-2 border-fire ps-3" },
               h("span", { class: "text-step-n1 text-ink-muted" }, dateTime(e.created_at)),
               e.message,
             ),
@@ -709,7 +709,7 @@ function labelSheet(it) {
         name,
         value,
         checked,
-        class: "form-radio block-5 inline-5 text-accent",
+        class: "form-radio block-5 inline-5 text-fire",
       }),
       text,
     );
@@ -757,7 +757,7 @@ function labelSheet(it) {
               href: url,
               target: "_blank",
               rel: "noopener",
-              class: "font-semibold text-accent underline",
+              class: "font-semibold text-fire underline",
             },
             "Open the PDF to print",
           ),
