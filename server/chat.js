@@ -55,20 +55,30 @@ const ADDRESS_REQUEST =
   /\b(your|ur|the) (home |exact |full |street )?address\b|\bwhere (do you live|are you located|exactly)\b|\bsend (me )?(your )?(location|address)\b/i;
 
 const INTENTS = [
-  { id: "buy", re: /\b(i'?ll take it|i want (it|to buy)|ready to (buy|pay)|buy (it )?now|deal\b|sold\b)/i },
-  { id: "pickup", re: /\b(pick ?up|meet (up)?|come (by|get)|local(ly)?|in person|today|tonight|tomorrow)\b/i },
+  {
+    id: "buy",
+    re: /\b(i'?ll take it|i want (it|to buy)|ready to (buy|pay)|buy (it )?now|deal\b|sold\b)/i,
+  },
+  {
+    id: "pickup",
+    re: /\b(pick ?up|meet (up)?|come (by|get)|local(ly)?|in person|today|tonight|tomorrow)\b/i,
+  },
   { id: "ship", re: /\b(ship(ping|ped)?|deliver(y)?|mail it|send it)\b/i },
   { id: "available", re: /\b(still )?(available|for sale|have it)\b/i },
-  { id: "condition", re: /\b(condition|scratch(es)?|damage|work(s|ing)?|defect|battery|wear|flaw)/i },
+  {
+    id: "condition",
+    re: /\b(condition|scratch(es)?|damage|work(s|ing)?|defect|battery|wear|flaw)/i,
+  },
   { id: "dimensions", re: /\b(size|dimension|measure|how (big|tall|wide|heavy)|weight)\b/i },
 ];
 
-const MONEY = /\$\s?(\d{1,6}(?:[.,]\d{1,2})?)|\b(\d{1,6}(?:\.\d{1,2})?)\s?(?:dollars|bucks|usd)\b|\b(?:take|do|offer|give you|accept|for)\s+\$?(\d{1,6}(?:\.\d{1,2})?)\b/i;
+const MONEY =
+  /\$\s?(\d{1,6}(?:[.,]\d{1,2})?)|\b(\d{1,6}(?:\.\d{1,2})?)\s?(?:dollars|bucks|usd)\b|\b(?:take|do|offer|give you|accept|for)\s+\$?(\d{1,6}(?:\.\d{1,2})?)\b/i;
 
 export function analyzeBuyerMessage(text) {
   const clean = String(text ?? "")
     .slice(0, 2000)
-    .replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, " ");
+    .replace(/(?![\t\n\r])\p{Cc}/gu, " ");
   const flags = RED_FLAGS.filter((f) => f.re.test(clean)).map(({ id, label }) => ({ id, label }));
   if (ADDRESS_REQUEST.test(clean)) {
     flags.push({ id: "address-request", label: "Asks for a private address" });
@@ -93,7 +103,11 @@ export function draftReply(item, analysis, rules) {
   // A message with scam or injection signals never produces a queued offer or sale step.
   const risky = analysis.flags.some((f) => SCAM_FLAGS.has(f.id));
 
-  if (flagIds.has("off-platform-payment") || flagIds.has("payment-proof") || flagIds.has("overpayment")) {
+  if (
+    flagIds.has("off-platform-payment") ||
+    flagIds.has("payment-proof") ||
+    flagIds.has("overpayment")
+  ) {
     lines.push(
       "I only take payment through the marketplace checkout, or cash at a confirmed in-person handoff. I can't accept other payment methods, screenshots, or overpayments.",
     );
@@ -103,13 +117,17 @@ export function draftReply(item, analysis, rules) {
     lines.push("Let's keep all messages here in the marketplace app.");
   }
   if (flagIds.has("address-request")) {
-    lines.push("I share a handoff spot only after a confirmed sale, and it's always a public place.");
+    lines.push(
+      "I share a handoff spot only after a confirmed sale, and it's always a public place.",
+    );
   }
 
   if (analysis.offer !== null) {
     offerDecision = evaluateOffer(analysis.offer, item, rules);
     if (offerDecision.action === "auto-decline") {
-      lines.push(`Thanks for the offer, but I can't go that low. The price is ${money(item.asking_price)}.`);
+      lines.push(
+        `Thanks for the offer, but I can't go that low. The price is ${money(item.asking_price)}.`,
+      );
     } else if (offerDecision.action === "queue-accept") {
       lines.push(`Thanks! Let me confirm ${money(analysis.offer)} and get right back to you.`);
       queue.push("accept_offer");

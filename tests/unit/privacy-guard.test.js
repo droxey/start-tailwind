@@ -8,7 +8,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = join(import.meta.dirname, "..", "..");
-const files = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard"], { cwd: root })
+const files = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard"], {
+  cwd: root,
+})
   .toString()
   .split("\n")
   .filter(Boolean)

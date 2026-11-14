@@ -63,9 +63,18 @@ export class HttpError extends Error {
 const bad = (msg) => new HttpError(400, msg);
 const money = (n) => `$${Number(n).toFixed(2)}`;
 const num = (v) => (v === "" || v === null || v === undefined ? null : Number(v));
-const text = (v, max) => String(v ?? "").replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g, "").trim().slice(0, max);
+const text = (v, max) =>
+  String(v ?? "")
+    .replace(/(?![\t\n\r])\p{Cc}/gu, "")
+    .trim()
+    .slice(0, max);
 
-export function createService({ repo: r, photosDir = null, now = () => Date.now(), notify = async () => {} }) {
+export function createService({
+  repo: r,
+  photosDir = null,
+  now = () => Date.now(),
+  notify = async () => {},
+}) {
   const iso = () => new Date(now()).toISOString();
   const rules = () => normalizeRules(r.setting("rules", {}));
 
@@ -79,16 +88,27 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
   };
 
   function enqueue(itemId, kind, summary, payload = {}) {
-    const existing = r.all("queue", "item_id = ? AND kind = ? AND status = 'pending'", [itemId, kind]);
+    const existing = r.all("queue", "item_id = ? AND kind = ? AND status = 'pending'", [
+      itemId,
+      kind,
+    ]);
     if (existing.length) return existing[0].id;
-    const id = r.insert("queue", { item_id: itemId, kind, summary, payload, status: "pending", created_at: iso() });
+    const id = r.insert("queue", {
+      item_id: itemId,
+      kind,
+      summary,
+      payload,
+      status: "pending",
+      created_at: iso(),
+    });
     log(itemId, "queue", `Waiting for your OK: ${QUEUE_KINDS[kind]}.`);
     return id;
   }
 
   function cancelPending(itemId, kinds) {
     for (const q of r.all("queue", "item_id = ? AND status = 'pending'", [itemId])) {
-      if (kinds.includes(q.kind)) r.update("queue", q.id, { status: "cancelled", decided_at: iso() });
+      if (kinds.includes(q.kind))
+        r.update("queue", q.id, { status: "cancelled", decided_at: iso() });
     }
   }
 
@@ -116,7 +136,13 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     if (photosDir) writeFileSync(join(photosDir, file), clean.data);
     const name = text(originalName, 120);
     const flags = scanPhoto({ filename: name, clientFlags });
-    const id = r.insert("photos", { file, mime: clean.type, original_name: name, flags, created_at: iso() });
+    const id = r.insert("photos", {
+      file,
+      mime: clean.type,
+      original_name: name,
+      flags,
+      created_at: iso(),
+    });
     return { id, flags };
   }
 
@@ -129,8 +155,13 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     return r.tx(() => {
       const id = insertItemFromInference(inf, { flags });
       for (const p of photos) r.update("photos", p.id, { item_id: id });
-      log(id, "draft", `Draft created from ${photos.length} photo(s). Confidence ${inf.confidence.toFixed(2)}.`);
-      if (flags.length) log(id, "privacy", `Check before listing: ${flags.map((f) => f.label).join(". ")}.`);
+      log(
+        id,
+        "draft",
+        `Draft created from ${photos.length} photo(s). Confidence ${inf.confidence.toFixed(2)}.`,
+      );
+      if (flags.length)
+        log(id, "privacy", `Check before listing: ${flags.map((f) => f.label).join(". ")}.`);
       const it = item(id);
       queuePublishIfReady(it);
       return it;
@@ -169,7 +200,8 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     for (const q of QUESTIONS) {
       const v = text(answers[q.id], 200);
       if (q.required && !v) throw bad(`Please answer: ${q.label}`);
-      if (q.type === "choice" && !q.options.includes(v)) throw bad(`Pick one option for: ${q.label}`);
+      if (q.type === "choice" && !q.options.includes(v))
+        throw bad(`Pick one option for: ${q.label}`);
       clean[q.id] = v;
     }
     const photos = r.all("photos", "item_id = ?", [it.id]);
@@ -193,7 +225,11 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
       floor_price: roundCents(price.mid * rules().declineBelowPct),
       updated_at: iso(),
     });
-    log(it.id, "draft", `Drafted from your answers. Confidence ${inf.confidence.toFixed(2)}, ${status.replace(/-/g, " ")}.`);
+    log(
+      it.id,
+      "draft",
+      `Drafted from your answers. Confidence ${inf.confidence.toFixed(2)}, ${status.replace(/-/g, " ")}.`,
+    );
     const fresh = item(it.id);
     queuePublishIfReady(fresh);
     return fresh;
@@ -268,7 +304,8 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     }
     if ("asking_price" in patch) {
       const v = num(patch.asking_price);
-      if (!Number.isFinite(v) || v <= 0 || v > 1_000_000) throw bad("Asking price must be a positive number.");
+      if (!Number.isFinite(v) || v <= 0 || v > 1_000_000)
+        throw bad("Asking price must be a positive number.");
       set.asking_price = roundCents(v);
       contentEdit = true;
     }
@@ -291,7 +328,12 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
       if ((s === "shipped" || s === "picked-up") && !SOLD_STATES.includes(it.status)) {
         throw bad("Mark the item sold first.");
       }
-      if (s === "ready-to-publish" && !it.human_reviewed && !contentEdit && !canQueuePublish(it, rules())) {
+      if (
+        s === "ready-to-publish" &&
+        !it.human_reviewed &&
+        !contentEdit &&
+        !canQueuePublish(it, rules())
+      ) {
         throw bad("Edit the draft first. It is below the confidence gate.");
       }
       status = s;
@@ -351,7 +393,11 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
       reason: decision.reason,
       created_at: iso(),
     });
-    log(it.id, "offer", `Offer ${money(value)} on ${MARKETPLACES[mp].name}: ${status === "auto-declined" ? "auto-declined. " : ""}${decision.reason}`);
+    log(
+      it.id,
+      "offer",
+      `Offer ${money(value)} on ${MARKETPLACES[mp].name}: ${status === "auto-declined" ? "auto-declined. " : ""}${decision.reason}`,
+    );
     if (decision.action !== "auto-decline") {
       const kind = decision.action === "queue-accept" ? "accept_offer" : "review_offer";
       r.insert("queue", {
@@ -362,7 +408,8 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
         status: "pending",
         created_at: iso(),
       });
-      if (it.status === "listed") r.update("items", it.id, { status: "offer-pending", updated_at: iso() });
+      if (it.status === "listed")
+        r.update("items", it.id, { status: "offer-pending", updated_at: iso() });
     }
     return { offerId, decision };
   }
@@ -372,7 +419,8 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     if (!Number.isFinite(value) || value <= 0) throw bad("Sale price must be a positive number.");
     if (SOLD_STATES.includes(it.status)) throw bad("This item is already sold.");
     const mp = MARKETPLACES[marketplace] ? marketplace : it.marketplaces[0];
-    const how = method === "pickup" || (method !== "ship" && it.fulfilment === "pickup") ? "pickup" : "ship";
+    const how =
+      method === "pickup" || (method !== "ship" && it.fulfilment === "pickup") ? "pickup" : "ship";
     const fees = getMarketplace(mp).feeEstimate(value, how);
     const post = how === "pickup" ? 0 : Math.max(0, num(postage) || 0);
     const net = landedNet({ price: value, fees, postage: post });
@@ -388,7 +436,11 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
       sold_at: iso(),
     });
     r.update("items", it.id, { status: "sold", sold_at: iso(), updated_at: iso() });
-    log(it.id, "sold", `Sold on ${MARKETPLACES[mp].name} for ${money(value)}. Landed net ${money(net)}.`);
+    log(
+      it.id,
+      "sold",
+      `Sold on ${MARKETPLACES[mp].name} for ${money(value)}. Landed net ${money(net)}.`,
+    );
     cancelPending(it.id, ["publish", "price_cut", "accept_offer", "review_offer"]);
     for (const o of r.all("offers", "item_id = ? AND status = 'pending'", [it.id])) {
       r.update("offers", o.id, { status: "closed", decided_at: iso() });
@@ -396,19 +448,42 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     // Cross-post delist-on-sale, so the item can't sell twice.
     for (const l of r.all("listings", "item_id = ? AND marketplace != ?", [it.id, mp])) {
       if (["delisted", "delist-pending"].includes(l.state)) continue;
-      r.update("listings", l.id, { state: "delist-pending", note: "Sold elsewhere. Delist now.", updated_at: iso() });
+      r.update("listings", l.id, {
+        state: "delist-pending",
+        note: "Sold elsewhere. Delist now.",
+        updated_at: iso(),
+      });
       log(it.id, "delist", `${MARKETPLACES[l.marketplace].name} cross-post marked for delist.`);
     }
     if (how === "ship") {
       if (MARKETPLACES[mp].issuesLabels) {
-        enqueue(it.id, "ship", `Ship "${it.title}". Print ${MARKETPLACES[mp].name}'s own label, pack it, and confirm shipped.`, { marketplace: mp });
+        enqueue(
+          it.id,
+          "ship",
+          `Ship "${it.title}". Print ${MARKETPLACES[mp].name}'s own label, pack it, and confirm shipped.`,
+          { marketplace: mp },
+        );
       } else {
-        enqueue(it.id, "buy_label", `Buy a shipping label for "${it.title}"? ${MARKETPLACES[mp].name} does not issue one.`, { marketplace: mp });
+        enqueue(
+          it.id,
+          "buy_label",
+          `Buy a shipping label for "${it.title}"? ${MARKETPLACES[mp].name} does not issue one.`,
+          { marketplace: mp },
+        );
       }
     } else {
-      enqueue(it.id, "book_pickup", `Book a pickup for "${it.title}"? Cash at a confirmed handoff, or paid in-app.`, { marketplace: mp });
+      enqueue(
+        it.id,
+        "book_pickup",
+        `Book a pickup for "${it.title}"? Cash at a confirmed handoff, or paid in-app.`,
+        { marketplace: mp },
+      );
     }
-    notify({ title: "Sale closed", body: `${it.title} sold for ${money(value)}. Net ${money(net)}.`, tag: `sale-${it.id}` });
+    notify({
+      title: "Sale closed",
+      body: `${it.title} sold for ${money(value)}. Net ${money(net)}.`,
+      tag: `sale-${it.id}`,
+    });
   }
 
   function markSold(itemId, data = {}) {
@@ -423,7 +498,8 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
 
   async function approve(queueId) {
     const q = r.get("queue", Number(queueId));
-    if (!q || q.status !== "pending") throw new HttpError(404, "That request is no longer waiting.");
+    if (!q || q.status !== "pending")
+      throw new HttpError(404, "That request is no longer waiting.");
     const it = q.item_id ? item(q.item_id) : null;
     const done = (note) => {
       r.update("queue", q.id, { status: "approved", decided_at: iso() });
@@ -469,11 +545,19 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
         break;
       case "buy_label":
         done("Buy postage on the carrier or marketplace site. v1 never buys postage.");
-        enqueue(it.id, "ship", `Ship "${it.title}". Print the label, pack it, and confirm shipped.`);
+        enqueue(
+          it.id,
+          "ship",
+          `Ship "${it.title}". Print the label, pack it, and confirm shipped.`,
+        );
         break;
       case "book_pickup":
         done("Pickup booked.");
-        enqueue(it.id, "reveal_location", `Share the handoff spot for "${it.title}" with the buyer? Use a public place.`);
+        enqueue(
+          it.id,
+          "reveal_location",
+          `Share the handoff spot for "${it.title}" with the buyer? Use a public place.`,
+        );
         break;
       case "reveal_location":
         done("You can share the handoff spot now. Mark it picked up after the handoff.");
@@ -498,14 +582,20 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
 
   function reject(queueId) {
     const q = r.get("queue", Number(queueId));
-    if (!q || q.status !== "pending") throw new HttpError(404, "That request is no longer waiting.");
+    if (!q || q.status !== "pending")
+      throw new HttpError(404, "That request is no longer waiting.");
     r.update("queue", q.id, { status: "rejected", decided_at: iso() });
-    if (q.payload?.offerId) r.update("offers", q.payload.offerId, { status: "declined", decided_at: iso() });
+    if (q.payload?.offerId)
+      r.update("offers", q.payload.offerId, { status: "declined", decided_at: iso() });
     if (q.kind === "price_cut") r.update("items", q.item_id, { last_price_cut_at: iso() });
     if (q.item_id) {
       log(q.item_id, "rejected", `You said no: ${QUEUE_KINDS[q.kind]}.`);
       const it = r.get("items", q.item_id);
-      const stillPending = r.all("queue", "item_id = ? AND status = 'pending' AND kind IN ('accept_offer','review_offer')", [q.item_id]);
+      const stillPending = r.all(
+        "queue",
+        "item_id = ? AND status = 'pending' AND kind IN ('accept_offer','review_offer')",
+        [q.item_id],
+      );
       if (it?.status === "offer-pending" && !stillPending.length) {
         r.update("items", it.id, { status: "listed", updated_at: iso() });
       }
@@ -529,10 +619,19 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
           last_price_cut_at: iso(),
           updated_at: iso(),
         });
-        log(it.id, "price", `Automatic ${Math.round(rules().autoCutPct * 100)}% cut after ${rules().autoCutAfterDays} days. Price change: ${money(d.from)} to ${money(d.newPrice)}.`);
+        log(
+          it.id,
+          "price",
+          `Automatic ${Math.round(rules().autoCutPct * 100)}% cut after ${rules().autoCutAfterDays} days. Price change: ${money(d.from)} to ${money(d.newPrice)}.`,
+        );
         out.push({ id: it.id, action: "auto" });
       } else if (d.action === "propose") {
-        enqueue(it.id, "price_cut", `Cut "${it.title}" from ${money(d.from)} to ${money(d.newPrice)}? It's been ${rules().autoCutAfterDays}+ days.`, { newPrice: d.newPrice });
+        enqueue(
+          it.id,
+          "price_cut",
+          `Cut "${it.title}" from ${money(d.from)} to ${money(d.newPrice)}? It's been ${rules().autoCutAfterDays}+ days.`,
+          { newPrice: d.newPrice },
+        );
         out.push({ id: it.id, action: "propose" });
       }
     }
@@ -545,8 +644,18 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
     const it = item(itemId);
     const analysis = analyzeBuyerMessage(body);
     if (!analysis.text.trim()) throw bad("Paste the buyer's message first.");
-    r.insert("messages", { item_id: it.id, role: "buyer", text: analysis.text, flags: analysis.flags, created_at: iso() });
-    log(it.id, "message", `Buyer message received${analysis.flags.length ? `. Red flags: ${analysis.flags.map((f) => f.label).join(", ")}` : ""}.`);
+    r.insert("messages", {
+      item_id: it.id,
+      role: "buyer",
+      text: analysis.text,
+      flags: analysis.flags,
+      created_at: iso(),
+    });
+    log(
+      it.id,
+      "message",
+      `Buyer message received${analysis.flags.length ? `. Red flags: ${analysis.flags.map((f) => f.label).join(", ")}` : ""}.`,
+    );
     const reply = draftReply(it, analysis, rules());
     if (!SOLD_STATES.includes(it.status) && !reply.risky) {
       if (analysis.offer !== null) addOffer(it.id, { amount: analysis.offer, marketplace });
@@ -563,14 +672,23 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
       created_at: iso(),
     });
     if (reply.needsOwner) {
-      notify({ title: "Buyer question needs you", body: `About "${it.title}". Open the chat to answer.`, tag: `chat-${it.id}` });
+      notify({
+        title: "Buyer question needs you",
+        body: `About "${it.title}". Open the chat to answer.`,
+        tag: `chat-${it.id}`,
+      });
     }
-    return { analysis: { flags: analysis.flags, intents: analysis.intents, offer: analysis.offer }, draftId, ...reply };
+    return {
+      analysis: { flags: analysis.flags, intents: analysis.intents, offer: analysis.offer },
+      draftId,
+      ...reply,
+    };
   }
 
   function sendReply(messageId, body) {
     const m = r.get("messages", Number(messageId));
-    if (!m || m.role !== "draft" || m.status !== "draft") throw new HttpError(404, "Draft not found.");
+    if (!m || m.role !== "draft" || m.status !== "draft")
+      throw new HttpError(404, "Draft not found.");
     const t = text(body ?? m.text, 2000);
     if (!t) throw bad("Reply is empty.");
     const problems = outboundProblems(t);
@@ -585,8 +703,10 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
   function setTarget({ amount, days } = {}) {
     const a = num(amount);
     const d = num(days);
-    if (!Number.isFinite(a) || a <= 0 || a > 10_000_000) throw bad("Target must be a positive dollar amount.");
-    if (!Number.isInteger(d) || d < 1 || d > 365) throw bad("Days must be a whole number from 1 to 365.");
+    if (!Number.isFinite(a) || a <= 0 || a > 10_000_000)
+      throw bad("Target must be a positive dollar amount.");
+    if (!Number.isInteger(d) || d < 1 || d > 365)
+      throw bad("Days must be a whole number from 1 to 365.");
     const prev = r.setting("target", null);
     const started_at = prev && prev.days === d ? prev.started_at : iso();
     r.setSetting("target", { amount: roundCents(a), days: d, started_at });
@@ -594,7 +714,9 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
   }
 
   function setRules(input = {}) {
-    const clean = normalizeRules(Object.fromEntries(Object.entries(input).map(([k, v]) => [k, num(v)])));
+    const clean = normalizeRules(
+      Object.fromEntries(Object.entries(input).map(([k, v]) => [k, num(v)])),
+    );
     r.setSetting("rules", clean);
     return clean;
   }
@@ -619,7 +741,11 @@ export function createService({ repo: r, photosDir = null, now = () => Date.now(
       items: items.map((it) => ({
         ...it,
         photos: (photoMap.get(it.id) ?? []).map((p) => ({ id: p.id, url: `api/photos/${p.id}` })),
-        listings: (listingMap.get(it.id) ?? []).map(({ marketplace, state, note }) => ({ marketplace, state, note })),
+        listings: (listingMap.get(it.id) ?? []).map(({ marketplace, state, note }) => ({
+          marketplace,
+          state,
+          note,
+        })),
         pending: (queueMap.get(it.id) ?? []).map(({ id, kind }) => ({ id, kind })),
       })),
       queue: pending.map((q) => ({ ...q, label: QUEUE_KINDS[q.kind] })),

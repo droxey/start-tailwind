@@ -34,16 +34,27 @@ const subject = env.VAPID_SUBJECT || "mailto:owner@example.invalid";
 const push = {
   publicKey: vapid.publicKey,
   subscribe(sub) {
-    if (!sub?.endpoint || !/^https:\/\//.test(sub.endpoint) || !sub.keys?.p256dh || !sub.keys?.auth) {
+    if (
+      !sub?.endpoint ||
+      !/^https:\/\//.test(sub.endpoint) ||
+      !sub.keys?.p256dh ||
+      !sub.keys?.auth
+    ) {
       return { ok: false, error: "Bad subscription." };
     }
     db.prepare(
       "INSERT INTO push_subscriptions (endpoint, keys, created_at) VALUES (?, ?, ?) ON CONFLICT(endpoint) DO UPDATE SET keys = excluded.keys",
-    ).run(sub.endpoint, JSON.stringify({ p256dh: sub.keys.p256dh, auth: sub.keys.auth }), new Date().toISOString());
+    ).run(
+      sub.endpoint,
+      JSON.stringify({ p256dh: sub.keys.p256dh, auth: sub.keys.auth }),
+      new Date().toISOString(),
+    );
     return { ok: true };
   },
   unsubscribe(sub) {
-    db.prepare("DELETE FROM push_subscriptions WHERE endpoint = ?").run(String(sub?.endpoint ?? ""));
+    db.prepare("DELETE FROM push_subscriptions WHERE endpoint = ?").run(
+      String(sub?.endpoint ?? ""),
+    );
     return { ok: true };
   },
   async notifyAll(message) {

@@ -65,13 +65,16 @@ const send = (res, status, body, headers = {}) => {
   res.writeHead(status, { ...SECURITY_HEADERS, "Cache-Control": "no-store", ...headers });
   res.end(body);
 };
-const json = (res, status, data) => send(res, status, JSON.stringify(data), { "Content-Type": TYPES[".json"] });
+const json = (res, status, data) =>
+  send(res, status, JSON.stringify(data), { "Content-Type": TYPES[".json"] });
 
 function passcodeOk(req, passcode) {
   if (!passcode) return true;
   const header = String(req.headers.authorization ?? "");
   if (!header.startsWith("Basic ")) return false;
-  const given = Buffer.from(Buffer.from(header.slice(6), "base64").toString("utf8").split(":").slice(1).join(":"));
+  const given = Buffer.from(
+    Buffer.from(header.slice(6), "base64").toString("utf8").split(":").slice(1).join(":"),
+  );
   const want = Buffer.from(passcode);
   return given.length === want.length && timingSafeEqual(given, want);
 }
@@ -87,7 +90,14 @@ function sameOrigin(req) {
   }
 }
 
-export function createHandler({ service, publicDir, photosDir, push, env = process.env, log = console.log }) {
+export function createHandler({
+  service,
+  publicDir,
+  photosDir,
+  push,
+  env = process.env,
+  log = console.log,
+}) {
   const routes = [];
   const route = (method, pattern, fn) =>
     routes.push({ method, re: new RegExp(`^/api/${pattern}$`), fn });
@@ -96,15 +106,19 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
 
   route("POST", "photos", async (req) => {
     const type = String(req.headers["content-type"] ?? "");
-    if (!/^image\/(jpeg|png)$/.test(type)) throw new HttpError(415, "Only JPEG and PNG photos are accepted.");
+    if (!/^image\/(jpeg|png)$/.test(type))
+      throw new HttpError(415, "Only JPEG and PNG photos are accepted.");
     const body = await readBody(req, 15 * 1024 * 1024);
-    let name = "";
+    let name;
     try {
       name = decodeURIComponent(String(req.headers["x-filename"] ?? ""));
     } catch {
       name = "";
     }
-    const flags = String(req.headers["x-photo-flags"] ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+    const flags = String(req.headers["x-photo-flags"] ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
     const saved = service.savePhoto(body, name, flags);
     return { ...saved, url: `api/photos/${saved.id}` };
   });
@@ -118,19 +132,31 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
 
   route("POST", "drafts", async (req) => service.createDraft(await readJson(req)));
   route("POST", "items", async (req) => service.createItem(await readJson(req)));
-  route("PATCH", "items/(\\d+)", async (req, res, [id]) => service.updateItem(id, await readJson(req)));
+  route("PATCH", "items/(\\d+)", async (req, res, [id]) =>
+    service.updateItem(id, await readJson(req)),
+  );
   route("DELETE", "items/(\\d+)", (req, res, [id]) => {
     service.deleteItem(id);
     return { ok: true };
   });
-  route("POST", "items/(\\d+)/answers", async (req, res, [id]) => service.answerDraft(id, (await readJson(req)).answers));
+  route("POST", "items/(\\d+)/answers", async (req, res, [id]) =>
+    service.answerDraft(id, (await readJson(req)).answers),
+  );
   route("GET", "items/(\\d+)/activity", (req, res, [id]) => service.activity(id));
   route("GET", "items/(\\d+)/listings", (req, res, [id]) => service.listingsFor(id));
   route("GET", "items/(\\d+)/messages", (req, res, [id]) => service.messages(id));
-  route("POST", "items/(\\d+)/messages", async (req, res, [id]) => service.addBuyerMessage(id, await readJson(req)));
-  route("POST", "messages/(\\d+)/send", async (req, res, [id]) => service.sendReply(id, (await readJson(req)).text));
-  route("POST", "items/(\\d+)/offers", async (req, res, [id]) => service.addOffer(id, await readJson(req)));
-  route("POST", "items/(\\d+)/sold", async (req, res, [id]) => service.markSold(id, await readJson(req)));
+  route("POST", "items/(\\d+)/messages", async (req, res, [id]) =>
+    service.addBuyerMessage(id, await readJson(req)),
+  );
+  route("POST", "messages/(\\d+)/send", async (req, res, [id]) =>
+    service.sendReply(id, (await readJson(req)).text),
+  );
+  route("POST", "items/(\\d+)/offers", async (req, res, [id]) =>
+    service.addOffer(id, await readJson(req)),
+  );
+  route("POST", "items/(\\d+)/sold", async (req, res, [id]) =>
+    service.markSold(id, await readJson(req)),
+  );
 
   route("POST", "items/(\\d+)/label", async (req, res, [id]) => {
     const { format, doc, shipTo } = await readJson(req);
@@ -140,11 +166,20 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
     let blocks;
     if (doc === "receipt") blocks = receiptBlocks({ item, sale });
     else {
-      if (sale?.method === "pickup") throw new HttpError(409, "Local pickup needs no shipping label.");
+      if (sale?.method === "pickup")
+        throw new HttpError(409, "Local pickup needs no shipping label.");
       if (sale && getMarketplace(sale.marketplace)?.issuesLabels) {
-        throw new HttpError(409, `${getMarketplace(sale.marketplace).name} issues its own label. Print that one.`);
+        throw new HttpError(
+          409,
+          `${getMarketplace(sale.marketplace).name} issues its own label. Print that one.`,
+        );
       }
-      blocks = labelBlocks({ item, sale, shipTo: String(shipTo ?? "").slice(0, 400), shipFrom: shipFromLines(env) });
+      blocks = labelBlocks({
+        item,
+        sale,
+        shipTo: String(shipTo ?? "").slice(0, 400),
+        shipFrom: shipFromLines(env),
+      });
     }
     send(res, 200, renderPdf(blocks, fmt), {
       "Content-Type": "application/pdf",
@@ -160,7 +195,9 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
   route("GET", "push/key", () => ({ publicKey: push?.publicKey ?? null }));
   route("POST", "push/subscribe", async (req) => push.subscribe(await readJson(req)));
   route("POST", "push/unsubscribe", async (req) => push.unsubscribe(await readJson(req)));
-  route("POST", "push/test", () => push.notifyAll({ title: "Fire Sale", body: "Notifications are on.", tag: "test" }));
+  route("POST", "push/test", () =>
+    push.notifyAll({ title: "Fire Sale", body: "Notifications are on.", tag: "test" }),
+  );
 
   async function serveStatic(pathname, res) {
     let rel;
@@ -177,8 +214,13 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
       const data = await readFile(file);
       const ext = extname(file);
       const cache =
-        rel === "sw.js" || ext === ".html" || ext === ".webmanifest" ? "no-cache" : "public, max-age=3600";
-      send(res, 200, data, { "Content-Type": TYPES[ext] ?? "application/octet-stream", "Cache-Control": cache });
+        rel === "sw.js" || ext === ".html" || ext === ".webmanifest"
+          ? "no-cache"
+          : "public, max-age=3600";
+      send(res, 200, data, {
+        "Content-Type": TYPES[ext] ?? "application/octet-stream",
+        "Cache-Control": cache,
+      });
       return true;
     } catch {
       return false;
@@ -188,14 +230,17 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
   return async function handle(req, res) {
     const started = Date.now();
     const { pathname } = new URL(req.url ?? "/", "http://localhost");
-    res.on("finish", () => log(`${req.method} ${pathname} ${res.statusCode} ${Date.now() - started}ms`));
+    res.on("finish", () =>
+      log(`${req.method} ${pathname} ${res.statusCode} ${Date.now() - started}ms`),
+    );
     try {
       if (!passcodeOk(req, env.FIRE_SALE_PASSCODE)) {
         send(res, 401, "Passcode required.", { "WWW-Authenticate": 'Basic realm="Fire Sale"' });
         return;
       }
       if (pathname.startsWith("/api/")) {
-        if (req.method !== "GET" && !sameOrigin(req)) throw new HttpError(403, "Cross-site request blocked.");
+        if (req.method !== "GET" && !sameOrigin(req))
+          throw new HttpError(403, "Cross-site request blocked.");
         for (const r of routes) {
           const m = r.method === req.method && pathname.match(r.re);
           if (!m) continue;
@@ -205,14 +250,16 @@ export function createHandler({ service, publicDir, photosDir, push, env = proce
         }
         throw new HttpError(404, "Not found.");
       }
-      if (req.method !== "GET" && req.method !== "HEAD") throw new HttpError(405, "Method not allowed.");
+      if (req.method !== "GET" && req.method !== "HEAD")
+        throw new HttpError(405, "Method not allowed.");
       if (await serveStatic(pathname, res)) return;
       const notFound = await readFile(join(publicDir, "404.html")).catch(() => "Not found");
       send(res, 404, notFound, { "Content-Type": TYPES[".html"] });
     } catch (err) {
       const status = err instanceof HttpError ? err.status : 500;
       if (status === 500) console.error(err);
-      if (!res.headersSent) json(res, status, { error: status === 500 ? "Something went wrong." : err.message });
+      if (!res.headersSent)
+        json(res, status, { error: status === 500 ? "Something went wrong." : err.message });
     }
   };
 }

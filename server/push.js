@@ -30,10 +30,17 @@ export function loadOrCreateVapid(file) {
 export function vapidAuthHeader(endpoint, vapid, subject, now = Date.now()) {
   const header = b64u(JSON.stringify({ typ: "JWT", alg: "ES256" }));
   const claims = b64u(
-    JSON.stringify({ aud: new URL(endpoint).origin, exp: Math.floor(now / 1000) + 12 * 3600, sub: subject }),
+    JSON.stringify({
+      aud: new URL(endpoint).origin,
+      exp: Math.floor(now / 1000) + 12 * 3600,
+      sub: subject,
+    }),
   );
   const key = createPrivateKey({ key: vapid.privateJwk, format: "jwk" });
-  const sig = sign("sha256", Buffer.from(`${header}.${claims}`), { key, dsaEncoding: "ieee-p1363" });
+  const sig = sign("sha256", Buffer.from(`${header}.${claims}`), {
+    key,
+    dsaEncoding: "ieee-p1363",
+  });
   return `vapid t=${header}.${claims}.${b64u(sig)}, k=${vapid.publicKey}`;
 }
 
@@ -48,8 +55,12 @@ export function encryptPayload(subscription, payload, { salt = randomBytes(16), 
 
   const keyInfo = Buffer.concat([Buffer.from("WebPush: info\0"), uaPublic, asPublic]);
   const ikm = Buffer.from(hkdfSync("sha256", shared, authSecret, keyInfo, 32));
-  const cek = Buffer.from(hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: aes128gcm\0"), 16));
-  const nonce = Buffer.from(hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: nonce\0"), 12));
+  const cek = Buffer.from(
+    hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: aes128gcm\0"), 16),
+  );
+  const nonce = Buffer.from(
+    hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: nonce\0"), 12),
+  );
 
   const cipher = createCipheriv("aes-128-gcm", cek, nonce);
   const plain = Buffer.concat([Buffer.from(payload), Buffer.from([2])]);

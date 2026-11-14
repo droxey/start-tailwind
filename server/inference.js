@@ -123,7 +123,8 @@ export function inferItem({ hint = "", filenames = [], answers = null } = {}) {
 // Stub until the scoring rubric is supplied. Replace with a real comps lookup.
 export function scorePrice({ category = "unknown", condition = null } = {}) {
   const base = CATALOG.find((c) => c.category === category)?.base ?? 50;
-  const factor = { New: 1.15, "Like new": 1, Good: 0.85, Fair: 0.65, "For parts": 0.35 }[condition] ?? 0.85;
+  const factor =
+    { New: 1.15, "Like new": 1, Good: 0.85, Fair: 0.65, "For parts": 0.35 }[condition] ?? 0.85;
   const mid = Math.max(5, Math.round(base * factor));
   const fast = Math.max(5, Math.round(mid * 0.88));
   return { mid, fast, comps: [], stub: true };
@@ -134,7 +135,11 @@ export function scorePrice({ category = "unknown", condition = null } = {}) {
 // from on-device detectors when it has them. Server-side detection is a stub for now.
 const PRIVACY = [
   { id: "mail", label: "Mail or an envelope may be in frame", re: /\b(mail|envelope|letter)\b/i },
-  { id: "label", label: "A shipping label or barcode may be in frame", re: /\b(label|barcode|usps|ups|fedex)\b/i },
+  {
+    id: "label",
+    label: "A shipping label or barcode may be in frame",
+    re: /\b(label|barcode|usps|ups|fedex)\b/i,
+  },
   { id: "serial", label: "A serial number may be visible", re: /\b(serial|imei|s\/n|sn)\b/i },
   { id: "face", label: "A face may be in frame", re: /\b(face|selfie|portrait|me)\b/i },
 ];

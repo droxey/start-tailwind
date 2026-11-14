@@ -27,7 +27,8 @@ test("confidence gate: below 0.80 needs review", () => {
 });
 
 test("confidence gate: junk scores fail closed", () => {
-  for (const bad of [NaN, -0.1, 1.2, "0.9", null, undefined]) assert.equal(gateDraft(bad), "needs-review");
+  for (const bad of [NaN, -0.1, 1.2, "0.9", null, undefined])
+    assert.equal(gateDraft(bad), "needs-review");
 });
 
 test("confidence gate: only a label, never a publish", () => {
@@ -59,7 +60,8 @@ test("offers: exactly 70% of original asking is not auto-declined", () => {
 test("offers: at or above asking queue for a tap, never auto-accept", () => {
   assert.equal(evaluateOffer(100, listed).action, "queue-accept");
   assert.equal(evaluateOffer(150, listed).action, "queue-accept");
-  for (const amount of [100, 150, 1e6]) assert.notEqual(evaluateOffer(amount, listed).action, "accept");
+  for (const amount of [100, 150, 1e6])
+    assert.notEqual(evaluateOffer(amount, listed).action, "accept");
 });
 
 test("offers: between the floor and asking surface for the human", () => {
@@ -82,7 +84,8 @@ test("offers: rules are configurable", () => {
 });
 
 test("offers: bad amounts are rejected", () => {
-  for (const bad of [0, -5, NaN, "50"]) assert.equal(evaluateOffer(bad, listed).action, "reject-invalid");
+  for (const bad of [0, -5, NaN, "50"])
+    assert.equal(evaluateOffer(bad, listed).action, "reject-invalid");
 });
 
 const forSale = {
@@ -168,7 +171,11 @@ test("landed net subtracts fees and postage", () => {
 });
 
 test("target progress counts landed net, not asking prices", () => {
-  const p = targetProgress({ amount: 1000, days: 10, started_at: new Date(T0).toISOString() }, [{ net: 250 }, { net: 150 }], T0 + 4 * DAY);
+  const p = targetProgress(
+    { amount: 1000, days: 10, started_at: new Date(T0).toISOString() },
+    [{ net: 250 }, { net: 150 }],
+    T0 + 4 * DAY,
+  );
   assert.equal(p.landed, 400);
   assert.equal(p.pct, 0.4);
   assert.equal(p.daysLeft, 6);
@@ -178,6 +185,12 @@ test("target progress counts landed net, not asking prices", () => {
 test("defaults match the brief", () => {
   assert.deepEqual(
     { ...DEFAULT_RULES },
-    { readyThreshold: 0.8, declineBelowPct: 0.7, autoCutPct: 0.05, autoCutAfterDays: 7, maxAutoCuts: 1 },
+    {
+      readyThreshold: 0.8,
+      declineBelowPct: 0.7,
+      autoCutPct: 0.05,
+      autoCutAfterDays: 7,
+      maxAutoCuts: 1,
+    },
   );
 });

@@ -4,7 +4,11 @@
 // The ship-from address is never stored here. It comes from the runtime environment (filled
 // from a vault on the owner's machine) or prints as a clear placeholder.
 
-export const SHIP_FROM_PLACEHOLDER = ["SHIP-FROM ADDRESS", "Injected at print time", "from the owner's vault"];
+export const SHIP_FROM_PLACEHOLDER = [
+  "SHIP-FROM ADDRESS",
+  "Injected at print time",
+  "from the owner's vault",
+];
 
 const FORMATS = {
   "4x6": { width: 288, margin: 14, body: 11, big: 16, small: 8, charW: 0.52 },
@@ -20,7 +24,9 @@ const ascii = (s) =>
     .replace(/\)/g, "\\)");
 
 function wrap(text, maxChars) {
-  const words = String(text ?? "").split(/\s+/).filter(Boolean);
+  const words = String(text ?? "")
+    .split(/\s+/)
+    .filter(Boolean);
   const lines = [];
   let line = "";
   for (const w of words) {
@@ -97,24 +103,40 @@ export function renderPdf(blocks, formatId = "4x6") {
 export function shipFromLines(env = process.env) {
   const raw = env.FIRE_SALE_SHIP_FROM;
   if (!raw || !raw.trim()) return SHIP_FROM_PLACEHOLDER;
-  return raw.split("|").map((s) => s.trim()).filter(Boolean);
+  return raw
+    .split("|")
+    .map((s) => s.trim())
+    .filter(Boolean);
 }
 
 const money = (n) => `$${Number(n || 0).toFixed(2)}`;
 
 export function labelBlocks({ item, sale, shipTo, shipFrom }) {
-  const to = String(shipTo ?? "").split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+  const to = String(shipTo ?? "")
+    .split(/\r?\n/)
+    .map((s) => s.trim())
+    .filter(Boolean);
   return [
     { text: "FROM", size: "small", bold: true },
     ...shipFrom.map((text) => ({ text, size: "small" })),
     { rule: true },
     { text: "SHIP TO", size: "small", bold: true },
-    ...(to.length ? to : ["(enter the buyer's address)"]).map((text) => ({ text, size: "big", bold: true })),
+    ...(to.length ? to : ["(enter the buyer's address)"]).map((text) => ({
+      text,
+      size: "big",
+      bold: true,
+    })),
     { rule: true },
-    { text: `Order FS-${item.id}${sale?.marketplace ? `  |  ${sale.marketplace}` : ""}`, size: "small" },
+    {
+      text: `Order FS-${item.id}${sale?.marketplace ? `  |  ${sale.marketplace}` : ""}`,
+      size: "small",
+    },
     { text: item.title, size: "small" },
     { gap: 4 },
-    { text: "Address label only. Postage is bought on the marketplace or carrier site.", size: "small" },
+    {
+      text: "Address label only. Postage is bought on the marketplace or carrier site.",
+      size: "small",
+    },
   ];
 }
 

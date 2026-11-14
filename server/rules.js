@@ -18,8 +18,10 @@ export const roundCents = (n) => Math.round(n * 100) / 100;
 export function normalizeRules(input = {}) {
   const rules = { ...DEFAULT_RULES };
   const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-  if (isFiniteNumber(input.readyThreshold)) rules.readyThreshold = clamp(input.readyThreshold, 0.5, 1);
-  if (isFiniteNumber(input.declineBelowPct)) rules.declineBelowPct = clamp(input.declineBelowPct, 0, 1);
+  if (isFiniteNumber(input.readyThreshold))
+    rules.readyThreshold = clamp(input.readyThreshold, 0.5, 1);
+  if (isFiniteNumber(input.declineBelowPct))
+    rules.declineBelowPct = clamp(input.declineBelowPct, 0, 1);
   if (isFiniteNumber(input.autoCutPct)) rules.autoCutPct = clamp(input.autoCutPct, 0, 0.2);
   if (isFiniteNumber(input.autoCutAfterDays)) {
     rules.autoCutAfterDays = clamp(Math.round(input.autoCutAfterDays), 1, 90);
@@ -53,7 +55,9 @@ export function evaluateOffer(amount, item, rules = DEFAULT_RULES) {
   if (!isFiniteNumber(amount) || amount <= 0) {
     return { action: "reject-invalid", reason: "Offer amount is not a positive number." };
   }
-  const original = isFiniteNumber(item?.original_asking) ? item.original_asking : item?.asking_price;
+  const original = isFiniteNumber(item?.original_asking)
+    ? item.original_asking
+    : item?.asking_price;
   const asking = item?.asking_price;
   if (!isFiniteNumber(original) || !isFiniteNumber(asking)) {
     return { action: "surface", reason: "No asking price set, so the owner decides." };

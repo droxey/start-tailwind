@@ -1,8 +1,20 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { createDecipheriv, createECDH, createPublicKey, hkdfSync, randomBytes, verify } from "node:crypto";
+import {
+  createDecipheriv,
+  createECDH,
+  createPublicKey,
+  hkdfSync,
+  randomBytes,
+  verify,
+} from "node:crypto";
 import { stripJpeg, stripPng } from "../../server/images.js";
-import { renderPdf, labelBlocks, SHIP_FROM_PLACEHOLDER, shipFromLines } from "../../server/labels.js";
+import {
+  renderPdf,
+  labelBlocks,
+  SHIP_FROM_PLACEHOLDER,
+  shipFromLines,
+} from "../../server/labels.js";
 import { encryptPayload, loadOrCreateVapid, vapidAuthHeader } from "../../server/push.js";
 
 test("push: aes128gcm payload decrypts on the browser side (RFC 8291)", () => {
@@ -22,8 +34,12 @@ test("push: aes128gcm payload decrypts on the browser side (RFC 8291)", () => {
   const shared = ua.computeSecret(asPublic);
   const info = Buffer.concat([Buffer.from("WebPush: info\0"), ua.getPublicKey(), asPublic]);
   const ikm = Buffer.from(hkdfSync("sha256", shared, auth, info, 32));
-  const cek = Buffer.from(hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: aes128gcm\0"), 16));
-  const nonce = Buffer.from(hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: nonce\0"), 12));
+  const cek = Buffer.from(
+    hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: aes128gcm\0"), 16),
+  );
+  const nonce = Buffer.from(
+    hkdfSync("sha256", ikm, salt, Buffer.from("Content-Encoding: nonce\0"), 12),
+  );
   const d = createDecipheriv("aes-128-gcm", cek, nonce);
   d.setAuthTag(cipher.subarray(-16));
   const plain = Buffer.concat([d.update(cipher.subarray(0, -16)), d.final()]);
@@ -33,16 +49,32 @@ test("push: aes128gcm payload decrypts on the browser side (RFC 8291)", () => {
 
 test("push: VAPID JWT is a valid ES256 signature for the endpoint origin", () => {
   const vapid = loadOrCreateVapid(null);
-  const header = vapidAuthHeader("https://push.example.com/send/xyz", vapid, "mailto:owner@example.invalid");
+  const header = vapidAuthHeader(
+    "https://push.example.com/send/xyz",
+    vapid,
+    "mailto:owner@example.invalid",
+  );
   const [, jwt, k] = header.match(/^vapid t=([^,]+), k=(.+)$/);
   const [h, c, s] = jwt.split(".");
   assert.equal(JSON.parse(Buffer.from(c, "base64url")).aud, "https://push.example.com");
   const raw = Buffer.from(k, "base64url");
   const key = createPublicKey({
-    key: { kty: "EC", crv: "P-256", x: raw.subarray(1, 33).toString("base64url"), y: raw.subarray(33).toString("base64url") },
+    key: {
+      kty: "EC",
+      crv: "P-256",
+      x: raw.subarray(1, 33).toString("base64url"),
+      y: raw.subarray(33).toString("base64url"),
+    },
     format: "jwk",
   });
-  assert.ok(verify("sha256", Buffer.from(`${h}.${c}`), { key, dsaEncoding: "ieee-p1363" }, Buffer.from(s, "base64url")));
+  assert.ok(
+    verify(
+      "sha256",
+      Buffer.from(`${h}.${c}`),
+      { key, dsaEncoding: "ieee-p1363" },
+      Buffer.from(s, "base64url"),
+    ),
+  );
 });
 
 test("images: JPEG loses EXIF/GPS (APP1) and comments, keeps image data", () => {

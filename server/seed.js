@@ -9,7 +9,7 @@ export function seedDemo(r, now = Date.now()) {
 
   const add = (data, daysAgo) =>
     r.insert("items", {
-      description: `${data.title}. ${data.condition} condition. Payment through the marketplace checkout only.`,
+      description: `${data.title}. ${data.condition ? `${data.condition} condition.` : "Condition not confirmed yet."} Payment through the marketplace checkout only.`,
       price_choice: "mid",
       created_at: at(daysAgo),
       updated_at: at(daysAgo),
@@ -17,11 +17,46 @@ export function seedDemo(r, now = Date.now()) {
     });
 
   const sold = [
-    { title: "Road bike, 54 cm frame", mp: "facebook", price: 340, method: "pickup", days: 11, category: "sports and outdoors" },
-    { title: "Noise-cancelling headphones", mp: "ebay", price: 145, method: "ship", days: 9, category: "electronics" },
-    { title: "Standing desk frame", mp: "offerup", price: 180, method: "pickup", days: 6, category: "furniture" },
-    { title: "Unlocked phone, 128 GB", mp: "swappa", price: 310, method: "ship", days: 4, category: "phone" },
-    { title: "Wool winter coat", mp: "mercari", price: 85, method: "ship", days: 2, category: "clothing" },
+    {
+      title: "Road bike, 54 cm frame",
+      mp: "facebook",
+      price: 340,
+      method: "pickup",
+      days: 11,
+      category: "sports and outdoors",
+    },
+    {
+      title: "Noise-cancelling headphones",
+      mp: "ebay",
+      price: 145,
+      method: "ship",
+      days: 9,
+      category: "electronics",
+    },
+    {
+      title: "Standing desk frame",
+      mp: "offerup",
+      price: 180,
+      method: "pickup",
+      days: 6,
+      category: "furniture",
+    },
+    {
+      title: "Unlocked phone, 128 GB",
+      mp: "swappa",
+      price: 310,
+      method: "ship",
+      days: 4,
+      category: "phone",
+    },
+    {
+      title: "Wool winter coat",
+      mp: "mercari",
+      price: 85,
+      method: "ship",
+      days: 2,
+      category: "clothing",
+    },
   ];
   const fees = { ebay: 0.1325, swappa: 0.03, mercari: 0.1, facebook: 0, offerup: 0 };
   for (const s of sold) {
@@ -59,7 +94,12 @@ export function seedDemo(r, now = Date.now()) {
       net: Math.round((s.price - fee - postage) * 100) / 100,
       sold_at: at(s.days),
     });
-    r.insert("activity", { item_id: id, kind: "sold", message: `Sold for $${s.price}.`, created_at: at(s.days) });
+    r.insert("activity", {
+      item_id: id,
+      kind: "sold",
+      message: `Sold for $${s.price}.`,
+      created_at: at(s.days),
+    });
   }
 
   const listed = add(
@@ -93,7 +133,8 @@ export function seedDemo(r, now = Date.now()) {
   r.insert("queue", {
     item_id: listed,
     kind: "review_offer",
-    summary: 'Decide on $180.00 for "Espresso machine" on eBay? Between the decline floor and asking. Your call.',
+    summary:
+      'Decide on $180.00 for "Espresso machine" on eBay? Between the decline floor and asking. Your call.',
     payload: { offerId, amount: 180, marketplace: "ebay" },
     status: "pending",
     created_at: at(1),

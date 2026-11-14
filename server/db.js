@@ -162,7 +162,10 @@ const toParam = (v) =>
 export function repo(db) {
   return {
     all: (table, where = "1=1", params = []) =>
-      db.prepare(`SELECT * FROM ${table} WHERE ${where}`).all(...params).map((r) => parseRow(table, r)),
+      db
+        .prepare(`SELECT * FROM ${table} WHERE ${where}`)
+        .all(...params)
+        .map((r) => parseRow(table, r)),
     get: (table, id) => parseRow(table, db.prepare(`SELECT * FROM ${table} WHERE id = ?`).get(id)),
     insert(table, data) {
       const cols = Object.keys(data);
@@ -182,7 +185,9 @@ export function repo(db) {
     },
     setSetting: (key, value) =>
       db
-        .prepare("INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value")
+        .prepare(
+          "INSERT INTO settings (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+        )
         .run(key, JSON.stringify(value)),
     tx(fn) {
       db.exec("BEGIN");
