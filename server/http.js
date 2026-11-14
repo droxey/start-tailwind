@@ -268,8 +268,10 @@ export function createHandler({
       if (req.method !== "GET" && req.method !== "HEAD")
         throw new HttpError(405, "Method not allowed.");
       if (await serveStatic(pathname, res)) return;
-      const notFound = await readFile(join(publicDir, "404.html")).catch(() => "Not found");
-      send(res, 404, notFound, { "Content-Type": TYPES[".html"] });
+      const notFound = await readFile(join(publicDir, "404.html"), "utf8").catch(() => "Not found");
+      // Same rewrite as scripts/rewrite-404.sh, so the page keeps its styles at any depth.
+      const rooted = notFound.replace(/(href|src)="(\.\/)?([^"#/:][^":]*)?"/g, '$1="/$3"');
+      send(res, 404, rooted, { "Content-Type": TYPES[".html"] });
     } catch (err) {
       const status = err instanceof HttpError ? err.status : 500;
       if (status === 500) console.error(err);
