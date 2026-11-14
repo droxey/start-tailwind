@@ -8,7 +8,11 @@ const app = (port) => ({
   command: "node --disable-warning=ExperimentalWarning server/index.js",
   url: `http://127.0.0.1:${port}/`,
   reuseExistingServer: false,
-  env: { PORT: String(port), FIRE_SALE_DB: ":memory:", FIRE_SALE_DATA: join(tmpdir(), `fire-sale-e2e-${port}`) },
+  env: {
+    PORT: String(port),
+    FIRE_SALE_DB: ":memory:",
+    FIRE_SALE_DATA: join(tmpdir(), `fire-sale-e2e-${port}`),
+  },
 });
 
 export default defineConfig({
