@@ -35,7 +35,12 @@ function cumulative(el, { sales, target, progress }) {
   el.replaceChildren(
     svg(
       "svg",
-      { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": summary, class: "block inline-full" },
+      {
+        viewBox: `0 0 ${W} ${H}`,
+        role: "img",
+        "aria-label": summary,
+        class: "block inline-full max-block-72",
+      },
       svg("line", { x1: PAD.left, x2: W - PAD.right, y1: y(0), y2: y(0), class: "stroke-ink/30" }),
       svg("line", {
         x1: PAD.left,
@@ -97,7 +102,12 @@ function daily(el, { sales }) {
   el.replaceChildren(
     svg(
       "svg",
-      { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": summary, class: "block inline-full" },
+      {
+        viewBox: `0 0 ${W} ${H}`,
+        role: "img",
+        "aria-label": summary,
+        class: "block inline-full max-block-72",
+      },
       days.map((d, i) => {
         const bh = (d.v / maxV) * (H - PAD.top - PAD.bottom);
         return svg(

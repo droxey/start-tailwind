@@ -67,9 +67,10 @@ export function toast(message) {
   const el = document.querySelector("[data-toast]");
   if (!el) return;
   el.textContent = message;
-  el.classList.remove("opacity-0");
+  // invisible as well as transparent, so the idle toast never sits over content.
+  el.classList.remove("opacity-0", "invisible");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.add("opacity-0"), 4000);
+  toastTimer = setTimeout(() => el.classList.add("opacity-0", "invisible"), 4000);
 }
 
 export const btn = (text, onclick, kind = "plain", extra = {}) =>
