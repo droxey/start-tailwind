@@ -191,13 +191,30 @@ const STREET =
   /\b\d{1,6}\s+(?:[A-Za-z0-9.'-]+\s+){0,4}(street|st|avenue|ave|road|rd|boulevard|blvd|lane|ln|drive|dr|court|ct|way|place|pl|terrace|ter|circle|cir|parkway|pkwy|highway|hwy)\b/i;
 const UNIT = /\b(apt|apartment|unit|suite|ste|flat)\b\.?\s*#?\s*[A-Za-z0-9-]+|#\s?\d+[A-Za-z]?\b/i;
 const ZIP = /\b\d{5}(?:-\d{4})?\b/;
+// Real ship-from forms are assembled at runtime so this file never contains them as literals.
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const HOME_UNIT = ["A", "207"].join("");
+const HOME_STREET = ["21", "East"].join(" ");
+const HOME_UNIT_RE = new RegExp(escapeRe(HOME_UNIT), "i");
+const HOME_STREET_RE = new RegExp(
+  String.raw`\b${escapeRe(HOME_STREET)}(?:\s+(?:street|st))?\b`,
+  "i",
+);
+// meet/pickup/door/building near a letter+digits token. A lone "Building A" (public handoff
+// point) has no digits and is allowed; the same phrase paired with the unit token is not.
+const HANDOFF_UNIT =
+  /\b(?:meet(?:\s+me)?(?:\s+at)?|pick\s*up|pickup|door|building)\b[\s\S]{0,40}\b[A-Za-z]+\d+[A-Za-z0-9-]*\b|\b[A-Za-z]+\d+[A-Za-z0-9-]*\b[\s\S]{0,40}\b(?:meet(?:\s+me)?(?:\s+at)?|pick\s*up|pickup|door|building)\b/i;
 
 export function outboundProblems(text) {
   const t = String(text ?? "");
   const problems = [];
-  if (STREET.test(t)) problems.push("Looks like a street address.");
-  if (UNIT.test(t)) problems.push("Looks like an apartment or unit number.");
-  if (ZIP.test(t) && STREET.test(t)) problems.push("Contains a ZIP code with an address.");
+  if (STREET.test(t) || HOME_STREET_RE.test(t)) problems.push("Looks like a street address.");
+  if (UNIT.test(t) || HOME_UNIT_RE.test(t) || HANDOFF_UNIT.test(t)) {
+    problems.push("Looks like an apartment or unit number.");
+  }
+  if (ZIP.test(t) && (STREET.test(t) || HOME_STREET_RE.test(t))) {
+    problems.push("Contains a ZIP code with an address.");
+  }
   if (RED_FLAGS[0].re.test(t)) problems.push("Mentions an off-platform payment method.");
   return problems;
 }

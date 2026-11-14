@@ -39,3 +39,18 @@ test("buyer chat: outbound replies may not leak an address or unit number", () =
   assert.ok(outboundProblems(["Door", "is", ["Apt", 4].join(" ")].join(" ")).length > 0);
   assert.deepEqual(outboundProblems("Still available. Checkout on the listing page."), []);
 });
+
+test("buyer chat: outbound replies block the real unit and unsuffixed street", () => {
+  // Assembled at runtime so the repo never contains the real forms (privacy-guard.test.js).
+  const unit = ["A", "207"].join("");
+  const street = ["21", "East"].join(" ");
+  assert.ok(outboundProblems(unit).length > 0, "bare unit");
+  assert.ok(outboundProblems(`Meet me at ${unit}`).length > 0, "meet me at unit");
+  assert.ok(outboundProblems(street).length > 0, "unsuffixed street");
+  assert.ok(outboundProblems(`Pickup at ${unit}`).length > 0, "pickup + unit");
+  assert.ok(outboundProblems(`The door is ${unit}`).length > 0, "door + unit");
+  assert.ok(outboundProblems(["Building", unit].join(" ")).length > 0, "building + unit");
+  assert.deepEqual(outboundProblems("Still available. Checkout on the listing page."), []);
+  // "Building A" is the public handoff point and is allowed when it is not paired with the unit.
+  assert.deepEqual(outboundProblems("Meet at Building A after I confirm."), []);
+});

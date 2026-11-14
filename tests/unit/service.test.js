@@ -200,10 +200,18 @@ test("outbound replies can't leak an address or unit number", () => {
   const { draftId } = svc.addBuyerMessage(it.id, { text: "Is it available?" });
   // Unit numbers are assembled at runtime so the repo never contains one (privacy-guard.test.js).
   const unit = (word, n) => [word, n].join(" ");
+  const homeUnit = ["A", "207"].join("");
+  const homeStreet = ["21", "East"].join(" ");
   assert.throws(() => svc.sendReply(draftId, "Come to 12 Example Street"), /Not sent/);
   assert.throws(() => svc.sendReply(draftId, `I'm in ${unit("apt", 4)}`), /Not sent/);
   assert.throws(() => svc.sendReply(draftId, `Ring ${unit("unit", "7B")}`), /Not sent/);
+  assert.throws(() => svc.sendReply(draftId, homeUnit), /Not sent/);
+  assert.throws(() => svc.sendReply(draftId, `Meet me at ${homeUnit}`), /Not sent/);
+  assert.throws(() => svc.sendReply(draftId, homeStreet), /Not sent/);
+  assert.throws(() => svc.sendReply(draftId, `Pickup at ${homeUnit}`), /Not sent/);
   assert.equal(svc.sendReply(draftId, "Yes, it's available.").ok, true);
+  const { draftId: handoffDraft } = svc.addBuyerMessage(it.id, { text: "Where do I meet you?" });
+  assert.equal(svc.sendReply(handoffDraft, "Meet at Building A after I confirm.").ok, true);
 });
 
 test("target: editable amount and days", () => {

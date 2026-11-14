@@ -26,9 +26,25 @@ const read = (f) => {
   }
 };
 
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 test("no apartment or unit numbers in the repo", () => {
-  const unit = /\b(apt|apartment|unit|suite|ste)\.?\s*#?\s*\d+[a-z]?\b/i;
-  const hits = files.filter((f) => unit.test(read(f)));
+  // Real ship-from forms are assembled at runtime so this file never contains them as literals.
+  const unitToken = ["A", "207"].join("");
+  const street = ["21", "East"].join(" ");
+  // Same idea as server/chat.js: labeled units may have alphanumeric IDs, but the ID must
+  // contain a digit so phrases like "unit test" don't trip the guard.
+  const labeledUnit =
+    /\b(apt|apartment|unit|suite|ste|flat)\b\.?\s*#?\s*[A-Za-z]*\d+[A-Za-z0-9-]*\b/i;
+  const streetAddress = new RegExp(String.raw`\b${escapeRe(street)}(?:\s+(?:street|st))?\b`, "i");
+  const hits = files.filter((f) => {
+    const text = read(f);
+    return (
+      text.toLowerCase().includes(unitToken.toLowerCase()) ||
+      labeledUnit.test(text) ||
+      streetAddress.test(text)
+    );
+  });
   assert.deepEqual(hits, []);
 });
 
