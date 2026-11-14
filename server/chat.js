@@ -38,7 +38,7 @@ const RED_FLAGS = [
   {
     id: "injection",
     label: "Tries to give the app instructions",
-    re: /\b(ignore (all|any|previous|prior|the above)|disregard (the|your|all)|system prompt|you are now|new (rules|instructions)|act as|developer mode|override)\b/i,
+    re: /\b((ignore|forget|disregard|bypass) (all|any|previous|prior|the above|the|your|my)\b.{0,20}\b(rules|instructions|prompt|settings|limits)|ignore (all|any|previous|prior|the above)|disregard (the|your|all)|system prompt|you are now|new (rules|instructions)|act as|developer mode|override)\b/i,
   },
 ];
 
@@ -122,6 +122,18 @@ export function draftReply(item, analysis, rules) {
     );
   }
 
+  // Risky replies stop at the safety lines: no price talk and no next step to act on.
+  if (risky) {
+    lines.push("If you'd like it, please buy through the listing's checkout.");
+    return {
+      draft: lines.join(" "),
+      queue: [],
+      needsOwner: false,
+      offerDecision: null,
+      risky: true,
+    };
+  }
+
   if (analysis.offer !== null) {
     offerDecision = evaluateOffer(analysis.offer, item, rules);
     if (offerDecision.action === "auto-decline") {
@@ -161,15 +173,6 @@ export function draftReply(item, analysis, rules) {
     lines.push("This one is local pickup only.");
   }
 
-  if (risky) {
-    return {
-      draft: lines.join(" ") || "Sorry, I can't help with that.",
-      queue: [],
-      needsOwner: false,
-      offerDecision: null,
-      risky: true,
-    };
-  }
   if (!lines.length && !queue.length) needsOwner = true;
   if (needsOwner) lines.push("Good question. Let me check and get back to you.");
 
