@@ -4,6 +4,7 @@
 import { timingSafeEqual } from "node:crypto";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, sep } from "node:path";
+import { gzipSync } from "node:zlib";
 import { labelBlocks, receiptBlocks, renderPdf, shipFromLines } from "./labels.js";
 import { getMarketplace } from "./marketplaces.js";
 import { HttpError } from "./service.js";
@@ -61,9 +62,23 @@ async function readJson(req) {
   }
 }
 
+const COMPRESSIBLE = /^(text\/|application\/(json|manifest\+json|xml)|image\/svg)/;
+
 const send = (res, status, body, headers = {}) => {
-  res.writeHead(status, { ...SECURITY_HEADERS, "Cache-Control": "no-store", ...headers });
-  res.end(body);
+  const all = {
+    ...SECURITY_HEADERS,
+    "Cache-Control": "no-store",
+    Vary: "Accept-Encoding",
+    ...headers,
+  };
+  const gzip =
+    res.req &&
+    /\bgzip\b/.test(res.req.headers["accept-encoding"] ?? "") &&
+    COMPRESSIBLE.test(all["Content-Type"] ?? "");
+  const data = gzip && Buffer.byteLength(body) > 512 ? gzipSync(body) : body;
+  if (data !== body) all["Content-Encoding"] = "gzip";
+  res.writeHead(status, all);
+  res.end(data);
 };
 const json = (res, status, data) =>
   send(res, status, JSON.stringify(data), { "Content-Type": TYPES[".json"] });
