@@ -53,33 +53,30 @@ for (const path of pages) {
   });
 }
 
-test("home page metadata for crawlers and agents", async ({ page }) => {
+test("dashboard metadata: private, installable, and machine-readable", async ({ page }) => {
   await page.goto("/");
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /.{50,160}/);
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", /^https:\/\//);
-  await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
-  const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
-  expect(ld.length).toBeGreaterThan(0);
-  for (const block of ld) expect(() => JSON.parse(block)).not.toThrow();
-});
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description).toMatch(/^.{50,160}$/);
+  // A private tool: never indexed, so no canonical or social preview tags.
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  await expect(page.locator('link[rel="canonical"]')).toHaveCount(0);
+  await expect(page.locator('meta[property^="og:"]')).toHaveCount(0);
 
-test("home page JSON-LD describes the site, the page, and its author", async ({ page }) => {
-  await page.goto("/");
-  const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
+  const manifest = await (await page.request.get("manifest.webmanifest")).json();
+  expect(manifest.display).toBe("standalone");
+  expect(manifest.start_url).toBe("./");
+  expect(manifest.icons.map((i) => i.sizes)).toEqual(
+    expect.arrayContaining(["192x192", "512x512"]),
+  );
+  for (const icon of [...manifest.icons.map((i) => i.src), "icons/apple-touch-icon.png", "sw.js"]) {
+    expect((await page.request.get(icon)).status(), icon).toBe(200);
+  }
+
   const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
   const nodes = blocks.map((b) => JSON.parse(b)).flatMap((d) => d["@graph"] ?? [d]);
-  const byType = (type) => nodes.find((n) => n["@type"] === type);
-  for (const type of ["WebSite", "WebPage", "Person"]) expect(byType(type), type).toBeTruthy();
-  expect(byType("WebSite").url).toBe(canonical);
-  expect(byType("WebPage").url).toBe(canonical);
-  expect(byType("WebPage").inLanguage).toBe("en");
-  // Every @id reference points at a node in the graph.
-  const ids = new Set(nodes.map((n) => n["@id"]));
-  const refs = JSON.stringify(nodes).match(/"@id":"[^"]+"/g) ?? [];
-  for (const ref of refs) expect(ids.has(JSON.parse(`{${ref}}`)["@id"]), ref).toBe(true);
-  // Text in the markup matches what the page shows.
-  const description = await page.locator('meta[name="description"]').getAttribute("content");
-  expect(byType("WebPage").description).toBe(description);
+  const app = nodes.find((n) => n["@type"] === "WebApplication");
+  expect(app?.name).toBe("Fire Sale");
+  expect(app.description).toBe(description);
 });
 
 test("keyboard: skip link is first tab stop and moves focus to main", async ({ page }) => {

@@ -1,8 +1,9 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "public",
-      "url": ["http://localhost/index.html", "http://localhost/404.html"],
+      "startServerCommand": "FIRE_SALE_DB=:memory: FIRE_SALE_DATA=/tmp/fire-sale-lhci PORT=8090 node --disable-warning=ExperimentalWarning server/index.js",
+      "startServerReadyPattern": "Fire Sale running",
+      "url": ["http://127.0.0.1:8090/", "http://127.0.0.1:8090/404.html"],
       "numberOfRuns": 3,
       "settings": {
         "chromeFlags": "--no-sandbox --headless=new"
@@ -25,10 +26,40 @@
                 "minScore": 1
               }
             ],
-            "categories:seo": [
+            "document-title": [
               "error",
               {
-                "minScore": 0.95
+                "minScore": 1
+              }
+            ],
+            "meta-description": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "link-text": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "crawlable-anchors": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "http-status-code": [
+              "error",
+              {
+                "minScore": 1
+              }
+            ],
+            "viewport": [
+              "error",
+              {
+                "minScore": 1
               }
             ],
             "categories:performance": [

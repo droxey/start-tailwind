@@ -12,3 +12,12 @@ playwright-report/
 .agents/skills/accessibility-fix/
 .agents/skills/accessibility-inspect/
 .agents/skills/accessibility-scan/
+
+# Fire Sale runtime data: SQLite file, photos, VAPID keys. Never commit.
+data/
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
+!.env.example

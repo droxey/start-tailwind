@@ -19,6 +19,7 @@
 @source not "../CLAUDE.md";
 @source not "../CONFIG_CODING_PREFS.md";
 @source not "../SECURITY-NOTES.md";
+@source not "../data";
 
 /* Dark mode: follow the OS by default, allow an explicit [data-theme] override. */
 @custom-variant dark {
@@ -71,6 +72,11 @@
   --color-accent: oklch(48% 0.16 255);
   --color-accent-ink: oklch(99% 0.005 250);
   --color-focus: oklch(48% 0.16 255);
+  --color-fire: oklch(47% 0.17 38);
+  --color-fire-ink: oklch(99% 0.005 250);
+  --color-ok: oklch(44% 0.11 150);
+  --color-warn: oklch(46% 0.1 70);
+  --color-danger: oklch(48% 0.18 25);
 
   /* No --font-sans override: v4.3.3's default lists explicit platform fonts instead of system-ui,
      so CJK text follows the page's lang on Windows (tailwindlabs/tailwindcss#20318). */
@@ -89,7 +95,12 @@
       --color-ink-muted: oklch(80% 0.02 250);
       --color-accent: oklch(78% 0.12 255);
       --color-accent-ink: oklch(18% 0.02 250);
+      --color-fire: oklch(78% 0.13 50);
+      --color-fire-ink: oklch(18% 0.02 250);
       --color-focus: oklch(80% 0.12 255);
+      --color-ok: oklch(80% 0.13 150);
+      --color-warn: oklch(84% 0.12 85);
+      --color-danger: oklch(78% 0.13 25);
     }
   }
 
@@ -102,7 +113,12 @@
     --color-ink-muted: oklch(80% 0.02 250);
     --color-accent: oklch(78% 0.12 255);
     --color-accent-ink: oklch(18% 0.02 250);
+    --color-fire: oklch(78% 0.13 50);
+    --color-fire-ink: oklch(18% 0.02 250);
     --color-focus: oklch(80% 0.12 255);
+    --color-ok: oklch(80% 0.13 150);
+    --color-warn: oklch(84% 0.12 85);
+    --color-danger: oklch(78% 0.13 25);
   }
 
   :root[data-theme="light"] {
@@ -124,5 +140,28 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  /* Native <progress> styling for the target bar. */
+  progress {
+    appearance: none;
+    border: 0;
+    background: color-mix(in oklch, var(--color-ink) 12%, transparent);
+  }
+
+  progress::-webkit-progress-bar {
+    background: color-mix(in oklch, var(--color-ink) 12%, transparent);
+  }
+
+  progress::-webkit-progress-value {
+    background: var(--color-fire);
+  }
+
+  progress::-moz-progress-bar {
+    background: var(--color-fire);
+  }
+
+  dialog::backdrop {
+    background: oklch(0% 0 0 / 55%);
   }
 }

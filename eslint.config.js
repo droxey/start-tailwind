@@ -92,9 +92,21 @@ export default defineConfig([
     },
   },
 
-  // Node-side config files and Playwright tests.
+  // The service worker runs in a worker scope, not a window.
   {
-    files: ["*.config.{js,mjs}", "eslint.config.js", "tests/**/*.js"],
+    files: ["public/sw.js"],
+    languageOptions: { globals: { ...globals.serviceworker } },
+  },
+
+  // Node-side config files, the Fire Sale server, scripts, and tests.
+  {
+    files: [
+      "*.config.{js,mjs}",
+      "eslint.config.js",
+      "tests/**/*.js",
+      "server/**/*.js",
+      "scripts/**/*.js",
+    ],
     plugins: { js },
     extends: ["js/recommended"],
     languageOptions: { ecmaVersion: "latest", sourceType: "module", globals: { ...globals.node } },

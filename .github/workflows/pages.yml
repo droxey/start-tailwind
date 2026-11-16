@@ -1,9 +1,9 @@
 # Build Tailwind with the standalone CLI (no Node) and deploy public/ to GitHub Pages.
 # Repo settings -> Pages -> Source: "GitHub Actions".
+# Manual only: Fire Sale needs its local Node server and private data, so it must not auto-publish
+# to a public static host. Run this only for the starter's static pages.
 name: Deploy to GitHub Pages
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

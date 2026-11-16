@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { pages, widths, slug } from "./pages.js";
+import { pages, phone, staticPages, widths, slug } from "./pages.js";
 
 for (const path of pages) {
-  for (const width of widths) {
+  for (const width of path === "/" ? [...widths, phone.width] : widths) {
     test(`no horizontal overflow: ${path} @ ${width}px`, async ({ page }) => {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(path);
@@ -10,9 +10,11 @@ for (const path of pages) {
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
       );
       expect(overflow, "page scrolls horizontally").toBeLessThanOrEqual(0);
-      await expect(page).toHaveScreenshot(`${slug(path)}-${width}.png`, {
-        fullPage: true,
-      });
+      if (staticPages.includes(path)) {
+        await expect(page).toHaveScreenshot(`${slug(path)}-${width}.png`, {
+          fullPage: true,
+        });
+      }
     });
   }
 

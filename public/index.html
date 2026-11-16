@@ -2,57 +2,42 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' blob: data:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
     />
-    <title>Example site</title>
+    <title>Fire Sale</title>
     <meta
       name="description"
-      content="A static site built with HTML, Tailwind CSS, and vanilla JavaScript."
+      content="Private dashboard for selling things fast: photo-to-draft listings, a confirm queue, offers, and progress toward a money target."
     />
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="canonical" href="https://droxey.com/start-tailwind/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Example site" />
-    <meta
-      property="og:description"
-      content="A static site built with HTML, Tailwind CSS, and vanilla JavaScript."
-    />
-    <meta property="og:url" content="https://droxey.com/start-tailwind/" />
+    <meta name="theme-color" content="#b23a12" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1b1f27" media="(prefers-color-scheme: dark)" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Fire Sale" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="manifest" href="manifest.webmanifest" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
     <link rel="stylesheet" href="assets/site.css" />
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/app.js"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "WebSite",
-            "@id": "https://droxey.com/start-tailwind/#website",
-            "name": "Example site",
+            "@type": "WebApplication",
+            "@id": "https://droxey.com/start-tailwind/#app",
+            "name": "Fire Sale",
             "url": "https://droxey.com/start-tailwind/",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
             "inLanguage": "en",
-            "publisher": { "@id": "https://droxey.com/start-tailwind/#author" }
-          },
-          {
-            "@type": "WebPage",
-            "@id": "https://droxey.com/start-tailwind/#webpage",
-            "url": "https://droxey.com/start-tailwind/",
-            "name": "Example site",
-            "description": "A static site built with HTML, Tailwind CSS, and vanilla JavaScript.",
-            "inLanguage": "en",
-            "isPartOf": { "@id": "https://droxey.com/start-tailwind/#website" },
-            "author": { "@id": "https://droxey.com/start-tailwind/#author" }
-          },
-          {
-            "@type": "Person",
-            "@id": "https://droxey.com/start-tailwind/#author",
-            "name": "Dani Roxberry",
-            "alternateName": "@droxey",
-            "url": "https://github.com/droxey",
-            "sameAs": ["https://github.com/droxey"]
+            "description": "Private dashboard for selling things fast: photo-to-draft listings, a confirm queue, offers, and progress toward a money target."
           }
         ]
       }
@@ -61,60 +46,306 @@
   <body class="bg-surface font-sans text-step-0 text-ink antialiased">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:fixed focus:inset-s-fluid-s focus:inset-bs-fluid-s focus:z-50 focus:rounded-sm focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+      class="sr-only focus:not-sr-only focus:fixed focus:inset-s-fluid-s focus:inset-bs-fluid-s focus:z-50 focus:rounded-sm focus:bg-fire focus:px-4 focus:py-2 focus:text-fire-ink"
       >Skip to content</a
     >
-    <header class="border-be border-ink/10">
-      <nav aria-label="Primary" class="mx-auto px-fluid-s-l py-fluid-xs max-inline-7xl">
-        <ul class="flex flex-wrap items-center gap-fluid-s">
-          <li>
-            <a href="./" aria-current="page" class="underline-offset-4 hover:underline">Home</a>
-          </li>
-          <li class="ms-auto">
-            <button
-              type="button"
-              data-theme-toggle
-              class="rounded-md border border-ink/20 px-fluid-s min-block-11 min-inline-11 motion-safe:transition-colors forced-colors:border-[ButtonBorder]"
-              aria-pressed="false"
-            >
-              Dark mode
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main id="main" class="mx-auto px-fluid-s-l py-fluid-m-xl max-inline-7xl">
-      <h1 class="text-step-4 font-bold text-balance">Hello</h1>
-      <p class="mbs-fluid-s max-w-prose text-ink-muted">Static, accessible, fast.</p>
-      <div class="@container mbs-fluid-l">
-        <ul class="grid gap-fluid-s @md:grid-cols-2 @3xl:grid-cols-3">
-          <li class="rounded-lg bg-surface-raised p-fluid-s">
-            <h2 class="text-step-1 font-semibold">Fluid</h2>
-            <p>Every width from 320px to ultra-wide.</p>
-          </li>
-          <li class="rounded-lg bg-surface-raised p-fluid-s">
-            <h2 class="text-step-1 font-semibold">Accessible</h2>
-            <p>WCAG 2.2 AA as the floor.</p>
-          </li>
-          <li class="rounded-lg bg-surface-raised p-fluid-s">
-            <h2 class="text-step-1 font-semibold">Readable by agents</h2>
-            <p>Semantic HTML and a clean accessibility tree.</p>
-          </li>
-        </ul>
-      </div>
-    </main>
-    <footer class="mx-auto px-fluid-s-l py-fluid-m max-inline-7xl">
-      <p>
-        <small
-          >written with <span aria-hidden="true">&hearts;</span><span class="sr-only">love</span> by
-          <a
-            href="https://github.com/droxey"
-            title="@droxey on github"
-            class="font-bold text-accent underline underline-offset-4 hover:decoration-2 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-focus"
-            >@droxey</a
-          ></small
+    <header
+      class="sticky inset-bs-0 z-30 border-be border-ink/10 bg-surface/95 pbs-[env(safe-area-inset-top)] backdrop-blur-sm"
+    >
+      <div class="mx-auto flex items-center gap-3 px-fluid-s py-2 max-inline-7xl">
+        <h1 class="text-step-1 font-bold">Fire Sale</h1>
+        <a
+          href="#target"
+          data-header-progress
+          class="flex flex-1 flex-col justify-center gap-1 rounded-md px-2 text-step-n1 min-block-11 min-inline-0 hover:bg-surface-raised"
         >
-      </p>
+          <span data-header-progress-text>Target progress</span>
+          <span aria-hidden="true" class="block overflow-hidden rounded-full bg-ink/15 block-1.5"
+            ><span
+              data-header-progress-bar
+              class="block bg-fire block-full inline-0 forced-colors:bg-[CanvasText]"
+            ></span
+          ></span>
+        </a>
+        <button
+          type="button"
+          data-open-queue
+          class="relative flex items-center gap-2 rounded-md bg-fire px-3 font-semibold text-fire-ink min-block-11 min-inline-11 forced-colors:border forced-colors:border-[ButtonBorder] forced-colors:text-[ButtonText]"
+        >
+          <span>Confirm</span>
+          <span
+            data-queue-count
+            class="rounded-full bg-fire-ink px-1.5 text-center text-step-n1 text-fire min-inline-6"
+            >0</span
+          >
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="mx-auto grid gap-fluid-l px-fluid-s py-fluid-m max-inline-7xl">
+      <section aria-labelledby="upload-h" class="grid gap-3">
+        <h2 id="upload-h" class="text-step-2 font-bold">List something</h2>
+        <div data-upload-form class="grid gap-3">
+          <label
+            class="grid cursor-pointer place-items-center gap-1 rounded-xl border-2 border-dashed border-fire bg-surface-raised p-fluid-s text-center min-block-32 has-focus-visible:outline-3 has-focus-visible:outline-offset-2 has-focus-visible:outline-focus"
+            data-dropzone
+          >
+            <span class="text-step-1 font-bold text-fire">Add photos</span>
+            <span class="text-ink-muted"
+              >Take or pick one or many. Each photo becomes its own draft.</span
+            >
+            <input
+              type="file"
+              name="photos"
+              accept="image/*"
+              multiple
+              class="sr-only"
+              data-photo-input
+            />
+          </label>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <label class="flex items-center gap-3 min-block-11">
+              <input
+                type="checkbox"
+                name="group"
+                class="form-checkbox rounded-sm border-ink/40 text-fire block-6 inline-6"
+                data-group-photos
+              />
+              <span>All selected photos are one item</span>
+            </label>
+            <label class="grid gap-1">
+              <span>What is it? <span class="text-ink-muted">(optional)</span></span>
+              <input
+                type="text"
+                name="hint"
+                autocomplete="off"
+                maxlength="200"
+                class="form-input rounded-md border-ink/30 bg-surface min-block-11"
+                data-upload-hint
+              />
+            </label>
+          </div>
+          <p class="text-step-n1 text-ink-muted">
+            Photos are cleaned of location and camera data before upload. Nothing is listed until
+            you approve it.
+          </p>
+        </div>
+        <ul data-drafts class="grid gap-3" aria-live="polite" aria-label="Drafts in progress"></ul>
+      </section>
+
+      <section id="target" aria-labelledby="target-h" class="grid scroll-mbs-20 gap-3">
+        <h2 id="target-h" class="text-step-2 font-bold">Target</h2>
+        <p class="text-step-1">
+          <strong data-landed>$0</strong> landed of <span data-target-amount>$0</span>
+        </p>
+        <progress
+          data-target-progress
+          aria-labelledby="target-h"
+          max="100"
+          value="0"
+          class="block overflow-hidden rounded-full block-4 inline-full"
+        ></progress>
+        <dl class="grid grid-cols-3 gap-2 text-center">
+          <div class="rounded-lg bg-surface-raised p-2">
+            <dt class="text-step-n1 text-ink-muted">To go</dt>
+            <dd data-remaining class="font-bold">$0</dd>
+          </div>
+          <div class="rounded-lg bg-surface-raised p-2">
+            <dt class="text-step-n1 text-ink-muted">Days left</dt>
+            <dd data-days-left class="font-bold">0</dd>
+          </div>
+          <div class="rounded-lg bg-surface-raised p-2">
+            <dt class="text-step-n1 text-ink-muted">Per day</dt>
+            <dd data-per-day class="font-bold">$0</dd>
+          </div>
+        </dl>
+        <form data-target-form class="grid grid-cols-[1fr_1fr_auto] items-end gap-2">
+          <label class="grid gap-1">
+            <span>Target ($)</span>
+            <input
+              name="amount"
+              type="number"
+              inputmode="decimal"
+              min="1"
+              step="1"
+              required
+              class="form-input rounded-md border-ink/30 bg-surface min-block-11 min-inline-0"
+            />
+          </label>
+          <label class="grid gap-1">
+            <span>Days</span>
+            <input
+              name="days"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              max="365"
+              step="1"
+              required
+              class="form-input rounded-md border-ink/30 bg-surface min-block-11 min-inline-0"
+            />
+          </label>
+          <button
+            type="submit"
+            class="rounded-md border border-ink/30 px-4 font-semibold min-block-11 min-inline-11"
+          >
+            Save
+          </button>
+        </form>
+        <p class="text-step-n1 text-ink-muted">
+          Progress counts landed net: sale price minus fees and postage. A deadline never skips a
+          confirm step.
+        </p>
+      </section>
+
+      <section aria-labelledby="sales-h" class="grid gap-3">
+        <h2 id="sales-h" class="text-step-2 font-bold">Sales</h2>
+        <dl data-totals class="grid grid-cols-2 gap-2 sm:grid-cols-4"></dl>
+        <div class="grid gap-4 lg:grid-cols-3">
+          <figure class="grid gap-2 rounded-lg bg-surface-raised p-3 lg:col-span-2">
+            <figcaption class="font-semibold">Landed net over time, against target pace</figcaption>
+            <div data-chart-cumulative></div>
+          </figure>
+          <figure class="grid gap-2 rounded-lg bg-surface-raised p-3">
+            <figcaption class="font-semibold">Net by marketplace</figcaption>
+            <ul data-chart-marketplace class="grid gap-2"></ul>
+          </figure>
+          <figure class="grid gap-2 rounded-lg bg-surface-raised p-3 lg:col-span-3">
+            <figcaption class="font-semibold">Net per day, last 14 days</figcaption>
+            <div data-chart-daily></div>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="items-h" class="grid gap-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 id="items-h" class="me-auto text-step-2 font-bold">Items</h2>
+          <button
+            type="button"
+            data-add-item
+            class="rounded-md border border-ink/30 px-4 font-semibold min-block-11"
+          >
+            Add item
+          </button>
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <label class="grid gap-1">
+            <span>Show</span>
+            <select
+              data-filter
+              class="form-select rounded-md border-ink/30 bg-surface min-block-11 min-inline-0"
+            >
+              <option value="active">For sale and drafts</option>
+              <option value="all">Everything</option>
+              <option value="sold">Sold</option>
+              <option value="parked">Keep, donate, trash</option>
+            </select>
+          </label>
+          <label class="grid gap-1">
+            <span>Search</span>
+            <input
+              type="search"
+              data-search
+              autocomplete="off"
+              class="form-input rounded-md border-ink/30 bg-surface min-block-11 min-inline-0"
+            />
+          </label>
+        </div>
+        <section
+          aria-label="Item table, scrolls sideways"
+          tabindex="0"
+          data-table-wrap
+          class="overflow-x-auto overscroll-x-contain rounded-lg border border-ink/15"
+        >
+          <table class="border-collapse text-step-n1 inline-full">
+            <caption class="sr-only">
+              Items. Column buttons sort. Cells save when you change them.
+            </caption>
+            <thead data-thead class="bg-surface-raised"></thead>
+            <tbody data-rows></tbody>
+          </table>
+        </section>
+        <p data-empty hidden class="rounded-lg bg-surface-raised p-4 text-center text-ink-muted">
+          No items here yet. Add photos at the top to start.
+        </p>
+      </section>
+    </main>
+
+    <footer
+      class="mx-auto flex flex-wrap gap-2 px-fluid-s pbs-fluid-m pbe-[max(env(safe-area-inset-bottom),1.5rem)] max-inline-7xl"
+    >
+      <button
+        type="button"
+        data-open-rules
+        class="rounded-md border border-ink/30 px-4 min-block-11"
+      >
+        Offer and price rules
+      </button>
+      <button
+        type="button"
+        data-push-toggle
+        class="rounded-md border border-ink/30 px-4 min-block-11"
+      >
+        Turn on notifications
+      </button>
+      <button
+        type="button"
+        data-theme-toggle
+        class="rounded-md border border-ink/30 px-4 min-block-11 forced-colors:border-[ButtonBorder]"
+        aria-pressed="false"
+      >
+        Dark mode
+      </button>
     </footer>
+
+    <dialog
+      data-queue-dialog
+      aria-labelledby="queue-h"
+      class="m-0 bg-surface p-0 text-ink block-dvh inline-full max-block-none max-inline-none sm:m-auto sm:rounded-xl sm:block-auto sm:max-block-[90dvh] sm:max-inline-2xl"
+    >
+      <div class="flex flex-col gap-3 p-fluid-s pbs-[max(env(safe-area-inset-top),1rem)]">
+        <div class="flex items-center gap-2">
+          <h2 id="queue-h" class="me-auto text-step-2 font-bold">Confirm queue</h2>
+          <button
+            type="button"
+            data-close
+            class="rounded-md border border-ink/30 px-3 min-block-11 min-inline-11"
+          >
+            Close
+          </button>
+        </div>
+        <p class="text-ink-muted">
+          Everything the app wants to do waits here. Nothing is listed, sold, shipped, bought, or
+          booked until you tap Approve.
+        </p>
+        <ul data-queue-list class="grid gap-3"></ul>
+      </div>
+    </dialog>
+
+    <dialog
+      data-sheet
+      aria-labelledby="sheet-h"
+      class="m-0 mbs-auto rounded-t-xl bg-surface p-0 text-ink inline-full max-block-[92dvh] max-inline-none sm:m-auto sm:rounded-xl sm:max-inline-xl"
+    >
+      <div class="flex flex-col gap-3 p-fluid-s pbe-[max(env(safe-area-inset-bottom),1rem)]">
+        <div class="flex items-center gap-2">
+          <h2 id="sheet-h" data-sheet-title class="me-auto text-step-1 font-bold">Details</h2>
+          <button
+            type="button"
+            data-close
+            class="rounded-md border border-ink/30 px-3 min-block-11 min-inline-11"
+          >
+            Close
+          </button>
+        </div>
+        <div data-sheet-body class="grid gap-3"></div>
+      </div>
+    </dialog>
+
+    <p
+      role="status"
+      data-toast
+      class="pointer-events-none fixed inset-x-0 inset-be-[max(env(safe-area-inset-bottom),1rem)] z-50 mx-auto rounded-lg bg-ink px-4 py-3 text-center text-surface opacity-0 inline-fit max-inline-[calc(100%-2rem)] motion-safe:transition-opacity"
+    ></p>
   </body>
 </html>

@@ -1,7 +1,25 @@
 # Security notes
 
-Nothing in this file ships: the deployed site is the static `public/` folder, and every npm
-package here is a dev-only linter or test tool that runs in CI or on a developer machine.
+Every npm package here is a dev-only linter or test tool that runs in CI or on a developer machine.
+The Fire Sale server uses only Node's built-in modules, so it has no runtime npm dependencies.
+
+## Fire Sale app
+
+- The app runs on the owner's machine and listens on `127.0.0.1` by default. Set
+  `FIRE_SALE_PASSCODE` before exposing it beyond localhost, and only behind HTTPS on a private
+  network.
+- No secrets, keys, cookies, or sessions live in the repo. `.env` and `data/` are git-ignored.
+  `.env.example` holds placeholders only. The VAPID key pair is generated at first start into
+  `data/vapid.json`.
+- The ship-from address is injected at runtime (`FIRE_SALE_SHIP_FROM`, from a vault). Without it,
+  labels print a placeholder. No address or unit number is stored in code, config, or sample data,
+  and `tests/unit/privacy-guard.test.js` enforces that on every tracked file.
+- API writes must come from the app's own origin and use the expected content type. JSON bodies are
+  capped at 1 MB and photos at 15 MB. Request logs record method, path, and status only.
+- Photos are re-encoded in the browser and stripped of EXIF, XMP, and text chunks on the server.
+- Buyer messages are untrusted. Replies come from fixed templates, never echo buyer text, and are
+  blocked if they contain a street address or unit number.
+- The page sends a strict Content Security Policy with no inline script or style.
 
 ## npm overrides
 
@@ -20,8 +38,8 @@ to vulnerable ranges. Each override is kept only while the full Quality workflow
 The minimatch override is scoped to `>=7 <11` so `glob`'s 3.1.5, which is outside
 GHSA-g3hv-75wg-m249 (`>=7.0.0 <11.0.1`), is left alone.
 
-The `serve` dev dependency was removed. Playwright and pa11y-ci serve `public/` with
-`python3 -m http.server`, which ships with the CI runner.
+The `serve` dev dependency was removed. Playwright, pa11y-ci, and Lighthouse CI now run the Fire
+Sale server (`server/index.js`) with a throwaway in-memory database.
 
 ## Fixed by upgrading a parent
 

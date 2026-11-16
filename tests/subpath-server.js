@@ -2,7 +2,7 @@
 // root-absolute URLs that only work at /. Missing pages at any depth get 404.html with a 404
 // status, after the same deploy-time rewrite pages.yml applies (scripts/rewrite-404.sh).
 import { execFileSync } from "node:child_process";
-import { createServer } from "node:http";
+import { createServer, request } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, sep } from "node:path";
 
@@ -25,6 +25,7 @@ const TYPES = {
   ".json": "application/json",
   ".png": "image/png",
   ".ico": "image/x-icon",
+  ".webmanifest": "application/manifest+json",
 };
 
 async function resolveFile(pathname) {
@@ -43,7 +44,21 @@ async function resolveFile(pathname) {
 }
 
 createServer(async (req, res) => {
-  const { pathname } = new URL(req.url ?? "/", "http://localhost");
+  const { pathname, search } = new URL(req.url ?? "/", "http://localhost");
+  if (pathname.startsWith(`${PREFIX}api/`) && process.env.APP_ORIGIN) {
+    const target = new URL(pathname.slice(PREFIX.length - 1) + search, process.env.APP_ORIGIN);
+    const upstream = request(
+      target,
+      { method: req.method, headers: { ...req.headers, host: target.host } },
+      (up) => {
+        res.writeHead(up.statusCode ?? 502, up.headers);
+        up.pipe(res);
+      },
+    );
+    upstream.on("error", () => res.writeHead(502).end());
+    req.pipe(upstream);
+    return;
+  }
   if (pathname === "/start-tailwind") {
     res.writeHead(301, { Location: PREFIX }).end();
     return;

@@ -1,5 +1,5 @@
 {
-  "name": "static-site",
+  "name": "fire-sale",
   "private": true,
   "license": "MIT",
   "type": "module",
@@ -7,6 +7,11 @@
     "node": ">=22.22"
   },
   "scripts": {
+    "start": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning server/index.js",
+    "demo": "FIRE_SALE_DB=:memory: FIRE_SALE_SEED=demo node --disable-warning=ExperimentalWarning server/index.js",
+    "test": "npm run test:unit",
+    "test:unit": "node --disable-warning=ExperimentalWarning --test tests/unit/*.test.js",
+    "icons": "node scripts/make-icons.js",
     "build:css": "./bin/tailwindcss -i src/input.css -o public/assets/site.css --minify",
     "watch:css": "./bin/tailwindcss -i src/input.css -o public/assets/site.css --watch",
     "lint:html": "html-validate \"public/**/*.html\"",
@@ -17,7 +22,6 @@
     "format:check": "prettier --check .",
     "lint:skills": "sh scripts/check-skills.sh",
     "lint": "npm run lint:skills && npm run lint:version && npm run lint:html && npm run lint:css && npm run lint:js && npm run lint:md && npm run format:check",
-    "serve": "python3 -m http.server 8080 --bind 127.0.0.1 --directory public",
     "test:e2e": "playwright test",
     "test:a11y": "pa11y-ci",
     "test:lhci": "lhci autorun",
