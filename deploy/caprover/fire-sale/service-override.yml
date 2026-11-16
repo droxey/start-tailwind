@@ -1,0 +1,22 @@
+# Paste into the fire-sale app's Service Update Override.
+# CapRover applies this after its own fields, on every deploy.
+# This mount list replaces the app's mounts. Do not also add a
+# persistent directory for /srv/fire-sale/data in the UI.
+# One replica, replaced only after the old one stops, so two
+# processes never write the same SQLite file.
+Mode:
+  Replicated:
+    Replicas: 1
+UpdateConfig:
+  Parallelism: 1
+  Order: stop-first
+  FailureAction: pause
+TaskTemplate:
+  Resources:
+    Limits:
+      MemoryBytes: 536870912
+  ContainerSpec:
+    Mounts:
+      - Type: bind
+        Source: /srv/fire-sale/data
+        Target: /srv/fire-sale/data

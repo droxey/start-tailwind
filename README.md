@@ -68,7 +68,48 @@ installing to the iPhone home screen both need HTTPS.
 3. Open that address in Safari, tap Share, then Add to Home Screen.
 4. Open the app from the home screen and tap "Turn on notifications".
 
-Don't expose the app to the public internet.
+The local server stays on this computer. The way onto bots.ac is the CapRover section below.
+
+### CapRover on bots.ac
+
+The app can run as its own CapRover app on the bots.ac host. It is still one process. The SQLite
+file, photos, and push keys live in a host folder that survives deploys.
+
+`bots.ac` itself sits behind Cloudflare Access. A new name such as `fire-sale.bots.ac` does not.
+The wildcard is DNS-only, so that name is on the public internet once HTTPS is on. A passcode is
+optional, the same as on your own computer. Leave it empty unless you want one. Never put it in
+git.
+
+1. On the host, create the data folder and give it to the container user (uid 1000).
+
+   ```sh
+   sudo mkdir -p /srv/fire-sale/data
+   sudo chown -R 1000:1000 /srv/fire-sale
+   ```
+
+2. In CapRover, create an app named `fire-sale`.
+
+   - One instance. Two copies would write the same SQLite file.
+   - Container HTTP port `8080`. Do not publish that port on the host. Host port 8080 is already
+     in use.
+   - Paste `deploy/caprover/fire-sale/service-override.yml` into Service Update Override.
+   - Paste `deploy/caprover/fire-sale/nginx-location.conf` into the nginx location so a photo
+     upload is accepted.
+   - Set `VAPID_SUBJECT` to a mailbox you control, such as `mailto:you@example.com`.
+   - Leave `FIRE_SALE_SHIP_FROM` empty unless a label should print a real ship-from address. If
+     you set it, take the value from your vault. Do not put the address in git.
+
+3. From a checkout of this repo, deploy. CapRover builds `captain-definition` at the repo root.
+
+   ```sh
+   caprover deploy --appName fire-sale
+   ```
+
+4. Turn on HTTPS for `fire-sale.bots.ac`. Open it, then add it to the iPhone home screen.
+
+The image sets `HOST=0.0.0.0`, `PORT=8080`, and `FIRE_SALE_DATA=/srv/fire-sale/data`. Do not point
+`HOST` back at `127.0.0.1`. CapRover would not be able to reach the app. `/health` stays open so
+the container health check can run. It returns no app data.
 
 ## How it works
 
