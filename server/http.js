@@ -249,6 +249,13 @@ export function createHandler({
       log(`${req.method} ${pathname} ${res.statusCode} ${Date.now() - started}ms`),
     );
     try {
+      // Open on purpose: the container health check cannot know the passcode. No app data here.
+      if (pathname === "/health" && (req.method === "GET" || req.method === "HEAD")) {
+        send(res, 200, req.method === "HEAD" ? "" : "ok", {
+          "Content-Type": "text/plain; charset=utf-8",
+        });
+        return;
+      }
       if (!passcodeOk(req, env.FIRE_SALE_PASSCODE)) {
         send(res, 401, "Passcode required.", { "WWW-Authenticate": 'Basic realm="Fire Sale"' });
         return;

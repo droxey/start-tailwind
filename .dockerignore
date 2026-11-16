@@ -1,0 +1,17 @@
+.git
+.github
+node_modules
+data
+bin
+.env
+.env.*
+tests
+test-results
+playwright-report
+.lighthouseci
+.agents
+.claude
+.cursor
+.grok
+docs
+*.md

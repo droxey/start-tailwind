@@ -5,9 +5,9 @@ The Fire Sale server uses only Node's built-in modules, so it has no runtime npm
 
 ## Fire Sale app
 
-- The app runs on the owner's machine and listens on `127.0.0.1` by default. Set
-  `FIRE_SALE_PASSCODE` before exposing it beyond localhost, and only behind HTTPS on a private
-  network.
+- The app listens on `127.0.0.1` by default. CapRover sets `HOST=0.0.0.0` so the proxy can reach
+  it. `FIRE_SALE_PASSCODE` is optional. `GET /health` returns `ok` and no app data, including when
+  a passcode is set, so the container health check can run.
 - No secrets, keys, cookies, or sessions live in the repo. `.env` and `data/` are git-ignored.
   `.env.example` holds placeholders only. The VAPID key pair is generated at first start into
   `data/vapid.json`.
